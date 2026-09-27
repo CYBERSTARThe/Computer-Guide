@@ -1388,11 +1388,12 @@ function searchTopics() {
     const status =
         document.getElementById("searchStatus");
 
+    const viewer =
+        document.getElementById("topicViewer");
+
 
     if (!input || !results) {
-
         return;
-
     }
 
 
@@ -1400,6 +1401,38 @@ function searchTopics() {
         input.value
             .trim()
             .toLowerCase();
+
+
+    /* =====================================================
+       RESTORE SEARCH VIEW
+    ====================================================== */
+
+    if (results) {
+        results.style.display = "";
+    }
+
+    if (status) {
+        status.style.display = "";
+    }
+
+
+    if (viewer) {
+
+        viewer.innerHTML = `
+            <div class="lesson">
+
+                <h2>
+                    Search Results
+                </h2>
+
+                <p>
+                    Choose a topic below to learn more.
+                </p>
+
+            </div>
+        `;
+
+    }
 
 
     results.innerHTML = "";
@@ -1462,7 +1495,9 @@ function searchTopics() {
 
             <div class="lesson">
 
-                <h2>🔎 No Topics Found</h2>
+                <h2>
+                    🔎 No Topics Found
+                </h2>
 
                 <p>
                     We couldn't find a topic matching
@@ -1502,7 +1537,9 @@ function searchTopics() {
                     </h2>
 
                     <p>
-                        <strong>Category:</strong>
+                        <strong>
+                            Category:
+                        </strong>
                         ${topic.category}
                     </p>
 
@@ -1530,9 +1567,6 @@ function searchTopics() {
 /* =========================================================
    OPEN TOPIC
 ========================================================= */
-/* =========================================================
-   OPEN TOPIC
-========================================================= */
 
 function openTopic(id) {
 
@@ -1542,8 +1576,16 @@ function openTopic(id) {
         return;
     }
 
+
     const viewer =
         document.getElementById("topicViewer");
+
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
+
 
     if (!viewer) {
         return;
@@ -1551,8 +1593,26 @@ function openTopic(id) {
 
 
     /* =====================================================
+       HIDE RESULTS
+    ====================================================== */
+
+    if (results) {
+        results.style.display = "none";
+    }
+
+
+    /* =====================================================
+       HIDE TOPIC COUNT
+    ====================================================== */
+
+    if (status) {
+        status.style.display = "none";
+    }
+
+
+    /* =====================================================
        BUILD RELATED TOPICS
-    ===================================================== */
+    ====================================================== */
 
     const relatedTopics =
         topic.related
@@ -1581,7 +1641,7 @@ function openTopic(id) {
 
     /* =====================================================
        BUILD KEY POINTS
-    ===================================================== */
+    ====================================================== */
 
     const keyPoints =
         topic.keyPoints
@@ -1599,11 +1659,24 @@ function openTopic(id) {
 
     /* =====================================================
        DISPLAY TOPIC
-    ===================================================== */
+    ====================================================== */
 
     viewer.innerHTML = `
 
         <article class="topic-page">
+
+
+            <!-- =================================================
+                 BACK BUTTON
+            ================================================= -->
+
+            <button
+                type="button"
+                class="back-to-results"
+                onclick="backToResults()"
+            >
+                ← Back to Results
+            </button>
 
 
             <!-- =================================================
@@ -1641,7 +1714,7 @@ function openTopic(id) {
 
 
             <!-- =================================================
-                 QUICK ANSWER
+                 WHAT IS IT
             ================================================= -->
 
             <section class="topic-section">
@@ -1709,7 +1782,7 @@ function openTopic(id) {
 
 
             <!-- =================================================
-                 DEEP DIVE
+                 DEEPER EXPLANATION
             ================================================= -->
 
             <section class="topic-section">
@@ -1775,7 +1848,7 @@ function openTopic(id) {
 
     /* =====================================================
        SCROLL TO TOPIC
-    ================================================= */
+    ====================================================== */
 
     viewer.scrollIntoView({
 
@@ -1784,6 +1857,70 @@ function openTopic(id) {
         block: "start"
 
     });
+
+}
+
+
+/* =========================================================
+   BACK TO RESULTS
+========================================================= */
+
+function backToResults() {
+
+    const viewer =
+        document.getElementById("topicViewer");
+
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
+
+
+    /* =====================================================
+       SHOW RESULTS AGAIN
+    ====================================================== */
+
+    if (results) {
+        results.style.display = "";
+    }
+
+
+    /* =====================================================
+       SHOW STATUS AGAIN
+    ====================================================== */
+
+    if (status) {
+        status.style.display = "";
+    }
+
+
+    /* =====================================================
+       CLEAR TOPIC ARTICLE
+    ====================================================== */
+
+    if (viewer) {
+
+        viewer.innerHTML = "";
+
+    }
+
+
+    /* =====================================================
+       SCROLL BACK TO RESULTS
+    ====================================================== */
+
+    if (results) {
+
+        results.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
 
 }
 
@@ -1805,9 +1942,18 @@ function showCategory(category) {
 
 
     if (!results) {
-
         return;
+    }
 
+
+    /* =====================================================
+       RESTORE RESULTS VIEW
+    ====================================================== */
+
+    results.style.display = "";
+
+    if (status) {
+        status.style.display = "";
     }
 
 
@@ -1948,9 +2094,7 @@ document.addEventListener(
 
 
         if (!searchInput) {
-
             return;
-
         }
 
 
