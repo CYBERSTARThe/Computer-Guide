@@ -797,6 +797,179 @@ main > section > p {
 
 
 /* =====================================================
+   LEARNING PATH
+===================================================== */
+
+.learning-path {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.learning-path::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #06b6d4,
+            #8b5cf6
+        );
+
+    border-radius: 999px;
+}
+
+
+/* =====================================================
+   LEARNING PATH LIST
+===================================================== */
+
+.learning-path-list {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 20px 0 0;
+
+    display: grid;
+
+    gap: 12px;
+
+    counter-reset: learning-step;
+}
+
+
+/* =====================================================
+   LEARNING PATH STEP
+===================================================== */
+
+.learning-path-list li {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 15px 16px;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        );
+
+    color: #475569;
+
+    line-height: 1.6;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =====================================================
+   LEARNING PATH HOVER
+===================================================== */
+
+.learning-path-list li:hover {
+    transform: translateY(-2px);
+
+    border-color: #93c5fd;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eff6ff
+        );
+
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =====================================================
+   STEP NUMBER
+===================================================== */
+
+.learning-step-number {
+    flex: 0 0 34px;
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #06b6d4
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    box-shadow:
+        0 5px 14px rgba(37, 99, 235, 0.22);
+}
+
+
+/* =====================================================
+   LEARNING PATH TEXT
+===================================================== */
+
+.learning-path-list li > div {
+    flex: 1;
+
+    min-width: 0;
+
+    color: #475569;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   LEARNING PATH STRONG TEXT
+===================================================== */
+
+.learning-path-list li strong {
+    color: #172033;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
    KEY POINTS
 ===================================================== */
 
@@ -1185,6 +1358,33 @@ section > a:hover {
         font-size: 14px;
     }
 
+    .learning-path-list {
+        gap: 10px;
+
+        margin-top: 16px;
+    }
+
+    .learning-path-list li {
+        gap: 11px;
+
+        padding: 13px;
+    }
+
+    .learning-step-number {
+        flex-basis: 30px;
+
+        width: 30px;
+        height: 30px;
+
+        font-size: 12px;
+    }
+
+    .learning-path-list li > div {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
 }
 
 
@@ -1220,6 +1420,21 @@ section > a:hover {
         padding: 22px 14px;
     }
 
+    .learning-path-list li {
+        gap: 9px;
+
+        padding: 12px;
+    }
+
+    .learning-step-number {
+        flex-basis: 28px;
+
+        width: 28px;
+        height: 28px;
+
+        font-size: 11px;
+    }
+
 }
 
 
@@ -1239,6 +1454,10 @@ section > a:hover {
         animation-duration: 0.01ms !important;
 
         animation-iteration-count: 1 !important;
+    }
+
+    .learning-path-list li:hover {
+        transform: none;
     }
 
 }
