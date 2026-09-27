@@ -10,6 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Computer Guide — Search and learn about computers, hardware, programming, networking, artificial intelligence, cybersecurity, and modern technology."
+    >
+
     <title>Learn | Computer Guide</title>
 
     <link rel="stylesheet" href="style.css">
@@ -18,514 +23,430 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
 
     <nav>
 
         <a href="index.html">Home</a>
 
-        <a href="learn.html">Learn</a>
+        <a href="learn.html" class="active">Learn</a>
 
     </nav>
 
 
-    <!-- Page Header -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header>
 
-        <h1>Learn</h1>
+        <h1>Computer Guide</h1>
 
         <p>
-            Explore computers, programming,
-            and technology.
+            Search, explore, and understand how computers
+            and modern technology work.
         </p>
 
     </header>
 
 
-    <!-- Main Content -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
     <main>
 
-        <section>
 
-            <h2>Choose a Topic</h2>
+        <!-- =================================================
+             SEARCH
+        ================================================== -->
+
+        <section class="search-section">
+
+            <h2>🔎 What Do You Want to Learn?</h2>
 
             <p>
-                Select something you want to learn about.
+                Search for a computer or technology topic.
             </p>
 
+            <div class="search-box">
 
-            <!-- Topic Buttons -->
+                <input
+                    type="search"
+                    id="topicSearch"
+                    placeholder="Try: RAM, CPU, Wi-Fi, DNS, Linux..."
+                    autocomplete="off"
+                >
 
-            <div class="topics">
-
-                <button onclick="showTopic('computers')">
-                    💻 Computers
-                </button>
-
-                <button onclick="showTopic('programming')">
-                    🐍 Programming
-                </button>
-
-                <button onclick="showTopic('internet')">
-                    🌐 Internet
-                </button>
-
-                <button onclick="showTopic('ai')">
-                    🤖 Artificial Intelligence
-                </button>
-
-                <button onclick="showTopic('cybersecurity')">
-                    🔐 Cybersecurity
-                </button>
-
-                <button onclick="showTopic('technology')">
-                    ⚙️ Technology
+                <button
+                    type="button"
+                    onclick="searchTopics()"
+                >
+                    Search
                 </button>
 
             </div>
 
-
-            <!-- Programming Lesson -->
-<!-- Computers Lesson -->
-
-<div
-    class="lesson"
-    id="computersLesson"
->
-
-    <h2>Computers</h2>
-
-    <p>
-        A computer is an electronic machine that
-        processes information by following instructions
-        called programs.
-    </p>
-
-    <h3>What does a computer do?</h3>
-
-    <p>
-        At a basic level, computers perform four major
-        tasks: they receive input, process information,
-        store data, and produce output.
-    </p>
-
-    <h3>CPU — The Processor</h3>
-
-    <p>
-        The CPU, or Central Processing Unit, executes
-        instructions and performs calculations. It is one
-        of the main components responsible for processing
-        information inside a computer.
-    </p>
-
-    <h3>RAM — Temporary Memory</h3>
-
-    <p>
-        RAM, or Random Access Memory, temporarily stores
-        data and programs that the computer is actively
-        using. More RAM can allow a computer to keep more
-        information available at the same time.
-    </p>
-
-    <h3>Storage</h3>
-
-    <p>
-        Storage devices such as SSDs and hard drives keep
-        data even when the computer is turned off. Your
-        operating system, applications, documents, photos,
-        and other files are stored here.
-    </p>
-
-    <h3>Operating Systems</h3>
-
-    <p>
-        An operating system manages the computer's
-        hardware and provides a platform for applications
-        to run.
-    </p>
-
-    <p>
-        Common operating systems include Windows, macOS,
-        Linux, Android, and iOS.
-    </p>
-
-    <h3>Hardware vs. Software</h3>
-
-    <p>
-        <strong>Hardware</strong> is the physical equipment
-        you can touch, such as the CPU, keyboard, monitor,
-        and storage drive.
-    </p>
-
-    <p>
-        <strong>Software</strong> consists of programs and
-        instructions that tell the hardware what to do.
-    </p>
-
-</div>
-    <!-- Internet Lesson -->
-
-<div
-    class="lesson"
-    id="internetLesson"
->
-
-    <h2>🌐 The Internet</h2>
-
-    <p>
-        The Internet is a worldwide network of connected
-        computers and devices that communicate with each
-        other using standardized protocols.
-    </p>
-
-    <h3>How does the Internet work?</h3>
-
-    <p>
-        When you visit a website, your device sends and
-        receives data through networks. That data can travel
-        through routers, servers, and other network equipment
-        before reaching its destination.
-    </p>
-
-    <h3>IP Addresses</h3>
-
-    <p>
-        An IP address identifies a device or network
-        interface on a network. It helps computers know
-        where data should be sent.
-    </p>
-
-    <h3>DNS</h3>
-
-    <p>
-        DNS stands for Domain Name System. It translates
-        human-readable domain names, such as example.com,
-        into IP addresses that computers can use.
-    </p>
-
-    <h3>Websites and Servers</h3>
-
-    <p>
-        A web server stores and delivers website files.
-        When you request a webpage, the server sends the
-        necessary information back to your browser.
-    </p>
-
-    <h3>HTTP and HTTPS</h3>
-
-    <p>
-        HTTP is a protocol used for transferring web
-        information. HTTPS adds encryption to help protect
-        data exchanged between your browser and a website.
-    </p>
-
-    <h3>Routers</h3>
-
-    <p>
-        Routers help direct network traffic between
-        different networks. Your home router can connect
-        devices in your home network to the Internet.
-    </p>
-
-</div>   
-  <!-- Artificial Intelligence Lesson -->
-
-<div
-    class="lesson"
-    id="aiLesson"
->
-
-    <h2>🤖 Artificial Intelligence</h2>
-
-    <p>
-        Artificial intelligence, or AI, is a field of
-        computer science focused on creating systems that
-        can perform tasks that normally require human
-        intelligence, such as recognizing patterns,
-        understanding language, and making predictions.
-    </p>
-
-    <h3>How does AI learn?</h3>
-
-    <p>
-        Many modern AI systems use machine learning. A
-        machine-learning system can analyze examples in
-        data and learn patterns that help it make
-        predictions or produce results.
-    </p>
-
-    <h3>Training Data</h3>
-
-    <p>
-        Training data is information used to develop a
-        machine-learning model. The quality, quantity, and
-        relevance of the data can affect how well a model
-        performs.
-    </p>
-
-    <h3>Machine Learning</h3>
-
-    <p>
-        Machine learning is a branch of AI in which
-        computers use algorithms to learn patterns from
-        data rather than relying only on explicitly written
-        rules for every situation.
-    </p>
-
-    <h3>Generative AI</h3>
-
-    <p>
-        Generative AI refers to systems that can create
-        new content such as text, images, audio, video,
-        or computer code based on patterns learned from
-        data.
-    </p>
-
-    <h3>AI Limitations</h3>
-
-    <p>
-        AI systems can make mistakes. Their output can be
-        inaccurate, incomplete, or based on limitations in
-        their training and design. Important information
-        should be checked against reliable sources.
-    </p>
-
-    <h3>AI in Everyday Life</h3>
-
-    <p>
-        AI is used in many areas, including search engines,
-        recommendation systems, voice assistants,
-        navigation, fraud detection, translation, and
-        software development.
-    </p>
-
-</div>         
-    <!-- Cybersecurity Lesson -->
-
-<div
-    class="lesson"
-    id="cybersecurityLesson"
->
-
-    <h2>🔐 Cybersecurity</h2>
-
-    <p>
-        Cybersecurity is the practice of protecting
-        computers, networks, applications, and data from
-        unauthorized access, misuse, damage, or disruption.
-    </p>
-
-    <h3>The CIA Triad</h3>
-
-    <p>
-        The CIA triad is a basic cybersecurity model made
-        up of three goals: confidentiality, integrity, and
-        availability.
-    </p>
-
-    <ul>
-        <li>
-            <strong>Confidentiality</strong> — keeping
-            information accessible only to authorized people.
-        </li>
-
-        <li>
-            <strong>Integrity</strong> — protecting
-            information from unauthorized changes.
-        </li>
-
-        <li>
-            <strong>Availability</strong> — keeping systems
-            and information available when they are needed.
-        </li>
-    </ul>
-
-    <h3>Authentication</h3>
-
-    <p>
-        Authentication is the process of verifying who a
-        user is. Passwords, security keys, and
-        multi-factor authentication are examples of
-        authentication methods.
-    </p>
-
-    <h3>Phishing</h3>
-
-    <p>
-        Phishing is a social-engineering technique in which
-        someone is tricked into revealing information or
-        taking an unsafe action. Phishing messages can
-        appear through email, text messages, websites, or
-        other communication platforms.
-    </p>
-
-    <h3>Malware</h3>
-
-    <p>
-        Malware is malicious software designed to perform
-        harmful or unauthorized actions. Examples include
-        viruses, worms, trojans, ransomware, and spyware.
-    </p>
-
-    <h3>Encryption</h3>
-
-    <p>
-        Encryption transforms readable information into a
-        protected form using a cryptographic process.
-        Authorized systems can use the appropriate key to
-        decrypt the information.
-    </p>
-
-    <h3>Vulnerabilities</h3>
-
-    <p>
-        A vulnerability is a weakness in software, hardware,
-        configuration, or a process that could potentially
-        be exploited.
-    </p>
-
-    <h3>Basic Defense</h3>
-
-    <p>
-        Good cybersecurity practices include using strong
-        unique passwords, enabling multi-factor
-        authentication, keeping software updated, backing
-        up important data, and being careful with unexpected
-        links and attachments.
-    </p>
-
-</div> 
-   <!-- Technology Lesson -->
-
-<div
-    class="lesson"
-    id="technologyLesson"
->
-
-    <h2>⚙️ Technology</h2>
-
-    <p>
-        Technology is the use of knowledge, tools, and
-        systems to solve problems and accomplish tasks.
-        Modern technology combines hardware, software,
-        networks, and data.
-    </p>
-
-    <h3>Hardware</h3>
-
-    <p>
-        Hardware is the physical part of a technological
-        system. Examples include processors, memory,
-        storage drives, keyboards, monitors, and phones.
-    </p>
-
-    <h3>Software</h3>
-
-    <p>
-        Software is a collection of instructions that tells
-        a computer or device what to do. Operating systems,
-        web browsers, games, and mobile apps are examples
-        of software.
-    </p>
-
-    <h3>Databases</h3>
-
-    <p>
-        A database is a system used to organize, store, and
-        retrieve information. Websites and applications can
-        use databases to store accounts, products, messages,
-        and other information.
-    </p>
-
-    <h3>Cloud Computing</h3>
-
-    <p>
-        Cloud computing provides computing resources over
-        a network. These resources can include servers,
-        storage, databases, and applications.
-    </p>
-
-    <h3>APIs</h3>
-
-    <p>
-        An API, or Application Programming Interface,
-        provides rules that allow different software
-        systems to communicate with each other.
-    </p>
-
-    <h3>Virtualization</h3>
-
-    <p>
-        Virtualization allows one physical computer to
-        create simulated computers called virtual machines.
-        A virtual machine can run its own operating system
-        and applications.
-    </p>
-
-    <h3>How Modern Technology Connects</h3>
-
-    <p>
-        A modern application can combine many technologies.
-        For example, a website might use a browser, network,
-        web server, database, API, and cloud infrastructure
-        to deliver information to a user.
-    </p>
-
-</div>  
-            <div
-                class="lesson"
-                id="programmingLesson"
+            <p
+                id="searchStatus"
+                class="search-status"
             >
+                Explore 50 computer and technology topics.
+            </p>
 
-                <h2>Programming</h2>
+        </section>
 
-                <p>
-                    Programming is the process of writing
-                    instructions that a computer can
-                    understand and execute.
-                </p>
 
-                <h3>
-                    What is a programming language?
-                </h3>
+        <!-- =================================================
+             POPULAR TOPICS
+        ================================================== -->
 
-                <p>
-                    A programming language is a system used
-                    to communicate instructions to a computer.
-                    Examples include Python, JavaScript,
-                    Java, C, and C++.
-                </p>
+        <section>
 
-                <h3>
-                    Common programming concepts
-                </h3>
+            <h2>🔥 Explore Popular Topics</h2>
 
-                <ul>
+            <div class="topics">
 
-                    <li>Variables</li>
+                <button onclick="openTopic('cpu')">
+                    🧠 CPU
+                </button>
 
-                    <li>Conditions</li>
+                <button onclick="openTopic('ram')">
+                    🧮 RAM
+                </button>
 
-                    <li>Loops</li>
+                <button onclick="openTopic('gpu')">
+                    🎮 GPU
+                </button>
 
-                    <li>Functions</li>
+                <button onclick="openTopic('ssd')">
+                    💾 SSD
+                </button>
 
-                    <li>Objects</li>
+                <button onclick="openTopic('operating-system')">
+                    🖥️ Operating Systems
+                </button>
 
-                    <li>Data structures</li>
+                <button onclick="openTopic('wifi')">
+                    📡 Wi-Fi
+                </button>
 
-                </ul>
+                <button onclick="openTopic('ip-address')">
+                    🌐 IP Address
+                </button>
+
+                <button onclick="openTopic('dns')">
+                    🔎 DNS
+                </button>
+
+                <button onclick="openTopic('programming')">
+                    💻 Programming
+                </button>
+
+                <button onclick="openTopic('artificial-intelligence')">
+                    🤖 Artificial Intelligence
+                </button>
 
             </div>
 
         </section>
 
+
+        <!-- =================================================
+             SEARCH RESULTS
+        ================================================== -->
+
+        <section>
+
+            <div
+                id="searchResults"
+                class="search-results"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             CATEGORY EXPLORER
+        ================================================== -->
+
+        <section>
+
+            <h2>📚 Browse by Category</h2>
+
+            <p>
+                You can also explore the guide by category.
+            </p>
+
+
+            <div class="topics">
+
+                <button onclick="showCategory('computers')">
+                    💻 Computers
+                </button>
+
+                <button onclick="showCategory('programming')">
+                    🐍 Programming
+                </button>
+
+                <button onclick="showCategory('internet')">
+                    🌐 Internet
+                </button>
+
+                <button onclick="showCategory('ai')">
+                    🤖 Artificial Intelligence
+                </button>
+
+                <button onclick="showCategory('cybersecurity')">
+                    🔐 Cybersecurity
+                </button>
+
+                <button onclick="showCategory('technology')">
+                    ⚙️ Technology
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TOPIC VIEWER
+        ================================================== -->
+
+        <section>
+
+            <div
+                id="topicViewer"
+                class="lesson"
+            >
+
+                <h2>Welcome to the Computer Guide</h2>
+
+                <p>
+                    Search above to find something you want
+                    to understand, or choose a popular topic.
+                </p>
+
+                <p>
+                    Every topic is designed to explain not
+                    only what something is, but how it works,
+                    why it matters, and where you encounter it
+                    in the real world.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CATEGORY LESSONS
+        ================================================== -->
+
+
+        <div
+            class="lesson"
+            id="computersLesson"
+            style="display:none;"
+        >
+
+            <h2>💻 Computers</h2>
+
+            <p>
+                Computers are electronic systems that receive
+                information, process it, store data, and
+                produce useful results.
+            </p>
+
+            <h3>What makes up a computer?</h3>
+
+            <p>
+                A computer combines hardware and software.
+                Hardware provides the physical components,
+                while software provides the instructions
+                those components execute.
+            </p>
+
+            <h3>Core components</h3>
+
+            <p>
+                Important components include the CPU, RAM,
+                storage, motherboard, GPU, power supply, and
+                cooling system.
+            </p>
+
+            <h3>Computers are systems</h3>
+
+            <p>
+                A computer component rarely works alone.
+                The processor, memory, storage, operating
+                system, and other hardware constantly
+                communicate to perform tasks.
+            </p>
+
+        </div>
+
+
+        <div
+            class="lesson"
+            id="programmingLesson"
+            style="display:none;"
+        >
+
+            <h2>🐍 Programming</h2>
+
+            <p>
+                Programming is the process of creating
+                instructions that computers can execute.
+            </p>
+
+            <h3>Programming languages</h3>
+
+            <p>
+                Languages such as Python, JavaScript, Java,
+                C, and C++ provide different ways to create
+                software.
+            </p>
+
+            <h3>Important concepts</h3>
+
+            <ul>
+
+                <li>Variables</li>
+                <li>Conditions</li>
+                <li>Loops</li>
+                <li>Functions</li>
+                <li>Objects</li>
+                <li>Data structures</li>
+
+            </ul>
+
+        </div>
+
+
+        <div
+            class="lesson"
+            id="internetLesson"
+            style="display:none;"
+        >
+
+            <h2>🌐 Internet</h2>
+
+            <p>
+                The Internet is a worldwide collection of
+                interconnected networks that communicate
+                using standardized protocols.
+            </p>
+
+            <h3>Important technologies</h3>
+
+            <p>
+                IP addresses, DNS, routers, servers, HTTP,
+                HTTPS, and many other technologies work
+                together to deliver information across
+                networks.
+            </p>
+
+        </div>
+
+
+        <div
+            class="lesson"
+            id="aiLesson"
+            style="display:none;"
+        >
+
+            <h2>🤖 Artificial Intelligence</h2>
+
+            <p>
+                Artificial intelligence is a field of
+                computer science focused on systems that can
+                perform tasks involving capabilities such as
+                pattern recognition, prediction, and language
+                processing.
+            </p>
+
+            <h3>Machine learning</h3>
+
+            <p>
+                Machine learning allows systems to learn
+                patterns from data and use those patterns to
+                produce predictions or other outputs.
+            </p>
+
+            <h3>Important limitation</h3>
+
+            <p>
+                AI systems can produce inaccurate or incomplete
+                information, so important information should
+                be checked against reliable sources.
+            </p>
+
+        </div>
+
+
+        <div
+            class="lesson"
+            id="cybersecurityLesson"
+            style="display:none;"
+        >
+
+            <h2>🔐 Cybersecurity</h2>
+
+            <p>
+                Cybersecurity focuses on protecting systems,
+                networks, applications, and information from
+                unauthorized access, misuse, damage, and
+                disruption.
+            </p>
+
+            <h3>Important concepts</h3>
+
+            <p>
+                Authentication, encryption, vulnerabilities,
+                malware, phishing, access control, and secure
+                software development are all important areas
+                of cybersecurity.
+            </p>
+
+        </div>
+
+
+        <div
+            class="lesson"
+            id="technologyLesson"
+            style="display:none;"
+        >
+
+            <h2>⚙️ Technology</h2>
+
+            <p>
+                Modern technology combines hardware, software,
+                networks, data, and services to solve problems
+                and provide useful capabilities.
+            </p>
+
+            <h3>Connected technologies</h3>
+
+            <p>
+                Cloud computing, APIs, databases,
+                virtualization, artificial intelligence,
+                networks, and servers can all work together
+                inside modern technology systems.
+            </p>
+
+        </div>
+
+
     </main>
 
 
-    <!-- JavaScript -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="script.js"></script>
 
