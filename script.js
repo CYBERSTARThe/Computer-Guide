@@ -140,7 +140,7 @@ const topics = {
             "They can provide large capacities.",
             "They are generally slower than SSDs."
         ],
-        related: ["ssd", "file-system", "storage"]
+        related: ["ssd", "file-system"]
     },
 
 
@@ -218,7 +218,7 @@ const topics = {
             "Fans move air through the system.",
             "Cooling affects sustained performance."
         ],
-        related: ["cpu", "gpu", "computer-case"]
+        related: ["cpu", "gpu", "psu"]
     },
 
 
@@ -280,7 +280,7 @@ const topics = {
 
     "operating-system": {
         title: "Operating System",
-        category: "Software",
+        category: "Operating Systems",
         icon: "🖥️",
         keywords: ["operating system", "os", "system software"],
         quickAnswer:
@@ -832,7 +832,7 @@ const topics = {
        PROGRAMMING & DATA
     ===================================================== */
 
-    "programming": {
+    programming: {
         title: "Programming",
         category: "Programming",
         icon: "💻",
@@ -1010,13 +1010,13 @@ const topics = {
             "Indexes can speed up searches.",
             "Databases can contain critical application data."
         ],
-        related: ["apis", "data-structures", "servers"]
+        related: ["apis", "data-structures", "server"]
     },
 
 
     binary: {
         title: "Binary",
-        category: "Computers & Data",
+        category: "Programming & Data",
         icon: "0️⃣",
         keywords: ["binary", "bits", "bytes", "0 and 1", "binary numbers"],
         quickAnswer:
@@ -1088,13 +1088,39 @@ const topics = {
             "Branches allow separate lines of development.",
             "Version control is important for collaboration."
         ],
-        related: ["programming", "apis", "applications"]
+        related: ["programming", "applications", "apis"]
     },
 
 
     /* =====================================================
-       MODERN TECHNOLOGY
+       ARTIFICIAL INTELLIGENCE & MODERN TECHNOLOGY
     ===================================================== */
+
+    "artificial-intelligence": {
+        title: "Artificial Intelligence",
+        category: "Artificial Intelligence",
+        icon: "🤖",
+        keywords: ["ai", "artificial intelligence", "intelligent systems"],
+        quickAnswer:
+            "Artificial intelligence is a field of computing focused on creating systems that can perform tasks involving capabilities such as pattern recognition, prediction, language processing, and decision-making.",
+        howItWorks:
+            "AI systems use algorithms, data, models, and computing resources to produce outputs such as predictions, classifications, generated content, or decisions.",
+        whyItMatters:
+            "AI is used across search, recommendation systems, automation, software development, science, business, and many other areas.",
+        example:
+            "An AI system can analyze text and generate a response based on patterns learned during training.",
+        deepDive:
+            "AI includes many approaches, including machine learning, neural networks, natural language processing, computer vision, and rule-based systems.",
+        keyPoints: [
+            "AI is a broad field.",
+            "Machine learning is one major approach within AI.",
+            "AI systems can make mistakes.",
+            "Data and model design affect results.",
+            "AI is used across many industries."
+        ],
+        related: ["machine-learning", "programming", "gpu"]
+    },
+
 
     "machine-learning": {
         title: "Machine Learning",
@@ -1144,7 +1170,7 @@ const topics = {
             "Cloud services can reduce infrastructure management.",
             "Cloud computing still depends on physical hardware."
         ],
-        related: ["servers", "data-centers", "virtualization"]
+        related: ["server", "data-centers", "virtualization"]
     },
 
 
@@ -1170,33 +1196,7 @@ const topics = {
             "Virtualization is widely used in cloud computing.",
             "VMs can provide useful isolation."
         ],
-        related: ["cloud-computing", "servers", "operating-system"]
-    },
-
-
-    servers: {
-        title: "Servers",
-        category: "Modern Technology",
-        icon: "🖥️",
-        keywords: ["server", "servers", "server hardware", "server computer"],
-        quickAnswer:
-            "Servers are systems that provide services or resources to clients and other systems.",
-        howItWorks:
-            "Server software listens for requests and processes them using computing resources such as CPUs, memory, storage, and networking.",
-        whyItMatters:
-            "Servers power websites, applications, databases, file storage, authentication systems, and many other services.",
-        example:
-            "A web server can deliver website files to visitors' browsers.",
-        deepDive:
-            "Large organizations may use clusters of servers distributed across multiple locations to provide reliability and scale.",
-        keyPoints: [
-            "Servers provide services.",
-            "Servers can be physical or virtual.",
-            "Servers often run continuously.",
-            "Servers can be grouped into clusters.",
-            "Server workloads vary widely."
-        ],
-        related: ["data-centers", "cloud-computing", "web-browser"]
+        related: ["cloud-computing", "server", "operating-system"]
     },
 
 
@@ -1222,7 +1222,7 @@ const topics = {
             "Reliable power is critical.",
             "Data centers can be extremely large."
         ],
-        related: ["servers", "cloud-computing", "virtualization"]
+        related: ["server", "cloud-computing", "virtualization"]
     },
 
 
@@ -1331,14 +1331,50 @@ const topics = {
             "Databases store information.",
             "Cloud infrastructure can provide scalable resources."
         ],
-        related: ["servers", "databases", "apis"]
+        related: ["server", "databases", "apis"]
+    },
+
+
+    /* =====================================================
+       CYBERSECURITY
+    ===================================================== */
+
+    cybersecurity: {
+        title: "Cybersecurity",
+        category: "Cybersecurity",
+        icon: "🔐",
+        keywords: [
+            "cybersecurity",
+            "cyber security",
+            "security",
+            "computer security",
+            "information security"
+        ],
+        quickAnswer:
+            "Cybersecurity is the practice of protecting computers, networks, applications, and information from unauthorized access, misuse, damage, or disruption.",
+        howItWorks:
+            "Cybersecurity combines technologies, policies, processes, monitoring, authentication, access control, encryption, updates, backups, and other defensive measures.",
+        whyItMatters:
+            "Computers and networks contain valuable information and provide important services that need protection.",
+        example:
+            "Using multi-factor authentication and keeping software updated are common defensive practices.",
+        deepDive:
+            "Cybersecurity includes areas such as network security, application security, identity management, incident response, vulnerability management, and security operations.",
+        keyPoints: [
+            "Cybersecurity protects digital systems and information.",
+            "Security involves people, processes, and technology.",
+            "Authentication helps verify identity.",
+            "Updates can address security vulnerabilities.",
+            "Security is an ongoing process."
+        ],
+        related: ["software-updates", "apis", "operating-system"]
     }
 
 };
 
 
 /* =========================================================
-   SEARCH
+   SEARCH TOPICS
 ========================================================= */
 
 function searchTopics() {
@@ -1353,6 +1389,13 @@ function searchTopics() {
         document.getElementById("searchStatus");
 
 
+    if (!input || !results) {
+
+        return;
+
+    }
+
+
     const query =
         input.value
             .trim()
@@ -1364,8 +1407,12 @@ function searchTopics() {
 
     if (!query) {
 
-        status.textContent =
-            "Type something to search the Computer Guide.";
+        if (status) {
+
+            status.textContent =
+                "Type something to search the Computer Guide.";
+
+        }
 
         return;
 
@@ -1398,11 +1445,15 @@ function searchTopics() {
         );
 
 
-    status.textContent =
-        matches.length +
-        " topic" +
-        (matches.length === 1 ? "" : "s") +
-        " found.";
+    if (status) {
+
+        status.textContent =
+            matches.length +
+            " topic" +
+            (matches.length === 1 ? "" : "s") +
+            " found.";
+
+    }
 
 
     if (matches.length === 0) {
@@ -1497,6 +1548,13 @@ function openTopic(id) {
         document.getElementById("topicViewer");
 
 
+    if (!viewer) {
+
+        return;
+
+    }
+
+
     viewer.innerHTML = `
 
         <article>
@@ -1578,7 +1636,9 @@ function openTopic(id) {
                                 topics[relatedId];
 
                             if (!related) {
+
                                 return "";
+
                             }
 
                             return `
@@ -1617,54 +1677,142 @@ function openTopic(id) {
 
 
 /* =========================================================
-   CATEGORY VIEW
+   BROWSE TOPICS BY CATEGORY
 ========================================================= */
 
 function showCategory(category) {
 
-    const categoryMap = {
+    const results =
+        document.getElementById("searchResults");
 
-        computers: "computersLesson",
+    const status =
+        document.getElementById("searchStatus");
 
-        programming: "programmingLesson",
-
-        internet: "internetLesson",
-
-        ai: "aiLesson",
-
-        cybersecurity: "cybersecurityLesson",
-
-        technology: "technologyLesson"
-
-    };
+    const viewer =
+        document.getElementById("topicViewer");
 
 
-    const lessonId =
-        categoryMap[category];
-
-
-    if (!lessonId) {
+    if (!results) {
 
         return;
 
     }
 
 
-    const lesson =
-        document.getElementById(lessonId);
+    /* Find topics belonging to this category */
+
+    const matches =
+        Object.entries(topics).filter(
+            ([id, topic]) => {
+
+                return topic.category
+                    .toLowerCase()
+                    .includes(category.toLowerCase());
+
+            }
+        );
 
 
-    if (!lesson) {
+    /* Clear old results */
+
+    results.innerHTML = "";
+
+
+    /* Clear old topic viewer */
+
+    if (viewer) {
+
+        viewer.innerHTML = "";
+
+    }
+
+
+    /* No results */
+
+    if (matches.length === 0) {
+
+        if (status) {
+
+            status.textContent =
+                "No topics found in this category.";
+
+        }
 
         return;
 
     }
 
 
-    lesson.style.display = "block";
+    /* Update category status */
+
+    if (status) {
+
+        status.textContent =
+            matches.length +
+            " topic" +
+            (matches.length === 1 ? "" : "s") +
+            " in " +
+            category;
+
+    }
 
 
-    lesson.scrollIntoView({
+    /* Display category topics */
+
+    matches.forEach(
+        ([id, topic]) => {
+
+            results.innerHTML += `
+
+                <div class="lesson search-result">
+
+                    <h2>
+
+                        ${topic.icon}
+
+                        ${topic.title}
+
+                    </h2>
+
+
+                    <p>
+
+                        <strong>
+                            Category:
+                        </strong>
+
+                        ${topic.category}
+
+                    </p>
+
+
+                    <p>
+
+                        ${topic.quickAnswer}
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        onclick="openTopic('${id}')"
+                    >
+
+                        Learn More →
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    /* Scroll to results */
+
+    results.scrollIntoView({
 
         behavior: "smooth",
 
@@ -1717,7 +1865,7 @@ document.addEventListener(
 
 function escapeHTML(value) {
 
-    return value
+    return String(value)
 
         .replace(/&/g, "&amp;")
 
