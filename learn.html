@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -12,13 +13,24 @@
     <title>Learn | Computer Guide</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="learn.html">Learn</a>
-</nav>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="learn.html">Learn</a>
+
+    </nav>
+
+
+    <!-- Page Header -->
+
     <header>
 
         <h1>Learn</h1>
@@ -30,6 +42,9 @@
 
     </header>
 
+
+    <!-- Main Content -->
+
     <main>
 
         <section>
@@ -40,67 +55,92 @@
                 Select something you want to learn about.
             </p>
 
+
+            <!-- Topic Buttons -->
+
             <div class="topics">
-<div class="lesson">
 
-    <h2>Programming</h2>
+                <button onclick="showTopic('computers')">
+                    💻 Computers
+                </button>
 
-    <p>
-        Programming is the process of writing instructions
-        that a computer can understand and execute.
-    </p>
+                <button onclick="showTopic('programming')">
+                    🐍 Programming
+                </button>
 
-    <h3>What is a programming language?</h3>
+                <button onclick="showTopic('internet')">
+                    🌐 Internet
+                </button>
 
-    <p>
-        A programming language is a system used to
-        communicate instructions to a computer.
-        Examples include Python, JavaScript, Java,
-        C, and C++.
-    </p>
+                <button onclick="showTopic('ai')">
+                    🤖 Artificial Intelligence
+                </button>
 
-    <h3>Common programming concepts</h3>
+                <button onclick="showTopic('cybersecurity')">
+                    🔐 Cybersecurity
+                </button>
 
-    <ul>
-        <li>Variables</li>
-        <li>Conditions</li>
-        <li>Loops</li>
-        <li>Functions</li>
-        <li>Objects</li>
-        <li>Data structures</li>
-    </ul>
+                <button onclick="showTopic('technology')">
+                    ⚙️ Technology
+                </button>
 
-</div>
-                
-   <button onclick="showTopic('computers')">
-    💻 Computers
-</button>
+            </div>
 
-<button onclick="showTopic('programming')">
-    🐍 Programming
-</button>
 
-<button onclick="showTopic('internet')">
-    🌐 Internet
-</button>
+            <!-- Programming Lesson -->
 
-<button onclick="showTopic('ai')">
-    🤖 Artificial Intelligence
-</button>
+            <div
+                class="lesson"
+                id="programmingLesson"
+            >
 
-<button onclick="showTopic('cybersecurity')">
-    🔐 Cybersecurity
-</button>
+                <h2>Programming</h2>
 
-<button onclick="showTopic('technology')">
-    ⚙️ Technology
-</button>             
+                <p>
+                    Programming is the process of writing
+                    instructions that a computer can
+                    understand and execute.
+                </p>
+
+                <h3>
+                    What is a programming language?
+                </h3>
+
+                <p>
+                    A programming language is a system used
+                    to communicate instructions to a computer.
+                    Examples include Python, JavaScript,
+                    Java, C, and C++.
+                </p>
+
+                <h3>
+                    Common programming concepts
+                </h3>
+
+                <ul>
+
+                    <li>Variables</li>
+
+                    <li>Conditions</li>
+
+                    <li>Loops</li>
+
+                    <li>Functions</li>
+
+                    <li>Objects</li>
+
+                    <li>Data structures</li>
+
+                </ul>
 
             </div>
 
         </section>
 
     </main>
+
+
+    <!-- JavaScript -->
 
     <script src="script.js"></script>
 
