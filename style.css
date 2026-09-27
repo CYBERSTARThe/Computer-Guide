@@ -112,3 +112,28 @@ nav a {
 nav a:hover {
     color: #38bdf8;
 }
+.lesson {
+    margin-top: 40px;
+    text-align: left;
+    background: #0b1020;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #263653;
+}
+
+.lesson h2 {
+    margin-bottom: 15px;
+}
+
+.lesson h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.lesson p {
+    margin-bottom: 15px;
+}
+
+.lesson ul {
+    padding-left: 25px;
+}
