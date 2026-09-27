@@ -1,6 +1,6 @@
 /* =========================================================
    COMPUTER GUIDE
-   50-TOPIC SEARCH + KNOWLEDGE ENGINE
+   SEARCH + KNOWLEDGE + LEARNING PATH ENGINE
 ========================================================= */
 
 
@@ -352,7 +352,7 @@ const topics = {
             "Linux is widely used on servers.",
             "Linux is popular with developers and system administrators."
         ],
-        related: ["operating-system", "servers", "cloud-computing"]
+        related: ["operating-system", "server", "cloud-computing"]
     },
 
 
@@ -1214,7 +1214,7 @@ const topics = {
         example:
             "A cloud provider can operate large data centers containing thousands of servers.",
         deepDive:
-            "Modern data centers use redundant power, network connections, cooling systems, monitoring, automation, and security measures.",
+            "Modern data centers use redundant power, network connections, cooling, monitoring, automation, and security measures.",
         keyPoints: [
             "Data centers contain physical infrastructure.",
             "Servers operate inside data centers.",
@@ -1374,6 +1374,628 @@ const topics = {
 
 
 /* =========================================================
+   LEARNING PATHS
+========================================================= */
+
+const learningPaths = {
+
+    cpu: [
+        "Learn what a CPU is and what its main job is.",
+        "Understand CPU cores and threads.",
+        "Learn what clock speed means.",
+        "Understand CPU cache and why it is useful.",
+        "Learn how the CPU works with RAM and storage.",
+        "Learn how CPUs are compared in real computers."
+    ],
+
+    ram: [
+        "Learn what RAM is and why computers need it.",
+        "Understand the difference between RAM and storage.",
+        "Learn about memory capacity and gigabytes.",
+        "Understand how RAM affects multitasking.",
+        "Learn about different memory generations.",
+        "Learn how to determine how much RAM a computer needs."
+    ],
+
+    gpu: [
+        "Learn what a GPU does.",
+        "Understand the difference between a GPU and CPU.",
+        "Learn about graphics processing and parallel computing.",
+        "Understand VRAM.",
+        "Learn how GPUs are used for gaming and video.",
+        "Explore how GPUs are used for AI and other workloads."
+    ],
+
+    ssd: [
+        "Learn what computer storage is.",
+        "Understand what an SSD is.",
+        "Learn how flash memory stores information.",
+        "Understand storage capacity and performance.",
+        "Compare SSDs with HDDs.",
+        "Learn how storage affects everyday computer performance."
+    ],
+
+    hdd: [
+        "Learn what a hard disk drive is.",
+        "Understand magnetic storage.",
+        "Learn what platters and read/write heads do.",
+        "Understand HDD capacity and performance.",
+        "Compare HDDs with SSDs.",
+        "Learn where HDD storage is still useful."
+    ],
+
+    motherboard: [
+        "Learn what a motherboard does.",
+        "Identify the CPU socket and RAM slots.",
+        "Learn about expansion slots.",
+        "Understand storage and peripheral connections.",
+        "Learn how the motherboard connects components.",
+        "Understand motherboard compatibility."
+    ],
+
+    psu: [
+        "Learn what a power supply does.",
+        "Understand why computers need regulated power.",
+        "Learn about PSU wattage.",
+        "Understand efficiency ratings.",
+        "Learn how a PSU connects to components.",
+        "Learn how power requirements are considered when building a computer."
+    ],
+
+    "computer-cooling": [
+        "Learn why computers produce heat.",
+        "Understand what a heatsink does.",
+        "Learn how fans move heat.",
+        "Understand thermal interfaces.",
+        "Compare air cooling and liquid cooling.",
+        "Learn how cooling affects sustained performance."
+    ],
+
+    "bios-uefi": [
+        "Learn what computer firmware is.",
+        "Understand what happens when a computer starts.",
+        "Learn the difference between BIOS and UEFI.",
+        "Understand the boot process.",
+        "Learn what firmware settings control.",
+        "Understand how firmware connects hardware and the operating system."
+    ],
+
+    "computer-ports": [
+        "Learn why computers need ports.",
+        "Identify common USB ports.",
+        "Learn about HDMI and DisplayPort.",
+        "Understand Ethernet connections.",
+        "Learn how ports carry data, video, audio, or power.",
+        "Practice identifying ports on real computers."
+    ],
+
+    "operating-system": [
+        "Learn what an operating system does.",
+        "Understand how an OS manages hardware.",
+        "Learn about processes and memory.",
+        "Understand files and storage management.",
+        "Learn how applications interact with an OS.",
+        "Explore different operating systems."
+    ],
+
+    windows: [
+        "Learn what Windows is.",
+        "Understand the Windows desktop and file system.",
+        "Learn how Windows manages applications and processes.",
+        "Explore Windows settings and system tools.",
+        "Learn basic Windows troubleshooting.",
+        "Explore advanced Windows administration."
+    ],
+
+    linux: [
+        "Learn what Linux is.",
+        "Understand Linux distributions.",
+        "Learn basic terminal concepts.",
+        "Understand files, directories, and permissions.",
+        "Learn how software is installed on Linux.",
+        "Practice using Linux in a safe test environment."
+    ],
+
+    macos: [
+        "Learn what macOS is.",
+        "Understand the macOS desktop and file system.",
+        "Learn how applications work on macOS.",
+        "Explore system settings and built-in tools.",
+        "Learn basic troubleshooting.",
+        "Explore the Unix foundations of macOS."
+    ],
+
+    applications: [
+        "Learn what application software is.",
+        "Understand how applications use an operating system.",
+        "Learn the difference between local and web applications.",
+        "Understand how applications use data.",
+        "Learn how applications communicate with other services.",
+        "Explore how applications are developed."
+    ],
+
+    "device-drivers": [
+        "Learn what a device driver is.",
+        "Understand why hardware needs drivers.",
+        "Learn how drivers communicate with operating systems.",
+        "Understand graphics and network drivers.",
+        "Learn why driver updates matter.",
+        "Learn basic driver troubleshooting."
+    ],
+
+    "file-system": [
+        "Learn what a file system is.",
+        "Understand files and directories.",
+        "Learn about file metadata.",
+        "Understand permissions and access.",
+        "Compare common file systems.",
+        "Learn how operating systems manage stored files."
+    ],
+
+    "computer-processes": [
+        "Learn what a process is.",
+        "Understand how programs become running processes.",
+        "Learn how the OS allocates CPU time.",
+        "Understand process memory.",
+        "Learn how multiple processes run at once.",
+        "Explore process-management tools."
+    ],
+
+    "virtual-memory": [
+        "Learn the difference between RAM and storage.",
+        "Understand what virtual memory is.",
+        "Learn about memory pages.",
+        "Understand swapping and paging.",
+        "Learn why storage is slower than RAM.",
+        "Understand how virtual memory helps operating systems."
+    ],
+
+    "software-updates": [
+        "Learn why software receives updates.",
+        "Understand bug fixes and feature updates.",
+        "Learn what security patches are.",
+        "Understand why compatibility matters.",
+        "Learn how to safely keep software updated.",
+        "Understand why updates are part of long-term system maintenance."
+    ],
+
+    internet: [
+        "Learn what the Internet actually is.",
+        "Understand networks and connected devices.",
+        "Learn how data is divided into packets.",
+        "Understand IP addresses and routing.",
+        "Learn how DNS helps locate services.",
+        "Explore how websites and online services communicate."
+    ],
+
+    wifi: [
+        "Learn what Wi-Fi is.",
+        "Understand wireless access points.",
+        "Learn about radio communication.",
+        "Understand Wi-Fi networks and security.",
+        "Learn about different Wi-Fi generations.",
+        "Learn basic wireless troubleshooting."
+    ],
+
+    ethernet: [
+        "Learn what Ethernet is.",
+        "Understand Ethernet cables and connections.",
+        "Learn what network frames are.",
+        "Understand Ethernet speeds.",
+        "Learn how switches use Ethernet.",
+        "Practice identifying wired network connections."
+    ],
+
+    router: [
+        "Learn what a router does.",
+        "Understand networks and IP addresses.",
+        "Learn how routers forward packets.",
+        "Understand home-network routing.",
+        "Learn about NAT and routing tables.",
+        "Explore advanced routing concepts."
+    ],
+
+    "network-switch": [
+        "Learn what a network switch does.",
+        "Understand Ethernet and LANs.",
+        "Learn about MAC addresses.",
+        "Understand how switches forward frames.",
+        "Learn the difference between switches and routers.",
+        "Explore managed-switch concepts."
+    ],
+
+    "ip-address": [
+        "Learn what an IP address is.",
+        "Understand IPv4.",
+        "Learn about private and public addresses.",
+        "Understand subnetting at a basic level.",
+        "Learn about IPv6.",
+        "Practice understanding IP addressing."
+    ],
+
+    dns: [
+        "Learn what DNS is.",
+        "Understand domain names.",
+        "Learn how DNS resolution works.",
+        "Understand DNS records.",
+        "Learn about recursive and authoritative DNS servers.",
+        "Practice understanding how a browser finds a website."
+    ],
+
+    dhcp: [
+        "Learn what DHCP does.",
+        "Understand automatic IP configuration.",
+        "Learn about gateways and DNS settings.",
+        "Understand the DHCP client-server process.",
+        "Learn about leases.",
+        "Practice understanding how devices join a network."
+    ],
+
+    "http-https": [
+        "Learn what HTTP is.",
+        "Understand requests and responses.",
+        "Learn common HTTP concepts.",
+        "Understand HTTPS.",
+        "Learn how TLS protects web traffic.",
+        "Explore how browsers communicate with web servers."
+    ],
+
+    "web-browser": [
+        "Learn what a web browser does.",
+        "Understand websites and web servers.",
+        "Learn about HTML, CSS, and JavaScript.",
+        "Understand DNS and HTTP.",
+        "Learn how browsers render webpages.",
+        "Explore browser security and developer tools."
+    ],
+
+    server: [
+        "Learn what a server is.",
+        "Understand the client-server model.",
+        "Learn how servers receive requests.",
+        "Explore web servers and databases.",
+        "Understand physical and virtual servers.",
+        "Learn how modern applications use multiple servers."
+    ],
+
+    programming: [
+        "Learn what programming is.",
+        "Learn variables and data types.",
+        "Learn conditional logic.",
+        "Learn loops.",
+        "Learn functions.",
+        "Build small programs and gradually work toward larger projects."
+    ],
+
+    "programming-languages": [
+        "Learn what programming languages are.",
+        "Understand syntax and semantics.",
+        "Learn about compiled and interpreted languages.",
+        "Explore several common programming languages.",
+        "Choose a language based on a project.",
+        "Build projects to develop practical programming skills."
+    ],
+
+    algorithms: [
+        "Learn what an algorithm is.",
+        "Practice breaking problems into steps.",
+        "Learn searching and sorting concepts.",
+        "Understand efficiency.",
+        "Learn basic time and space complexity.",
+        "Practice designing algorithms for programming problems."
+    ],
+
+    variables: [
+        "Learn what variables are.",
+        "Learn common data types.",
+        "Practice assigning values.",
+        "Practice changing values.",
+        "Learn how variables work inside functions.",
+        "Use variables in real programs."
+    ],
+
+    functions: [
+        "Learn what a function is.",
+        "Learn how to define a function.",
+        "Learn parameters and arguments.",
+        "Learn return values.",
+        "Understand local and global scope.",
+        "Build programs using multiple reusable functions."
+    ],
+
+    apis: [
+        "Learn what an API is.",
+        "Understand how software systems communicate.",
+        "Learn about requests and responses.",
+        "Understand HTTP-based APIs.",
+        "Learn how JSON is commonly used.",
+        "Build a small project that communicates with an API."
+    ],
+
+    databases: [
+        "Learn what a database is.",
+        "Understand tables and records.",
+        "Learn basic database queries.",
+        "Understand relationships between data.",
+        "Learn about indexes and performance.",
+        "Build an application that stores and retrieves data."
+    ],
+
+    binary: [
+        "Learn what a bit is.",
+        "Understand binary numbers.",
+        "Learn how bits form bytes.",
+        "Understand how computers represent numbers.",
+        "Learn how text and other data can be represented digitally.",
+        "Connect binary concepts to memory, files, and computer hardware."
+    ],
+
+    "data-structures": [
+        "Learn why programs need data structures.",
+        "Understand arrays and lists.",
+        "Learn stacks and queues.",
+        "Understand hash tables.",
+        "Explore trees and graphs.",
+        "Choose data structures based on the problem being solved."
+    ],
+
+    "version-control": [
+        "Learn what version control is.",
+        "Learn the basic Git workflow.",
+        "Understand repositories and commits.",
+        "Learn branches.",
+        "Learn how merging works.",
+        "Use version control to manage real programming projects."
+    ],
+
+    "artificial-intelligence": [
+        "Learn what artificial intelligence means.",
+        "Understand how data and algorithms are used.",
+        "Learn the basics of machine learning.",
+        "Explore neural networks and modern AI models.",
+        "Learn about AI applications and limitations.",
+        "Build small AI-related projects as your skills grow."
+    ],
+
+    "machine-learning": [
+        "Learn what machine learning is.",
+        "Learn basic programming and data concepts.",
+        "Understand training data.",
+        "Learn about models and predictions.",
+        "Explore supervised and unsupervised learning.",
+        "Build beginner machine-learning projects."
+    ],
+
+    "cloud-computing": [
+        "Learn what cloud computing means.",
+        "Understand servers and data centers.",
+        "Learn about cloud storage and computing.",
+        "Understand virtual machines.",
+        "Learn basic cloud networking.",
+        "Build and deploy a simple cloud-based project."
+    ],
+
+    virtualization: [
+        "Learn what virtualization is.",
+        "Understand virtual machines.",
+        "Learn what a hypervisor does.",
+        "Understand virtual hardware.",
+        "Learn how virtualization supports cloud computing.",
+        "Practice creating and managing a safe virtual machine."
+    ],
+
+    "data-centers": [
+        "Learn what a data center is.",
+        "Understand servers and racks.",
+        "Learn about networking infrastructure.",
+        "Understand power and cooling.",
+        "Learn about redundancy and reliability.",
+        "Explore how data centers support cloud services."
+    ],
+
+    iot: [
+        "Learn what the Internet of Things means.",
+        "Understand sensors and embedded computers.",
+        "Learn how devices communicate.",
+        "Understand cloud-connected devices.",
+        "Learn about IoT security.",
+        "Build or study a simple connected-device project."
+    ],
+
+    blockchain: [
+        "Learn what a blockchain is.",
+        "Understand blocks and transactions.",
+        "Learn the role of cryptography.",
+        "Understand distributed ledgers.",
+        "Learn about consensus mechanisms.",
+        "Study real-world blockchain architectures."
+    ],
+
+    "quantum-computing": [
+        "Learn basic computer science concepts.",
+        "Understand the difference between bits and qubits.",
+        "Learn the basic idea of quantum states.",
+        "Understand quantum gates.",
+        "Learn why quantum algorithms are different.",
+        "Explore current quantum-computing research and applications."
+    ],
+
+    "how-computers-work-together": [
+        "Learn computer hardware fundamentals.",
+        "Learn how operating systems manage computers.",
+        "Learn networking fundamentals.",
+        "Understand clients and servers.",
+        "Learn about APIs and databases.",
+        "Understand how these pieces combine into modern applications."
+    ],
+
+    cybersecurity: [
+        "Learn computer fundamentals.",
+        "Learn networking fundamentals.",
+        "Understand operating systems.",
+        "Learn basic programming and scripting.",
+        "Study security concepts, authentication, and common threats.",
+        "Practice defensive cybersecurity through safe labs and simulations."
+    ]
+
+};
+
+
+/* =========================================================
+   DEFAULT LEARNING PATHS
+   Used if a new topic is added without a custom path.
+========================================================= */
+
+function getLearningPath(id, topic) {
+
+    if (learningPaths[id]) {
+        return learningPaths[id];
+    }
+
+
+    const categoryPaths = {
+
+        "Computers": [
+            "Learn the basic purpose of the computer component.",
+            "Understand the main parts and terminology.",
+            "Learn how the component works with other hardware.",
+            "Understand how the component affects a computer.",
+            "Learn how the component is used in real systems.",
+            "Practice identifying and explaining the component."
+        ],
+
+        "Operating Systems": [
+            "Learn the basic purpose of the operating-system feature.",
+            "Understand the terminology used with it.",
+            "Learn how the operating system manages it.",
+            "Explore how users interact with it.",
+            "Learn basic troubleshooting and management.",
+            "Explore more advanced operating-system concepts."
+        ],
+
+        "Software": [
+            "Learn what the software concept means.",
+            "Understand how software interacts with the operating system.",
+            "Learn the main terminology.",
+            "Understand how it is used in real applications.",
+            "Practice working with the concept.",
+            "Explore more advanced software concepts."
+        ],
+
+        "Internet & Networking": [
+            "Learn the basic networking concept.",
+            "Understand the important terminology.",
+            "Learn how devices communicate using it.",
+            "Understand how it fits into a network.",
+            "Practice identifying the concept in real networks.",
+            "Explore more advanced networking concepts."
+        ],
+
+        "Programming": [
+            "Learn the basic programming concept.",
+            "Understand the terminology and syntax.",
+            "Practice using the concept in small programs.",
+            "Combine it with other programming concepts.",
+            "Build a small project.",
+            "Use the concept in larger software projects."
+        ],
+
+        "Programming & Data": [
+            "Learn the basic concept.",
+            "Understand how computers represent or organize data.",
+            "Learn the important terminology.",
+            "Practice using the concept.",
+            "Understand how it affects software.",
+            "Apply it to a programming project."
+        ],
+
+        "Artificial Intelligence": [
+            "Learn the basic AI concept.",
+            "Understand data and models.",
+            "Learn the important terminology.",
+            "Study how AI systems use the concept.",
+            "Explore real-world applications.",
+            "Build or experiment with a beginner AI project."
+        ],
+
+        "Modern Technology": [
+            "Learn what the technology is.",
+            "Understand the basic components involved.",
+            "Learn how the technology works.",
+            "Understand where it is used.",
+            "Explore its advantages and limitations.",
+            "Study more advanced real-world applications."
+        ],
+
+        "Cybersecurity": [
+            "Learn the basic security concept.",
+            "Understand the important terminology.",
+            "Learn how the technology or technique works.",
+            "Study defensive applications.",
+            "Practice using the concept in a safe environment.",
+            "Continue into more advanced cybersecurity topics."
+        ]
+
+    };
+
+
+    return categoryPaths[topic.category] || [
+        `Learn what ${topic.title} is.`,
+        "Understand the important terminology.",
+        "Learn how it works.",
+        "Understand why it matters.",
+        "Study real-world examples.",
+        "Practice applying what you learned."
+    ];
+
+}
+
+
+/* =========================================================
+   CREATE TOPIC RESULT CARD
+========================================================= */
+
+function createTopicCard(id, topic) {
+
+    return `
+
+        <article class="topic-card">
+
+            <div class="topic-card-icon">
+                ${topic.icon}
+            </div>
+
+            <div class="topic-card-content">
+
+                <p class="topic-card-category">
+                    ${topic.category}
+                </p>
+
+                <h2>
+                    ${topic.title}
+                </h2>
+
+                <p>
+                    ${topic.quickAnswer}
+                </p>
+
+                <button
+                    type="button"
+                    onclick="openTopic('${id}')"
+                >
+                    Learn More →
+                </button>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
    SEARCH TOPICS
 ========================================================= */
 
@@ -1403,22 +2025,20 @@ function searchTopics() {
             .toLowerCase();
 
 
-    /* =====================================================
-       RESTORE SEARCH VIEW
-    ====================================================== */
-
-    if (results) {
-        results.style.display = "";
-    }
+    results.style.display = "";
 
     if (status) {
         status.style.display = "";
     }
 
 
+    results.innerHTML = "";
+
+
     if (viewer) {
 
         viewer.innerHTML = `
+
             <div class="lesson">
 
                 <h2>
@@ -1430,12 +2050,10 @@ function searchTopics() {
                 </p>
 
             </div>
+
         `;
 
     }
-
-
-    results.innerHTML = "";
 
 
     if (!query) {
@@ -1443,12 +2061,34 @@ function searchTopics() {
         if (status) {
 
             status.textContent =
-                "Type something to search the Computer Guide.";
+                `Explore ${Object.keys(topics).length} computer and technology topics.`;
 
         }
 
-        return;
+        if (viewer) {
+            viewer.innerHTML = `
+                <div class="lesson">
 
+                    <h2>
+                        Welcome to the Computer Guide
+                    </h2>
+
+                    <p>
+                        Search above to find something you want
+                        to understand, or choose a popular topic.
+                    </p>
+
+                    <p>
+                        Every topic explains what something is,
+                        how it works, why it matters, and how
+                        you can begin learning it.
+                    </p>
+
+                </div>
+            `;
+        }
+
+        return;
     }
 
 
@@ -1465,7 +2105,8 @@ function searchTopics() {
                     topic.howItWorks,
                     topic.whyItMatters,
                     topic.example,
-                    topic.deepDive
+                    topic.deepDive,
+                    ...topic.keyPoints
 
                 ]
                     .join(" ")
@@ -1481,10 +2122,7 @@ function searchTopics() {
     if (status) {
 
         status.textContent =
-            matches.length +
-            " topic" +
-            (matches.length === 1 ? "" : "s") +
-            " found.";
+            `${matches.length} topic${matches.length === 1 ? "" : "s"} found for "${input.value.trim()}".`;
 
     }
 
@@ -1501,16 +2139,17 @@ function searchTopics() {
 
                 <p>
                     We couldn't find a topic matching
-                    "<strong>${escapeHTML(query)}</strong>".
+                    "<strong>${escapeHTML(input.value.trim())}</strong>".
                 </p>
 
                 <p>
-                    Try searching for:
+                    Try:
                     <strong>CPU</strong>,
                     <strong>RAM</strong>,
                     <strong>Wi-Fi</strong>,
                     <strong>DNS</strong>,
                     <strong>Linux</strong>,
+                    <strong>Python</strong>,
                     or
                     <strong>programming</strong>.
                 </p>
@@ -1520,46 +2159,26 @@ function searchTopics() {
         `;
 
         return;
-
     }
 
 
     matches.forEach(
         ([id, topic]) => {
 
-            results.innerHTML += `
-
-                <div class="lesson search-result">
-
-                    <h2>
-                        ${topic.icon}
-                        ${topic.title}
-                    </h2>
-
-                    <p>
-                        <strong>
-                            Category:
-                        </strong>
-                        ${topic.category}
-                    </p>
-
-                    <p>
-                        ${topic.quickAnswer}
-                    </p>
-
-                    <button
-                        type="button"
-                        onclick="openTopic('${id}')"
-                    >
-                        Learn More →
-                    </button>
-
-                </div>
-
-            `;
+            results.innerHTML +=
+                createTopicCard(id, topic);
 
         }
     );
+
+
+    results.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
 
 }
 
@@ -1592,18 +2211,10 @@ function openTopic(id) {
     }
 
 
-    /* =====================================================
-       HIDE RESULTS
-    ====================================================== */
-
     if (results) {
         results.style.display = "none";
     }
 
-
-    /* =====================================================
-       HIDE TOPIC COUNT
-    ====================================================== */
 
     if (status) {
         status.style.display = "none";
@@ -1611,11 +2222,11 @@ function openTopic(id) {
 
 
     /* =====================================================
-       BUILD RELATED TOPICS
+       RELATED TOPICS
     ====================================================== */
 
     const relatedTopics =
-        topic.related
+        (topic.related || [])
             .map(relatedId => {
 
                 const related =
@@ -1626,6 +2237,7 @@ function openTopic(id) {
                 }
 
                 return `
+
                     <button
                         type="button"
                         onclick="openTopic('${relatedId}')"
@@ -1633,6 +2245,7 @@ function openTopic(id) {
                         ${related.icon}
                         ${related.title}
                     </button>
+
                 `;
 
             })
@@ -1640,17 +2253,49 @@ function openTopic(id) {
 
 
     /* =====================================================
-       BUILD KEY POINTS
+       KEY POINTS
     ====================================================== */
 
     const keyPoints =
-        topic.keyPoints
+        (topic.keyPoints || [])
             .map(point => {
 
                 return `
                     <li>
                         ${point}
                     </li>
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       LEARNING PATH
+    ====================================================== */
+
+    const learningPath =
+        getLearningPath(id, topic);
+
+
+    const learningSteps =
+        learningPath
+            .map((step, index) => {
+
+                return `
+
+                    <li>
+
+                        <span class="learning-step-number">
+                            ${index + 1}
+                        </span>
+
+                        <div>
+                            ${step}
+                        </div>
+
+                    </li>
+
                 `;
 
             })
@@ -1666,9 +2311,9 @@ function openTopic(id) {
         <article class="topic-page">
 
 
-            <!-- =================================================
+            <!-- =============================================
                  BACK BUTTON
-            ================================================= -->
+            ============================================== -->
 
             <button
                 type="button"
@@ -1679,9 +2324,9 @@ function openTopic(id) {
             </button>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  TOPIC HEADER
-            ================================================= -->
+            ============================================== -->
 
             <div class="topic-header">
 
@@ -1713,9 +2358,9 @@ function openTopic(id) {
             <hr>
 
 
-            <!-- =================================================
-                 WHAT IS IT
-            ================================================= -->
+            <!-- =============================================
+                 WHAT IS IT?
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1730,9 +2375,9 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  HOW IT WORKS
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1747,9 +2392,9 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  WHY IT MATTERS
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1764,9 +2409,9 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  REAL WORLD EXAMPLE
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1781,9 +2426,9 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  DEEPER EXPLANATION
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1798,9 +2443,34 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
+                 GETTING STARTED
+            ============================================== -->
+
+            <section class="topic-section learning-path">
+
+                <h3>
+                    🚀 How to Get Started
+                </h3>
+
+                <p>
+                    Follow these steps to build your knowledge
+                    of <strong>${topic.title}</strong>.
+                </p>
+
+
+                <ol class="learning-path-list">
+
+                    ${learningSteps}
+
+                </ol>
+
+            </section>
+
+
+            <!-- =============================================
                  KEY POINTS
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1817,9 +2487,9 @@ function openTopic(id) {
             </section>
 
 
-            <!-- =================================================
+            <!-- =============================================
                  RELATED TOPICS
-            ================================================= -->
+            ============================================== -->
 
             <section class="topic-section">
 
@@ -1828,8 +2498,8 @@ function openTopic(id) {
                 </h3>
 
                 <p>
-                    Continue exploring related
-                    computer and technology topics.
+                    Continue exploring related computer
+                    and technology topics.
                 </p>
 
                 <div class="topics">
@@ -1845,10 +2515,6 @@ function openTopic(id) {
 
     `;
 
-
-    /* =====================================================
-       SCROLL TO TOPIC
-    ====================================================== */
 
     viewer.scrollIntoView({
 
@@ -1877,38 +2543,37 @@ function backToResults() {
         document.getElementById("searchStatus");
 
 
-    /* =====================================================
-       SHOW RESULTS AGAIN
-    ====================================================== */
-
     if (results) {
         results.style.display = "";
     }
 
-
-    /* =====================================================
-       SHOW STATUS AGAIN
-    ====================================================== */
 
     if (status) {
         status.style.display = "";
     }
 
 
-    /* =====================================================
-       CLEAR TOPIC ARTICLE
-    ====================================================== */
-
     if (viewer) {
 
-        viewer.innerHTML = "";
+        viewer.innerHTML = `
+
+            <div class="lesson">
+
+                <h2>
+                    Welcome to the Computer Guide
+                </h2>
+
+                <p>
+                    Search for another topic or choose
+                    a topic from the results.
+                </p>
+
+            </div>
+
+        `;
 
     }
 
-
-    /* =====================================================
-       SCROLL BACK TO RESULTS
-    ====================================================== */
 
     if (results) {
 
@@ -1940,15 +2605,14 @@ function showCategory(category) {
     const viewer =
         document.getElementById("topicViewer");
 
+    const input =
+        document.getElementById("topicSearch");
+
 
     if (!results) {
         return;
     }
 
-
-    /* =====================================================
-       RESTORE RESULTS VIEW
-    ====================================================== */
 
     results.style.display = "";
 
@@ -1957,7 +2621,10 @@ function showCategory(category) {
     }
 
 
-    /* Find topics belonging to this category */
+    if (input) {
+        input.value = "";
+    }
+
 
     const matches =
         Object.entries(topics).filter(
@@ -1965,27 +2632,35 @@ function showCategory(category) {
 
                 return topic.category
                     .toLowerCase()
-                    .includes(category.toLowerCase());
+                    === category.toLowerCase();
 
             }
         );
 
 
-    /* Clear old results */
-
     results.innerHTML = "";
 
 
-    /* Clear old topic viewer */
-
     if (viewer) {
 
-        viewer.innerHTML = "";
+        viewer.innerHTML = `
+
+            <div class="lesson">
+
+                <h2>
+                    ${category}
+                </h2>
+
+                <p>
+                    Choose a topic below to begin learning.
+                </p>
+
+            </div>
+
+        `;
 
     }
 
-
-    /* No results */
 
     if (matches.length === 0) {
 
@@ -1997,78 +2672,26 @@ function showCategory(category) {
         }
 
         return;
-
     }
 
-
-    /* Update category status */
 
     if (status) {
 
         status.textContent =
-            matches.length +
-            " topic" +
-            (matches.length === 1 ? "" : "s") +
-            " in " +
-            category;
+            `${matches.length} topic${matches.length === 1 ? "" : "s"} in ${category}`;
 
     }
 
 
-    /* Display category topics */
-
     matches.forEach(
         ([id, topic]) => {
 
-            results.innerHTML += `
-
-                <div class="lesson search-result">
-
-                    <h2>
-
-                        ${topic.icon}
-
-                        ${topic.title}
-
-                    </h2>
-
-
-                    <p>
-
-                        <strong>
-                            Category:
-                        </strong>
-
-                        ${topic.category}
-
-                    </p>
-
-
-                    <p>
-
-                        ${topic.quickAnswer}
-
-                    </p>
-
-
-                    <button
-                        type="button"
-                        onclick="openTopic('${id}')"
-                    >
-
-                        Learn More →
-
-                    </button>
-
-                </div>
-
-            `;
+            results.innerHTML +=
+                createTopicCard(id, topic);
 
         }
     );
 
-
-    /* Scroll to results */
 
     results.scrollIntoView({
 
@@ -2134,3 +2757,26 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 
 }
+
+
+/* =========================================================
+   COMPUTER GUIDE STARTUP
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const status =
+            document.getElementById("searchStatus");
+
+
+        if (status) {
+
+            status.textContent =
+                `Explore ${Object.keys(topics).length} computer and technology topics.`;
+
+        }
+
+    }
+);
