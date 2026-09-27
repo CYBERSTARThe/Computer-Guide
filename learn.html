@@ -29,9 +29,16 @@
 
     <nav>
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="learn.html" class="active">Learn</a>
+        <a
+            href="learn.html"
+            class="active"
+        >
+            Learn
+        </a>
 
     </nav>
 
@@ -42,7 +49,9 @@
 
     <header>
 
-        <h1>Computer Guide</h1>
+        <h1>
+            Computer Guide
+        </h1>
 
         <p>
             Search, explore, and understand how computers
@@ -51,10 +60,6 @@
 
     </header>
 
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
 
     <main>
 
@@ -65,11 +70,14 @@
 
         <section class="search-section">
 
-            <h2>🔎 What Do You Want to Learn?</h2>
+            <h2>
+                🔎 What Do You Want to Learn?
+            </h2>
 
             <p>
                 Search for a computer or technology topic.
             </p>
+
 
             <div class="search-box">
 
@@ -78,6 +86,7 @@
                     id="topicSearch"
                     placeholder="Try: RAM, CPU, Wi-Fi, DNS, Linux..."
                     autocomplete="off"
+                    aria-label="Search computer topics"
                 >
 
                 <button
@@ -89,89 +98,23 @@
 
             </div>
 
+
             <p
                 id="searchStatus"
                 class="search-status"
             >
-                Explore 50 computer and technology topics.
+                Explore computer and technology topics.
             </p>
 
         </section>
 
 
-        <!-- =================================================
-             POPULAR TOPICS
-        ================================================== -->
-
-        <section>
-
-            <h2>🔥 Explore Popular Topics</h2>
-
-            <div class="categories">
-
-                <button
-                    type="button"
-                    onclick="showCategory('Computers')"
-                >
-                    💻 Computers
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Operating Systems')"
-                >
-                    🖥️ Operating Systems
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Internet & Networking')"
-                >
-                    🌐 Internet & Networking
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Programming')"
-                >
-                    💻 Programming
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Programming & Data')"
-                >
-                    🗄️ Programming & Data
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Artificial Intelligence')"
-                >
-                    🤖 Artificial Intelligence
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Modern Technology')"
-                >
-                    ⚙️ Modern Technology
-                </button>
-
-                <button
-                    type="button"
-                    onclick="showCategory('Cybersecurity')"
-                >
-                    🔐 Cybersecurity
-                </button>
-
-            </div>
-
-        </section>
-
 
         <!-- =================================================
              SEARCH RESULTS
+             
+             These are intentionally ABOVE the popular
+             topics so search results are easier to find.
         ================================================== -->
 
         <section>
@@ -184,8 +127,12 @@
         </section>
 
 
+
         <!-- =================================================
              TOPIC VIEWER
+             
+             Full definitions and explanations appear here
+             after the user selects a topic.
         ================================================== -->
 
         <section>
@@ -210,6 +157,114 @@
                     why it matters, and where you encounter it
                     in the real world.
                 </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             POPULAR TOPICS
+             
+             This now comes AFTER the search results and
+             topic information.
+        ================================================== -->
+
+        <section>
+
+            <h2>
+                🔥 Explore Popular Topics
+            </h2>
+
+            <p>
+                Browse popular areas of computer and
+                technology knowledge.
+            </p>
+
+
+            <div class="categories">
+
+
+                <!-- Computers -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Computers')"
+                >
+                    💻 Computers
+                </button>
+
+
+                <!-- Operating Systems -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Operating Systems')"
+                >
+                    🖥️ Operating Systems
+                </button>
+
+
+                <!-- Internet & Networking -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Internet & Networking')"
+                >
+                    🌐 Internet & Networking
+                </button>
+
+
+                <!-- Programming -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Programming')"
+                >
+                    💻 Programming
+                </button>
+
+
+                <!-- Programming & Data -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Programming & Data')"
+                >
+                    🗄️ Programming & Data
+                </button>
+
+
+                <!-- Artificial Intelligence -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Artificial Intelligence')"
+                >
+                    🤖 Artificial Intelligence
+                </button>
+
+
+                <!-- Modern Technology -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Modern Technology')"
+                >
+                    ⚙️ Modern Technology
+                </button>
+
+
+                <!-- Cybersecurity -->
+
+                <button
+                    type="button"
+                    onclick="showCategory('Cybersecurity')"
+                >
+                    🔐 Cybersecurity
+                </button>
+
 
             </div>
 
