@@ -1530,140 +1530,252 @@ function searchTopics() {
 /* =========================================================
    OPEN TOPIC
 ========================================================= */
+/* =========================================================
+   OPEN TOPIC
+========================================================= */
 
 function openTopic(id) {
 
-    const topic =
-        topics[id];
-
+    const topic = topics[id];
 
     if (!topic) {
-
         return;
-
     }
-
 
     const viewer =
         document.getElementById("topicViewer");
 
-
     if (!viewer) {
-
         return;
-
     }
 
 
+    /* =====================================================
+       BUILD RELATED TOPICS
+    ===================================================== */
+
+    const relatedTopics =
+        topic.related
+            .map(relatedId => {
+
+                const related =
+                    topics[relatedId];
+
+                if (!related) {
+                    return "";
+                }
+
+                return `
+                    <button
+                        type="button"
+                        onclick="openTopic('${relatedId}')"
+                    >
+                        ${related.icon}
+                        ${related.title}
+                    </button>
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       BUILD KEY POINTS
+    ===================================================== */
+
+    const keyPoints =
+        topic.keyPoints
+            .map(point => {
+
+                return `
+                    <li>
+                        ${point}
+                    </li>
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       DISPLAY TOPIC
+    ===================================================== */
+
     viewer.innerHTML = `
 
-        <article>
+        <article class="topic-page">
 
-            <h2>
-                ${topic.icon}
-                ${topic.title}
-            </h2>
 
-            <p class="topic-category">
+            <!-- =================================================
+                 TOPIC HEADER
+            ================================================= -->
 
-                <strong>Category:</strong>
-                ${topic.category}
+            <div class="topic-header">
 
-            </p>
+                <div class="topic-icon">
+                    ${topic.icon}
+                </div>
+
+                <div>
+
+                    <h2>
+                        ${topic.title}
+                    </h2>
+
+                    <p class="topic-category">
+
+                        <strong>
+                            Category:
+                        </strong>
+
+                        ${topic.category}
+
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <hr>
 
 
-            <h3>📖 Quick Answer</h3>
+            <!-- =================================================
+                 QUICK ANSWER
+            ================================================= -->
 
-            <p>
-                ${topic.quickAnswer}
-            </p>
+            <section class="topic-section">
 
+                <h3>
+                    📖 What Is It?
+                </h3>
 
-            <h3>⚙️ How It Works</h3>
+                <p>
+                    ${topic.quickAnswer}
+                </p>
 
-            <p>
-                ${topic.howItWorks}
-            </p>
-
-
-            <h3>🎯 Why It Matters</h3>
-
-            <p>
-                ${topic.whyItMatters}
-            </p>
+            </section>
 
 
-            <h3>💡 Real-World Example</h3>
+            <!-- =================================================
+                 HOW IT WORKS
+            ================================================= -->
 
-            <p>
-                ${topic.example}
-            </p>
+            <section class="topic-section">
 
+                <h3>
+                    ⚙️ How It Works
+                </h3>
 
-            <h3>🔬 Deep Dive</h3>
+                <p>
+                    ${topic.howItWorks}
+                </p>
 
-            <p>
-                ${topic.deepDive}
-            </p>
-
-
-            <h3>🧠 Key Things to Remember</h3>
-
-            <ul>
-
-                ${topic.keyPoints
-                    .map(
-                        point => `<li>${point}</li>`
-                    )
-                    .join("")
-                }
-
-            </ul>
+            </section>
 
 
-            <h3>🔗 Related Topics</h3>
+            <!-- =================================================
+                 WHY IT MATTERS
+            ================================================= -->
 
-            <div class="topics">
+            <section class="topic-section">
 
-                ${topic.related
-                    .map(
-                        relatedId => {
+                <h3>
+                    🎯 Why It Matters
+                </h3>
 
-                            const related =
-                                topics[relatedId];
+                <p>
+                    ${topic.whyItMatters}
+                </p>
 
-                            if (!related) {
+            </section>
 
-                                return "";
 
-                            }
+            <!-- =================================================
+                 REAL WORLD EXAMPLE
+            ================================================= -->
 
-                            return `
+            <section class="topic-section">
 
-                                <button
-                                    type="button"
-                                    onclick="openTopic('${relatedId}')"
-                                >
-                                    ${related.icon}
-                                    ${related.title}
-                                </button>
+                <h3>
+                    💡 Real-World Example
+                </h3>
 
-                            `;
+                <p>
+                    ${topic.example}
+                </p>
 
-                        }
-                    )
-                    .join("")
-                }
+            </section>
 
-            </div>
+
+            <!-- =================================================
+                 DEEP DIVE
+            ================================================= -->
+
+            <section class="topic-section">
+
+                <h3>
+                    🔬 Deeper Explanation
+                </h3>
+
+                <p>
+                    ${topic.deepDive}
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 KEY POINTS
+            ================================================= -->
+
+            <section class="topic-section">
+
+                <h3>
+                    🧠 Key Things to Remember
+                </h3>
+
+                <ul class="topic-key-points">
+
+                    ${keyPoints}
+
+                </ul>
+
+            </section>
+
+
+            <!-- =================================================
+                 RELATED TOPICS
+            ================================================= -->
+
+            <section class="topic-section">
+
+                <h3>
+                    🔗 Related Topics
+                </h3>
+
+                <p>
+                    Continue exploring related
+                    computer and technology topics.
+                </p>
+
+                <div class="topics">
+
+                    ${relatedTopics}
+
+                </div>
+
+            </section>
+
 
         </article>
 
     `;
 
+
+    /* =====================================================
+       SCROLL TO TOPIC
+    ================================================= */
 
     viewer.scrollIntoView({
 
