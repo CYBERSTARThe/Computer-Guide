@@ -9,12 +9,17 @@ function showTopic(topic) {
     const internetLesson =
         document.getElementById("internetLesson");
 
+    const aiLesson =
+        document.getElementById("aiLesson");
+
 
     computersLesson.style.display = "none";
 
     programmingLesson.style.display = "none";
 
     internetLesson.style.display = "none";
+
+    aiLesson.style.display = "none";
 
 
     if (topic === "computers") {
@@ -34,6 +39,13 @@ function showTopic(topic) {
     if (topic === "internet") {
 
         internetLesson.style.display = "block";
+
+    }
+
+
+    if (topic === "ai") {
+
+        aiLesson.style.display = "block";
 
     }
 
