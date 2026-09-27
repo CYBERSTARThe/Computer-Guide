@@ -217,7 +217,7 @@ section > a:hover {
    LESSON
 ===================================================== */
 
-#programmingLesson {
+.lesson {
     display: none;
 
     text-align: left;
