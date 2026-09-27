@@ -12,6 +12,9 @@ function showTopic(topic) {
     const aiLesson =
         document.getElementById("aiLesson");
 
+    const cybersecurityLesson =
+        document.getElementById("cybersecurityLesson");
+
 
     computersLesson.style.display = "none";
 
@@ -21,32 +24,27 @@ function showTopic(topic) {
 
     aiLesson.style.display = "none";
 
+    cybersecurityLesson.style.display = "none";
+
 
     if (topic === "computers") {
-
         computersLesson.style.display = "block";
-
     }
-
 
     if (topic === "programming") {
-
         programmingLesson.style.display = "block";
-
     }
-
 
     if (topic === "internet") {
-
         internetLesson.style.display = "block";
-
     }
 
-
     if (topic === "ai") {
-
         aiLesson.style.display = "block";
+    }
 
+    if (topic === "cybersecurity") {
+        cybersecurityLesson.style.display = "block";
     }
 
 }
