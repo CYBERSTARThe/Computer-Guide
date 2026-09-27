@@ -1,27 +1,28 @@
 function showTopic(topic) {
 
+    const computersLesson =
+        document.getElementById("computersLesson");
+
+    const programmingLesson =
+        document.getElementById("programmingLesson");
+
+
+    computersLesson.style.display = "none";
+
+    programmingLesson.style.display = "none";
+
+
     if (topic === "computers") {
-        alert("Computer lessons are coming soon!");
+
+        computersLesson.style.display = "block";
+
     }
+
 
     if (topic === "programming") {
-        alert("You're viewing the Programming section!");
-    }
 
-    if (topic === "internet") {
-        alert("Internet lessons are coming soon!");
-    }
+        programmingLesson.style.display = "block";
 
-    if (topic === "ai") {
-        alert("AI lessons are coming soon!");
-    }
-
-    if (topic === "cybersecurity") {
-        alert("Cybersecurity lessons are coming soon!");
-    }
-
-    if (topic === "technology") {
-        alert("Technology lessons are coming soon!");
     }
 
 }
