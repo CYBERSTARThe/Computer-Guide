@@ -63,3 +63,35 @@ section a {
 section a:hover {
     opacity: 0.85;
 }
+.topics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.topics a {
+    display: block;
+    background: #0b1020;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #263653;
+}
+
+.topics a:hover {
+    border-color: #38bdf8;
+}
+
+@media (max-width: 600px) {
+
+    .topics {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 38px;
+    }
+
+}
