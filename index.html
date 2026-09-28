@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,44 +10,599 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Computer Guide</title>
+    <meta
+        name="description"
+        content="Computer Guide helps you learn computers, programming, networking, artificial intelligence, cybersecurity, and modern technology."
+    >
+
+    <title>Computer Guide | Learn Computers & Technology</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+
 <nav>
+
     <a href="index.html">Home</a>
+
     <a href="learn.html">Learn</a>
+
 </nav>
-    <header>
-        <h1>Computer Guide</h1>
+
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            COMPUTER GUIDE
+        </div>
+
+        <h1>
+            Learn How Technology Works
+        </h1>
 
         <p>
-            Learn how computers, programming,
-            and technology work.
+            Explore computers, programming, networking,
+            artificial intelligence, cybersecurity,
+            and modern technology through clear,
+            useful explanations.
         </p>
-    </header>
 
-    <main>
 
-        <section>
-            <h2>Learn Technology</h2>
+        <div class="home-search">
 
-            <p>
-                Explore simple explanations of
-                programming, computers, the internet,
-                AI, cybersecurity, and more.
+            <label for="homeSearch">
+                What do you want to learn?
+            </label>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="homeSearch"
+                    placeholder="Search CPU, Python, Wi-Fi, AI, cybersecurity..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    onclick="searchFromHome()"
+                >
+                    Search
+                </button>
+
+            </div>
+
+            <p class="search-hint">
+                Search the Computer Guide knowledge base.
             </p>
 
-            <a href="learn.html">
-                Start Learning
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- FEATURED TOPICS -->
+
+    <section class="home-section">
+
+        <div class="section-heading">
+
+            <span>START HERE</span>
+
+            <h2>
+                Featured Topics
+            </h2>
+
+            <p>
+                Learn the technology concepts that
+                form the foundation of modern computing.
+            </p>
+
+        </div>
+
+
+        <div class="topic-grid">
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('cpu')"
+            >
+
+                <div class="topic-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    CPU
+                </h3>
+
+                <p>
+                    Learn how the processor performs
+                    instructions and runs programs.
+                </p>
+
+            </button>
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('programming')"
+            >
+
+                <div class="topic-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Programming
+                </h3>
+
+                <p>
+                    Understand how programmers create
+                    software and solve problems with code.
+                </p>
+
+            </button>
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('internet')"
+            >
+
+                <div class="topic-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Internet
+                </h3>
+
+                <p>
+                    Discover how computers communicate
+                    across networks around the world.
+                </p>
+
+            </button>
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('artificial-intelligence')"
+            >
+
+                <div class="topic-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Artificial Intelligence
+                </h3>
+
+                <p>
+                    Learn how AI systems process information,
+                    recognize patterns, and generate results.
+                </p>
+
+            </button>
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('cybersecurity')"
+            >
+
+                <div class="topic-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Cybersecurity
+                </h3>
+
+                <p>
+                    Understand how computers, networks,
+                    and information are protected.
+                </p>
+
+            </button>
+
+
+            <button
+                class="topic-card"
+                onclick="openLearnTopic('linux')"
+            >
+
+                <div class="topic-icon">
+                    🐧
+                </div>
+
+                <h3>
+                    Linux
+                </h3>
+
+                <p>
+                    Explore one of the most important
+                    operating systems in technology.
+                </p>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- POPULAR TOPICS -->
+
+    <section class="home-section">
+
+        <div class="section-heading">
+
+            <span>EXPLORE</span>
+
+            <h2>
+                Popular Topics
+            </h2>
+
+            <p>
+                Jump into some of the concepts people
+                commonly want to understand.
+            </p>
+
+        </div>
+
+
+        <div class="popular-grid">
+
+
+            <button
+                onclick="openLearnTopic('ram')"
+            >
+                🧠 RAM
+            </button>
+
+
+            <button
+                onclick="openLearnTopic('gpu')"
+            >
+                🎮 GPU
+            </button>
+
+
+            <button
+                onclick="openLearnTopic('wifi')"
+            >
+                📡 Wi-Fi
+            </button>
+
+
+            <button
+                onclick="openLearnTopic('dns')"
+            >
+                🌐 DNS
+            </button>
+
+
+            <button
+                onclick="openLearnTopic('databases')"
+            >
+                🗄️ Databases
+            </button>
+
+
+            <button
+                onclick="openLearnTopic('cloud-computing')"
+            >
+                ☁️ Cloud Computing
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CATEGORIES -->
+
+    <section class="home-section categories-section">
+
+        <div class="section-heading">
+
+            <span>BROWSE</span>
+
+            <h2>
+                Explore by Category
+            </h2>
+
+            <p>
+                Choose an area of technology and start
+                exploring related topics.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <a href="learn.html?category=Computers">
+
+                <div class="category-icon">
+                    🖥️
+                </div>
+
+                <div>
+                    <h3>
+                        Computers & Hardware
+                    </h3>
+
+                    <p>
+                        CPUs, RAM, GPUs, storage,
+                        motherboards, and more.
+                    </p>
+                </div>
+
             </a>
-        </section>
 
-    </main>
 
-    <script src="script.js"></script>
+            <a href="learn.html?category=Operating%20Systems">
+
+                <div class="category-icon">
+                    ⚙️
+                </div>
+
+                <div>
+                    <h3>
+                        Operating Systems
+                    </h3>
+
+                    <p>
+                        Windows, Linux, macOS,
+                        kernels, processes, and more.
+                    </p>
+                </div>
+
+            </a>
+
+
+            <a href="learn.html?category=Internet%20%26%20Networking">
+
+                <div class="category-icon">
+                    🌐
+                </div>
+
+                <div>
+                    <h3>
+                        Internet & Networking
+                    </h3>
+
+                    <p>
+                        IP addresses, DNS, routers,
+                        Wi-Fi, servers, and networks.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <a href="learn.html?category=Programming%20%26%20Data">
+
+                <div class="category-icon">
+                    💻
+                </div>
+
+                <div>
+                    <h3>
+                        Programming & Data
+                    </h3>
+
+                    <p>
+                        Programming, algorithms,
+                        databases, APIs, and data.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <a href="learn.html?category=Artificial%20Intelligence">
+
+                <div class="category-icon">
+                    🤖
+                </div>
+
+                <div>
+                    <h3>
+                        AI & Modern Technology
+                    </h3>
+
+                    <p>
+                        Artificial intelligence,
+                        machine learning, cloud, and IoT.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <a href="learn.html?category=Cybersecurity">
+
+                <div class="category-icon">
+                    🔐
+                </div>
+
+                <div>
+                    <h3>
+                        Cybersecurity
+                    </h3>
+
+                    <p>
+                        Learn the fundamentals of
+                        protecting systems and information.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ABOUT COMPUTER GUIDE -->
+
+    <section class="about-section">
+
+        <div>
+
+            <span>
+                ABOUT COMPUTER GUIDE
+            </span>
+
+            <h2>
+                Technology doesn't have to be confusing.
+            </h2>
+
+            <p>
+                Computer Guide is a growing knowledge base
+                designed to make computers and technology
+                easier to understand.
+            </p>
+
+            <p>
+                Instead of searching through complicated
+                documentation, you can look up a concept
+                and learn what it is, how it works, why it
+                matters, and where it is used in the real world.
+            </p>
+
+            <a
+                class="primary-button"
+                href="learn.html"
+            >
+                Explore the Knowledge Base
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Computer Guide
+    </p>
+
+    <p>
+        Learn. Explore. Understand technology.
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/*
+=====================================================
+   COMPUTER GUIDE
+   HOMEPAGE SEARCH CONNECTION
+=====================================================
+*/
+
+function searchFromHome() {
+
+    const input =
+        document.getElementById("homeSearch");
+
+    const query =
+        input.value.trim();
+
+    if (!query) {
+
+        window.location.href = "learn.html";
+
+        return;
+    }
+
+    window.location.href =
+        "learn.html?search=" +
+        encodeURIComponent(query);
+
+}
+
+
+/*
+=====================================================
+   HOMEPAGE TOPIC CONNECTION
+=====================================================
+*/
+
+function openLearnTopic(topic) {
+
+    window.location.href =
+        "learn.html?topic=" +
+        encodeURIComponent(topic);
+
+}
+
+
+/*
+=====================================================
+   ENTER KEY SEARCH
+=====================================================
+*/
+
+const homeSearch =
+    document.getElementById("homeSearch");
+
+if (homeSearch) {
+
+    homeSearch.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                searchFromHome();
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
 
 </body>
 
