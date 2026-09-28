@@ -1,222 +1,146 @@
-/* =====================================================
+/* =========================================================
    COMPUTER GUIDE
-   71-TOPIC SEARCH + KNOWLEDGE ENGINE
-===================================================== */
+   SEARCH + KNOWLEDGE + LEARNING PATH ENGINE
+========================================================= */
 
 
-/* =====================================================
+/* =========================================================
    TOPIC DATABASE
-===================================================== */
+========================================================= */
 
 const topics = {
 
-    /* =================================================
+    /* =====================================================
        COMPUTERS & HARDWARE
-    ================================================= */
+    ===================================================== */
 
     cpu: {
-        title: "CPU (Central Processing Unit)",
+        title: "CPU — Central Processing Unit",
         category: "Computers",
         icon: "🧠",
-        keywords: [
-            "cpu",
-            "processor",
-            "central processing unit",
-            "computer processor"
-        ],
+        keywords: ["cpu", "processor", "central processing unit"],
         quickAnswer:
-            "The CPU is the main processor in a computer. It executes instructions and performs calculations that allow software to run.",
-
+            "The CPU is the main general-purpose processor in a computer. It executes instructions, performs calculations, and coordinates many operations.",
         howItWorks:
-            "Programs give the computer instructions. The CPU fetches those instructions from memory, decodes what they mean, and executes them. Modern CPUs contain multiple processing cores so they can work on multiple tasks at the same time.",
-
+            "The CPU retrieves instructions, decodes them, performs operations, and produces results. It works closely with RAM, storage, and other hardware.",
         whyItMatters:
-            "CPU performance affects how quickly many programs can perform calculations and process instructions. It is one of the most important components in a computer.",
-
+            "The CPU performs a huge amount of the general-purpose processing required by software.",
         example:
-            "When you open a program, the CPU processes the instructions needed to start and operate that program.",
-
+            "When you open an application, the CPU executes the instructions needed for that program to run.",
         deepDive:
-            "A CPU contains components such as control units, arithmetic logic units, registers, cache, and multiple cores. Modern processors can execute billions of operations per second.",
-
+            "Modern CPUs can contain multiple cores, cache memory, branch prediction, and other technologies designed to improve performance.",
         keyPoints: [
             "CPU means Central Processing Unit.",
             "It executes program instructions.",
-            "Modern CPUs often have multiple cores.",
-            "CPU cache provides very fast temporary storage.",
-            "CPU performance depends on architecture, cores, clock speed, and other factors."
+            "Modern CPUs commonly have multiple cores.",
+            "CPU cache provides very fast memory.",
+            "Clock speed is only one part of CPU performance."
         ],
-
-        related: [
-            "ram",
-            "gpu",
-            "motherboard",
-            "operating-system"
-        ]
+        related: ["ram", "gpu", "operating-system"]
     },
 
 
     ram: {
-        title: "RAM (Random Access Memory)",
+        title: "RAM — Random Access Memory",
         category: "Computers",
-        icon: "💾",
-        keywords: [
-            "ram",
-            "memory",
-            "random access memory",
-            "computer memory"
-        ],
+        icon: "🧮",
+        keywords: ["ram", "memory", "random access memory"],
         quickAnswer:
-            "RAM is temporary high-speed memory used by a computer to store data and programs that are currently being used.",
-
+            "RAM is fast temporary memory used to hold data and instructions that programs are actively using.",
         howItWorks:
-            "When a program runs, the operating system loads the information it needs into RAM. The CPU can then access that information much faster than data stored on a long-term storage drive.",
-
+            "When programs run, the operating system places required information into RAM so the CPU can access it quickly.",
         whyItMatters:
-            "More RAM allows a computer to keep more active programs and data available at the same time.",
-
+            "Having enough RAM helps a computer handle multiple programs and larger workloads.",
         example:
-            "If you have a web browser, music player, and coding program open simultaneously, all of them can use RAM.",
-
+            "A browser with many open tabs can use a significant amount of RAM.",
         deepDive:
-            "RAM is volatile memory, meaning its contents disappear when the computer loses power. Common modern RAM types include DDR4 and DDR5.",
-
+            "RAM is volatile memory, meaning its contents normally disappear when power is removed. Modern computers commonly use DDR memory.",
         keyPoints: [
-            "RAM is temporary memory.",
-            "RAM is much faster than storage drives.",
-            "RAM is used by running programs.",
-            "RAM loses its contents when power is removed.",
+            "RAM is temporary working memory.",
+            "RAM is faster than normal storage.",
+            "RAM is usually measured in gigabytes.",
+            "RAM is volatile.",
             "More RAM can improve multitasking."
         ],
-
-        related: [
-            "cpu",
-            "ssd",
-            "virtual-memory"
-        ]
+        related: ["cpu", "ssd", "virtual-memory"]
     },
 
 
     gpu: {
-        title: "GPU (Graphics Processing Unit)",
+        title: "GPU — Graphics Processing Unit",
         category: "Computers",
         icon: "🎮",
-        keywords: [
-            "gpu",
-            "graphics card",
-            "graphics processing unit",
-            "video card"
-        ],
+        keywords: ["gpu", "graphics", "graphics card", "video card"],
         quickAnswer:
             "A GPU is a processor designed to perform large numbers of calculations in parallel, especially for graphics and other highly parallel workloads.",
-
         howItWorks:
-            "Instead of focusing primarily on a small number of complex tasks like a CPU, a GPU can perform many similar calculations simultaneously. This makes GPUs useful for graphics, simulations, machine learning, and other workloads.",
-
+            "A GPU contains many processing resources that can work on large numbers of similar calculations at the same time.",
         whyItMatters:
-            "GPUs are important for gaming, 3D graphics, video production, artificial intelligence, and scientific computing.",
-
+            "GPUs are important for gaming, graphics, video processing, scientific computing, and many AI workloads.",
         example:
-            "When a video game renders thousands of objects on screen, the GPU performs many of the calculations needed to display those graphics.",
-
+            "A game uses the GPU to render objects, lighting, textures, shadows, and other visual effects.",
         deepDive:
-            "A dedicated GPU normally has its own high-speed memory called VRAM. Integrated graphics instead share system resources with the CPU and main memory.",
-
+            "Modern GPUs often contain dedicated video memory called VRAM and can also accelerate workloads beyond graphics.",
         keyPoints: [
             "GPU means Graphics Processing Unit.",
-            "GPUs are designed for parallel processing.",
-            "Dedicated GPUs often have VRAM.",
-            "GPUs are useful for graphics and AI workloads.",
-            "Integrated graphics are built into or closely integrated with the CPU."
+            "GPUs are highly parallel processors.",
+            "They are important for graphics rendering.",
+            "Dedicated GPUs commonly have VRAM.",
+            "GPUs can accelerate AI workloads."
         ],
-
-        related: [
-            "cpu",
-            "ram",
-            "artificial-intelligence"
-        ]
+        related: ["cpu", "ram", "artificial-intelligence"]
     },
 
 
     ssd: {
-        title: "SSD (Solid-State Drive)",
+        title: "SSD — Solid-State Drive",
         category: "Computers",
-        icon: "💽",
-        keywords: [
-            "ssd",
-            "solid state drive",
-            "storage",
-            "nvme"
-        ],
+        icon: "💾",
+        keywords: ["ssd", "solid state drive", "storage"],
         quickAnswer:
-            "An SSD is a storage device that uses flash memory instead of spinning magnetic disks.",
-
+            "An SSD is a storage device that uses flash memory to store data without traditional moving mechanical parts.",
         howItWorks:
-            "SSDs store data electronically inside flash memory cells. Because they have no moving mechanical parts, they can access data very quickly.",
-
+            "SSDs store information in flash memory cells while a controller manages reading, writing, error correction, and other operations.",
         whyItMatters:
-            "SSDs can significantly improve boot times, application loading, file transfers, and overall system responsiveness.",
-
+            "SSDs generally provide much faster access to stored data than traditional mechanical hard drives.",
         example:
-            "A computer with an SSD can often start the operating system much faster than an older computer using a mechanical hard drive.",
-
+            "A computer using an SSD can often start its operating system and applications quickly.",
         deepDive:
-            "Common SSD interfaces include SATA and NVMe. NVMe drives communicate through PCIe and can provide much higher throughput than SATA-based SSDs.",
-
+            "Different NAND flash technologies and controllers affect an SSD's speed, capacity, endurance, and power usage.",
         keyPoints: [
+            "SSD means Solid-State Drive.",
             "SSDs use flash memory.",
-            "They have no spinning disks.",
-            "NVMe SSDs use PCIe.",
-            "SSDs are generally faster than HDDs.",
-            "SSDs are used for long-term storage."
+            "SSDs have no traditional spinning platters.",
+            "They are generally faster than HDDs.",
+            "SSDs provide long-term storage."
         ],
-
-        related: [
-            "hdd",
-            "ram",
-            "file-system"
-        ]
+        related: ["hdd", "ram", "file-system"]
     },
 
 
     hdd: {
-        title: "HDD (Hard Disk Drive)",
+        title: "HDD — Hard Disk Drive",
         category: "Computers",
-        icon: "🗄️",
-        keywords: [
-            "hdd",
-            "hard drive",
-            "hard disk drive",
-            "magnetic storage"
-        ],
+        icon: "💿",
+        keywords: ["hdd", "hard drive", "hard disk", "hard disk drive"],
         quickAnswer:
-            "An HDD is a storage device that uses spinning magnetic disks to store data.",
-
+            "An HDD stores data magnetically on spinning disks called platters.",
         howItWorks:
-            "An HDD contains spinning platters coated with magnetic material. Read/write heads move across the platters to access stored information.",
-
+            "A read/write head moves across spinning platters to read or change magnetic information.",
         whyItMatters:
-            "HDDs remain useful for large amounts of relatively inexpensive storage.",
-
+            "HDDs can provide large amounts of storage at relatively low cost.",
         example:
-            "A desktop computer might use a smaller SSD for the operating system and a large HDD for storing photos, videos, and backups.",
-
+            "An HDD can be used to store large collections of videos, photos, backups, and other files.",
         deepDive:
-            "HDD performance depends on factors such as rotational speed, cache, and access time. Mechanical movement makes HDDs slower than most modern SSDs.",
-
+            "Because HDDs contain moving mechanical components, their access times are generally slower than SSDs.",
         keyPoints: [
             "HDD means Hard Disk Drive.",
-            "HDDs use magnetic platters.",
-            "They contain moving mechanical parts.",
-            "They are commonly used for large storage capacities.",
+            "HDDs use magnetic storage.",
+            "They contain moving parts.",
+            "They can provide large capacities.",
             "They are generally slower than SSDs."
         ],
-
-        related: [
-            "ssd",
-            "file-system",
-            "data-structures"
-        ]
+        related: ["ssd", "file-system"]
     },
 
 
@@ -224,255 +148,155 @@ const topics = {
         title: "Motherboard",
         category: "Computers",
         icon: "🧩",
-        keywords: [
-            "motherboard",
-            "mainboard",
-            "computer board"
-        ],
+        keywords: ["motherboard", "mainboard", "system board"],
         quickAnswer:
-            "The motherboard is the main circuit board that connects many of the computer's components.",
-
+            "The motherboard is the main circuit board that connects many of a computer's components.",
         howItWorks:
             "The motherboard provides electrical connections and communication pathways between components such as the CPU, RAM, storage, expansion cards, and peripherals.",
-
         whyItMatters:
-            "The motherboard determines which processors, memory, storage devices, and expansion hardware a computer can support.",
-
+            "It provides the foundation that allows the computer's major hardware components to work together.",
         example:
-            "A desktop motherboard may contain CPU sockets, RAM slots, PCIe slots, storage connectors, USB ports, and power connectors.",
-
+            "A desktop motherboard can provide slots for RAM, a CPU socket, storage connections, USB ports, and expansion slots.",
         deepDive:
-            "Modern motherboards contain chipsets and firmware that help coordinate communication between different parts of the system.",
-
+            "Motherboards contain chipsets, firmware, power circuitry, buses, connectors, and expansion interfaces.",
         keyPoints: [
-            "The motherboard connects major computer components.",
+            "The motherboard connects major components.",
             "It provides expansion slots and connectors.",
-            "CPU compatibility depends on the motherboard socket.",
-            "RAM compatibility depends on motherboard support.",
-            "Motherboards contain firmware used during startup."
+            "It contains important system circuitry.",
+            "Different motherboards support different CPUs and memory.",
+            "The motherboard helps components communicate."
         ],
-
-        related: [
-            "cpu",
-            "ram",
-            "bios-uefi",
-            "computer-ports"
-        ]
+        related: ["cpu", "ram", "computer-ports"]
     },
 
 
     psu: {
-        title: "PSU (Power Supply Unit)",
+        title: "Power Supply — PSU",
         category: "Computers",
-        icon: "⚡",
-        keywords: [
-            "psu",
-            "power supply",
-            "power supply unit",
-            "computer power"
-        ],
+        icon: "🔌",
+        keywords: ["psu", "power supply", "power supply unit"],
         quickAnswer:
-            "The PSU converts electrical power from an outlet into the voltages required by computer components.",
-
+            "A power supply converts electrical power from an outlet into the types of power required by computer components.",
         howItWorks:
-            "The PSU takes AC electricity from the wall and converts it into regulated DC power that the computer's components can use.",
-
+            "A PSU converts incoming electrical power and supplies regulated power to components such as the motherboard, CPU, storage, and GPU.",
         whyItMatters:
-            "Every major computer component depends on stable electrical power. A properly selected PSU helps provide reliable operation.",
-
+            "Computer components require stable electrical power to operate correctly.",
         example:
-            "A gaming desktop with a powerful GPU may require a higher-capacity PSU than a basic office computer.",
-
+            "A desktop's PSU supplies power to the motherboard and graphics card through different cables.",
         deepDive:
-            "PSUs are rated by output power and efficiency. Connectors provide power to the motherboard, CPU, storage devices, GPUs, and other hardware.",
-
+            "Power supplies have different capacities and efficiency ratings. Choosing appropriate power capacity is important when building a computer.",
         keyPoints: [
             "PSU means Power Supply Unit.",
-            "It converts AC power to DC power.",
-            "PSUs are rated in watts.",
-            "Different components use different power connectors.",
-            "A PSU should provide enough capacity for the system."
+            "It converts and regulates electrical power.",
+            "It supplies power to computer components.",
+            "PSUs have different power capacities.",
+            "Efficiency varies between models."
         ],
-
-        related: [
-            "motherboard",
-            "gpu",
-            "computer-cooling"
-        ]
+        related: ["motherboard", "gpu", "computer-cooling"]
     },
 
 
     "computer-cooling": {
         title: "Computer Cooling",
         category: "Computers",
-        icon: "❄️",
-        keywords: [
-            "cooling",
-            "computer cooling",
-            "cpu cooler",
-            "fans",
-            "temperature"
-        ],
+        icon: "🌡️",
+        keywords: ["cooling", "computer cooling", "fans", "heatsink", "liquid cooling"],
         quickAnswer:
-            "Computer cooling removes heat generated by components so they can operate within safe temperature ranges.",
-
+            "Computer cooling removes heat produced by electronic components so they can operate within appropriate temperature ranges.",
         howItWorks:
-            "Heat is transferred away from components using heatsinks, fans, thermal interface materials, and sometimes liquid cooling systems.",
-
+            "Heat moves from components such as the CPU and GPU into heatsinks or other cooling systems. Fans or pumps then help move heat away.",
         whyItMatters:
-            "Excessive heat can cause reduced performance, instability, or hardware damage.",
-
+            "Excessive heat can cause components to reduce performance or shut down to protect themselves.",
         example:
-            "A CPU cooler transfers heat from the processor into a heatsink, where a fan helps move that heat away.",
-
+            "A CPU cooler transfers heat away from the processor while a case fan moves warm air out of the computer.",
         deepDive:
-            "Cooling systems use conduction and convection to move heat. Thermal paste or another thermal interface material improves heat transfer between a chip and its cooler.",
-
+            "Cooling systems can use air cooling, liquid cooling, heatsinks, thermal interfaces, and carefully designed airflow.",
         keyPoints: [
-            "Computers produce heat.",
-            "Heatsinks absorb and spread heat.",
+            "Cooling removes heat from components.",
+            "Heatsinks help transfer heat.",
             "Fans move air through the system.",
-            "Thermal interface material improves heat transfer.",
-            "Good airflow helps maintain stable temperatures."
+            "Liquid cooling can use a pump and radiator.",
+            "Good airflow helps manage system temperatures."
         ],
-
-        related: [
-            "cpu",
-            "gpu",
-            "psu"
-        ]
+        related: ["cpu", "gpu", "psu"]
     },
 
 
     "bios-uefi": {
-        title: "BIOS and UEFI",
+        title: "BIOS & UEFI",
         category: "Computers",
         icon: "⚙️",
-        keywords: [
-            "bios",
-            "uefi",
-            "firmware",
-            "boot firmware"
-        ],
+        keywords: ["bios", "uefi", "firmware", "boot firmware"],
         quickAnswer:
-            "BIOS and UEFI are firmware systems that initialize hardware and help start the operating system.",
-
+            "BIOS and UEFI are firmware systems that initialize hardware and help start the computer's operating system.",
         howItWorks:
-            "When a computer starts, firmware initializes important hardware and searches for a device containing bootable software. Modern systems commonly use UEFI.",
-
+            "When a computer powers on, firmware performs hardware initialization and follows configured boot information to begin loading an operating system.",
         whyItMatters:
-            "Firmware is involved before the operating system loads and provides configuration and hardware initialization functions.",
-
+            "Firmware provides an important bridge between the computer's hardware and the software used to start the system.",
         example:
-            "The firmware setup screen can allow you to change boot order, enable hardware features, and configure system settings.",
-
+            "You can enter a computer's firmware settings to change boot order or configure certain hardware options.",
         deepDive:
-            "UEFI is the modern replacement for traditional BIOS firmware on most computers. UEFI supports features such as larger boot disks and Secure Boot.",
-
+            "UEFI is the modern firmware interface used by most current computers. It provides features beyond traditional BIOS implementations.",
         keyPoints: [
             "Firmware runs before the operating system.",
-            "UEFI is the modern firmware standard.",
+            "BIOS is an older firmware approach.",
+            "UEFI is the modern replacement in most systems.",
             "Firmware initializes hardware.",
-            "Boot order can be configured through firmware settings.",
-            "Secure Boot can help verify trusted boot software."
+            "Boot settings can often be changed through firmware settings."
         ],
-
-        related: [
-            "operating-system",
-            "motherboard",
-            "file-system"
-        ]
+        related: ["operating-system", "motherboard", "boot-process"]
     },
 
 
     "computer-ports": {
         title: "Computer Ports",
         category: "Computers",
-        icon: "🔌",
-        keywords: [
-            "ports",
-            "usb",
-            "hdmi",
-            "ethernet port",
-            "displayport",
-            "computer connectors"
-        ],
+        icon: "🔗",
+        keywords: ["ports", "usb", "hdmi", "displayport", "ethernet", "computer ports"],
         quickAnswer:
-            "Computer ports are physical connectors used to connect computers to other devices and networks.",
-
+            "Computer ports are physical or logical interfaces used to connect hardware or network services.",
         howItWorks:
-            "Different ports use different electrical and communication standards. Examples include USB for peripherals and data, HDMI for digital video and audio, and Ethernet for wired networking.",
-
+            "Physical ports provide electrical or optical connections for devices, while logical network ports identify services running over network protocols.",
         whyItMatters:
-            "Knowing the purpose of common ports makes it easier to connect hardware correctly.",
-
+            "Ports allow computers to communicate with peripherals, displays, networks, storage devices, and software services.",
         example:
-            "A USB port can connect a keyboard, mouse, storage device, or other compatible peripheral.",
-
+            "USB ports connect peripherals, HDMI can connect displays, and Ethernet ports connect wired networks.",
         deepDive:
-            "USB has evolved through multiple generations with different transfer speeds and connector types. Video ports such as HDMI and DisplayPort are designed for high-bandwidth displays.",
-
+            "The word port can refer to both physical connectors and numbered network endpoints used by TCP or UDP services.",
         keyPoints: [
-            "Ports connect devices to computers.",
-            "USB is commonly used for peripherals and data.",
-            "HDMI carries digital audio and video.",
-            "Ethernet is used for wired networking.",
-            "Different versions of a standard can have different capabilities."
+            "USB is a common physical computer interface.",
+            "HDMI and DisplayPort are used for displays.",
+            "Ethernet provides wired networking.",
+            "Network ports are logical numbers.",
+            "Physical ports and network ports are different concepts."
         ],
-
-        related: [
-            "ethernet",
-            "computer-networking",
-            "motherboard"
-        ]
+        related: ["ethernet", "http-https", "network-switch"]
     },
 
-
-    /* =================================================
-       OPERATING SYSTEMS & SOFTWARE
-    ================================================= */
 
     "operating-system": {
         title: "Operating System",
         category: "Operating Systems",
         icon: "🖥️",
-        keywords: [
-            "operating system",
-            "os",
-            "windows",
-            "linux",
-            "macos"
-        ],
+        keywords: ["operating system", "os", "system software"],
         quickAnswer:
-            "An operating system manages computer hardware and provides services that applications use.",
-
+            "An operating system is core system software that manages computer hardware and provides services for applications.",
         howItWorks:
-            "The operating system manages resources such as CPU time, memory, storage, files, devices, users, and networking.",
-
+            "The operating system manages resources such as CPU time, memory, storage, devices, files, networking, and user interaction.",
         whyItMatters:
-            "Without an operating system, most users would have to interact directly with hardware and low-level software.",
-
+            "Applications rely on the operating system to access hardware and common system services.",
         example:
-            "Windows, Linux, and macOS are operating systems that provide interfaces for running applications and managing files.",
-
+            "Windows, Linux, and macOS are operating systems used on computers.",
         deepDive:
-            "Operating systems contain components such as kernels, drivers, file systems, security systems, and user interfaces.",
-
+            "Operating systems contain components such as kernels, device drivers, system services, security mechanisms, and user interfaces.",
         keyPoints: [
-            "An operating system manages hardware and software resources.",
+            "An OS manages hardware resources.",
+            "An OS provides services to applications.",
             "The kernel is a central part of an operating system.",
-            "Operating systems manage processes and memory.",
-            "They provide services to applications.",
-            "Examples include Windows, Linux, and macOS."
+            "Operating systems manage files and devices.",
+            "Windows, Linux, and macOS are examples."
         ],
-
-        related: [
-            "windows",
-            "linux",
-            "macos",
-            "computer-processes",
-            "os-kernel"
-        ]
+        related: ["windows", "linux", "macos"]
     },
 
 
@@ -480,40 +304,25 @@ const topics = {
         title: "Windows",
         category: "Operating Systems",
         icon: "🪟",
-        keywords: [
-            "windows",
-            "microsoft windows",
-            "windows operating system"
-        ],
+        keywords: ["windows", "microsoft windows", "windows os"],
         quickAnswer:
-            "Windows is a family of operating systems developed by Microsoft for personal computers, servers, and other devices.",
-
+            "Windows is a family of operating systems developed by Microsoft.",
         howItWorks:
-            "Windows provides a graphical user interface, system services, hardware support, file management, networking, security, and application support.",
-
+            "Windows provides a graphical interface, system services, hardware management, file management, networking, security features, and application support.",
         whyItMatters:
-            "Windows is widely used on personal computers and supports a large ecosystem of software and hardware.",
-
+            "Windows is widely used across personal computers, organizations, and many other computing environments.",
         example:
-            "A Windows PC can run web browsers, games, development tools, productivity applications, and security software.",
-
+            "A Windows PC can run applications, manage files, connect to networks, and use hardware devices through the operating system.",
         deepDive:
-            "Modern Windows systems use a layered architecture that includes the Windows kernel, system services, drivers, security features, and user-facing applications.",
-
+            "Modern Windows systems are built around the Windows NT architecture and include many services and security technologies.",
         keyPoints: [
             "Windows is developed by Microsoft.",
-            "It provides a graphical user interface.",
-            "Windows supports many hardware devices.",
-            "It includes built-in security features.",
-            "It supports a large application ecosystem."
+            "It is an operating system family.",
+            "Windows supports a large software ecosystem.",
+            "It manages hardware and system resources.",
+            "Windows includes built-in security features."
         ],
-
-        related: [
-            "operating-system",
-            "applications",
-            "device-drivers",
-            "software-updates"
-        ]
+        related: ["operating-system", "device-drivers", "file-system"]
     },
 
 
@@ -521,42 +330,25 @@ const topics = {
         title: "Linux",
         category: "Operating Systems",
         icon: "🐧",
-        keywords: [
-            "linux",
-            "linux operating system",
-            "kernel",
-            "ubuntu",
-            "debian"
-        ],
+        keywords: ["linux", "linux operating system", "gnu linux", "distribution"],
         quickAnswer:
-            "Linux is an open-source operating system kernel used in many operating systems and devices.",
-
+            "Linux commonly refers to operating systems built around the Linux kernel, often combined with other open-source software.",
         howItWorks:
-            "Linux provides the core kernel functions needed to manage hardware, processes, memory, files, networking, and security. Linux distributions combine the kernel with other software.",
-
+            "The Linux kernel manages hardware and system resources while a distribution packages it with software, tools, libraries, and often a desktop environment.",
         whyItMatters:
-            "Linux is widely used in servers, cloud systems, cybersecurity, development environments, embedded devices, and many other systems.",
-
+            "Linux is widely used in servers, cloud infrastructure, embedded devices, development environments, and personal computers.",
         example:
-            "Ubuntu is a Linux distribution commonly used for desktop computers, servers, development, and learning.",
-
+            "Ubuntu, Fedora, Debian, and Arch Linux are examples of Linux distributions.",
         deepDive:
-            "Linux distributions package the Linux kernel with tools, libraries, package managers, desktop environments, and other software.",
-
+            "Linux distributions differ in package management, default software, configuration, release models, and target users.",
         keyPoints: [
-            "Linux is open source.",
-            "Linux is technically a kernel.",
-            "Distributions package Linux with additional software.",
-            "Linux is heavily used on servers.",
-            "Linux is widely used in cybersecurity and development."
+            "Linux uses the Linux kernel.",
+            "Distributions package the kernel with other software.",
+            "Linux is widely used on servers.",
+            "Many Linux components are open source.",
+            "Different distributions have different tools and defaults."
         ],
-
-        related: [
-            "operating-system",
-            "os-kernel",
-            "file-system",
-            "cybersecurity"
-        ]
+        related: ["operating-system", "command-line", "servers"]
     },
 
 
@@ -564,39 +356,25 @@ const topics = {
         title: "macOS",
         category: "Operating Systems",
         icon: "🍎",
-        keywords: [
-            "macos",
-            "mac os",
-            "apple operating system"
-        ],
+        keywords: ["macos", "mac os", "apple operating system"],
         quickAnswer:
-            "macOS is Apple's desktop operating system used on Mac computers.",
-
+            "macOS is Apple's desktop operating system for Mac computers.",
         howItWorks:
-            "macOS manages hardware resources and provides a graphical interface, system services, file management, security, networking, and application support.",
-
+            "macOS manages Mac hardware and provides system services, a graphical interface, security features, file management, networking, and application support.",
         whyItMatters:
-            "macOS provides the software environment used by Mac computers and supports development, creative work, productivity, and other tasks.",
-
+            "macOS provides the software environment used by Mac computers.",
         example:
-            "A MacBook uses macOS to manage its hardware and run applications such as browsers, editors, and development tools.",
-
+            "A Mac uses macOS to run applications, manage files, connect to networks, and interact with hardware.",
         deepDive:
-            "macOS is built on technologies including the Darwin operating system foundation and the XNU kernel.",
-
+            "macOS is built on technologies including the Darwin foundation and includes Apple's graphical and system frameworks.",
         keyPoints: [
             "macOS is developed by Apple.",
             "It runs on Mac computers.",
-            "It provides a graphical desktop environment.",
-            "It includes built-in security systems.",
-            "It supports software development and many professional applications."
+            "It provides system and application services.",
+            "It includes built-in security technologies.",
+            "macOS is based on Unix-related technologies."
         ],
-
-        related: [
-            "operating-system",
-            "applications",
-            "device-drivers"
-        ]
+        related: ["operating-system", "applications", "file-system"]
     },
 
 
@@ -604,40 +382,25 @@ const topics = {
         title: "Applications",
         category: "Software",
         icon: "📱",
-        keywords: [
-            "applications",
-            "apps",
-            "software",
-            "programs"
-        ],
+        keywords: ["applications", "apps", "software", "programs"],
         quickAnswer:
             "Applications are software programs designed to perform tasks for users or other software systems.",
-
         howItWorks:
-            "Applications use operating-system services and hardware resources to perform their jobs.",
-
+            "Applications use programming logic and operating-system services to perform functions such as editing documents, browsing websites, communicating, or playing games.",
         whyItMatters:
-            "Applications are the software people interact with to accomplish tasks such as browsing, editing, gaming, communication, and programming.",
-
+            "Applications are the software people use to accomplish specific tasks.",
         example:
-            "A web browser is an application that lets users access websites.",
-
+            "A web browser, text editor, media player, and calculator are all applications.",
         deepDive:
-            "Applications can be desktop programs, mobile apps, web applications, command-line tools, or specialized software.",
-
+            "Applications can be desktop programs, mobile apps, web applications, command-line programs, or services.",
         keyPoints: [
-            "Applications are software programs.",
-            "Apps depend on operating-system services.",
-            "Applications can perform many different tasks.",
-            "Browsers, editors, and games are examples.",
-            "Applications can communicate with APIs and databases."
+            "Applications are software.",
+            "Apps perform specific tasks.",
+            "Applications depend on operating-system services.",
+            "Applications can run on many platforms.",
+            "Web applications run through web technologies."
         ],
-
-        related: [
-            "operating-system",
-            "programming",
-            "apis"
-        ]
+        related: ["operating-system", "web-browser", "software"]
     },
 
 
@@ -645,124 +408,1828 @@ const topics = {
         title: "Device Drivers",
         category: "Software",
         icon: "🔧",
-        keywords: [
-            "drivers",
-            "device drivers",
-            "hardware drivers"
-        ],
+        keywords: ["drivers", "device drivers", "hardware drivers"],
         quickAnswer:
             "Device drivers are software components that allow an operating system to communicate with hardware devices.",
-
         howItWorks:
-            "A driver translates operating-system requests into commands that a particular hardware device can understand.",
-
+            "A driver provides the operating system with software interfaces for controlling or communicating with a particular type of hardware.",
         whyItMatters:
-            "Without appropriate drivers, an operating system may not be able to use all features of a hardware device.",
-
+            "Drivers allow operating systems and applications to use hardware such as graphics cards, printers, network adapters, and storage controllers.",
         example:
             "A graphics driver allows the operating system and applications to communicate with a GPU.",
-
         deepDive:
-            "Drivers can handle hardware such as graphics cards, network adapters, printers, storage controllers, and input devices.",
-
+            "Drivers operate at different levels depending on the operating system and hardware architecture. Some drivers interact closely with the kernel.",
         keyPoints: [
-            "Drivers connect software and hardware.",
-            "Different hardware often requires different drivers.",
-            "Graphics drivers are especially important for GPU functionality.",
-            "Operating systems often include many built-in drivers.",
-            "Driver updates can add features or fix compatibility issues."
+            "Drivers connect software with hardware.",
+            "Operating systems use drivers to communicate with devices.",
+            "Graphics and network hardware commonly require drivers.",
+            "Driver compatibility matters.",
+            "Drivers can affect hardware functionality and performance."
         ],
-
-        related: [
-            "operating-system",
-            "gpu",
-            "software-updates"
-        ]
+        related: ["operating-system", "gpu", "computer-ports"]
     },
 
 
     "file-system": {
         title: "File System",
-        category: "Operating Systems",
+        category: "Software",
         icon: "📁",
-        keywords: [
-            "file system",
-            "filesystem",
-            "ntfs",
-            "ext4",
-            "apfs",
-            "files"
-        ],
+        keywords: ["file system", "filesystem", "files", "folders", "ntfs", "ext4"],
         quickAnswer:
             "A file system organizes and manages how data is stored and retrieved on storage devices.",
-
         howItWorks:
-            "The file system keeps track of files, directories, metadata, permissions, and where data is stored on a device.",
-
+            "A file system keeps track of files, directories, metadata, permissions, and the storage locations used by data.",
         whyItMatters:
-            "File systems allow operating systems and applications to store, find, modify, and protect data.",
-
+            "File systems provide the structure that allows operating systems and applications to store and retrieve files.",
         example:
-            "Windows commonly uses NTFS, while Linux systems commonly use file systems such as ext4.",
-
+            "Windows commonly uses NTFS, while many Linux systems use file systems such as ext4.",
         deepDive:
-            "Different file systems use different structures and features. These can include permissions, journaling, compression, encryption support, snapshots, and recovery mechanisms.",
-
+            "Different file systems provide different features involving permissions, journaling, performance, compatibility, and storage limits.",
         keyPoints: [
             "File systems organize stored data.",
-            "They manage files and directories.",
-            "They store metadata about files.",
+            "Files contain data and metadata.",
+            "Directories organize files.",
             "Different operating systems support different file systems.",
-            "File systems can provide security and reliability features."
+            "File systems can provide permissions and other features."
         ],
-
-        related: [
-            "ssd",
-            "hdd",
-            "operating-system"
-        ]
+        related: ["ssd", "hdd", "operating-system"]
     },
 
 
-    "computer-processes": {
-        title: "Computer Processes",
+    software: {
+        title: "Software",
+        category: "Software",
+        icon: "💻",
+        keywords: ["software", "program", "computer software"],
+        quickAnswer:
+            "Software is a collection of programs, data, and instructions that tell computers how to perform tasks.",
+        howItWorks:
+            "Software consists of instructions that processors execute, often using operating-system services and hardware resources.",
+        whyItMatters:
+            "Software provides the functionality that makes computers useful for users and organizations.",
+        example:
+            "Web browsers, operating systems, games, and programming tools are examples of software.",
+        deepDive:
+            "Software can be categorized into system software, applications, development tools, utilities, services, and many other types.",
+        keyPoints: [
+            "Software consists of instructions and related data.",
+            "Programs are executed by processors.",
+            "Software can interact with hardware through operating systems.",
+            "Applications are one category of software.",
+            "Operating systems are system software."
+        ],
+        related: ["applications", "operating-system", "programming"]
+    },
+
+
+    programming: {
+        title: "Programming",
+        category: "Programming",
+        icon: "👨‍💻",
+        keywords: ["programming", "coding", "software development", "development"],
+        quickAnswer:
+            "Programming is the process of creating instructions that computers can execute to perform tasks.",
+        howItWorks:
+            "Programmers write source code using programming languages. That code may be interpreted, compiled, or otherwise transformed into forms that computers can execute.",
+        whyItMatters:
+            "Programming is used to create applications, websites, operating systems, automation tools, games, and many other technologies.",
+        example:
+            "A Python program can read information, perform calculations, and display a result.",
+        deepDive:
+            "Programming involves concepts such as variables, functions, data structures, algorithms, control flow, debugging, testing, and software design.",
+        keyPoints: [
+            "Programming creates computer instructions.",
+            "Programming languages provide ways to express those instructions.",
+            "Programs use logic and data.",
+            "Debugging is an important programming skill.",
+            "Programming is used across many technology fields."
+        ],
+        related: ["python", "algorithms", "software"]
+    },
+
+
+    python: {
+        title: "Python",
+        category: "Programming",
+        icon: "🐍",
+        keywords: ["python", "python programming", "python language"],
+        quickAnswer:
+            "Python is a general-purpose programming language known for readable syntax and a large ecosystem of libraries.",
+        howItWorks:
+            "Python source code is typically executed by a Python interpreter, which processes the program and performs its instructions.",
+        whyItMatters:
+            "Python is widely used for automation, web development, data analysis, scientific computing, education, and many other tasks.",
+        example:
+            "A simple Python program can store information in variables and use functions to process it.",
+        deepDive:
+            "Python supports procedural, object-oriented, and functional programming styles and has a large standard library and third-party ecosystem.",
+        keyPoints: [
+            "Python is a general-purpose language.",
+            "Python emphasizes readable syntax.",
+            "Python has many libraries.",
+            "Python is used for automation and development.",
+            "Python is popular for learning programming."
+        ],
+        related: ["programming", "algorithms", "artificial-intelligence"]
+    },
+
+
+    "command-line": {
+        title: "Command Line",
+        category: "Programming",
+        icon: "⌨️",
+        keywords: ["command line", "terminal", "shell", "cmd", "powershell", "bash"],
+        quickAnswer:
+            "A command line is an interface where users interact with a computer by entering text commands.",
+        howItWorks:
+            "A shell or command interpreter reads commands and performs the requested operations using operating-system services.",
+        whyItMatters:
+            "Command-line tools are widely used for administration, development, automation, troubleshooting, and system management.",
+        example:
+            "A user can use a terminal command to navigate directories, inspect files, or run a program.",
+        deepDive:
+            "Different operating systems and environments provide different shells and commands. Common examples include Bash, PowerShell, and Command Prompt.",
+        keyPoints: [
+            "The command line uses text commands.",
+            "A shell interprets commands.",
+            "Command-line tools can automate tasks.",
+            "Developers often use terminals.",
+            "Different shells have different commands and syntax."
+        ],
+        related: ["linux", "programming", "operating-system"]
+    },
+
+
+    algorithms: {
+        title: "Algorithms",
+        category: "Programming",
+        icon: "🧠",
+        keywords: ["algorithm", "algorithms", "problem solving", "logic"],
+        quickAnswer:
+            "An algorithm is a defined sequence of steps used to solve a problem or perform a task.",
+        howItWorks:
+            "An algorithm takes inputs, processes them according to defined rules, and produces an output or result.",
+        whyItMatters:
+            "Algorithms provide structured ways to solve computational problems efficiently and reliably.",
+        example:
+            "A sorting algorithm can arrange a collection of numbers from smallest to largest.",
+        deepDive:
+            "Algorithm design involves correctness, efficiency, resource usage, and often analysis of time and space complexity.",
+        keyPoints: [
+            "Algorithms are step-by-step procedures.",
+            "Algorithms can process inputs.",
+            "Algorithms produce outputs.",
+            "Different algorithms can solve the same problem.",
+            "Efficiency can be analyzed using complexity."
+        ],
+        related: ["programming", "data-structures", "python"]
+    },
+
+
+    "data-structures": {
+        title: "Data Structures",
+        category: "Programming",
+        icon: "🗂️",
+        keywords: ["data structures", "arrays", "lists", "stacks", "queues", "trees"],
+        quickAnswer:
+            "Data structures are organized ways of storing and managing data so programs can use it effectively.",
+        howItWorks:
+            "A data structure defines how data is arranged and what operations can efficiently be performed on that data.",
+        whyItMatters:
+            "Choosing an appropriate data structure can make programs easier to build and more efficient.",
+        example:
+            "An array can store a sequence of values, while a queue can organize items in first-in-first-out order.",
+        deepDive:
+            "Common data structures include arrays, linked lists, stacks, queues, hash tables, trees, graphs, and heaps.",
+        keyPoints: [
+            "Data structures organize information.",
+            "Different structures support different operations.",
+            "Arrays store ordered collections.",
+            "Stacks use last-in-first-out behavior.",
+            "Queues commonly use first-in-first-out behavior."
+        ],
+        related: ["algorithms", "programming", "python"]
+    },
+
+
+    "version-control": {
+        title: "Version Control",
+        category: "Programming",
+        icon: "🔄",
+        keywords: ["version control", "git", "github", "source control", "repository"],
+        quickAnswer:
+            "Version control systems track changes to files so developers can manage, compare, and collaborate on code.",
+        howItWorks:
+            "A version control system records changes as versions or commits, allowing developers to review history and work with different branches.",
+        whyItMatters:
+            "Version control helps developers track work, recover earlier versions, collaborate, and manage software projects.",
+        example:
+            "Git can record changes to a programming project and allow those changes to be shared through a hosting service.",
+        deepDive:
+            "Git is a distributed version control system. Platforms such as GitHub provide hosting and collaboration features around Git repositories.",
+        keyPoints: [
+            "Version control tracks changes.",
+            "Git is a popular version control system.",
+            "Commits record changes.",
+            "Branches can support separate lines of development.",
+            "Repositories contain project history."
+        ],
+        related: ["programming", "software-development", "github"]
+    },
+
+
+    "software-development": {
+        title: "Software Development",
+        category: "Programming",
+        icon: "🛠️",
+        keywords: ["software development", "development", "coding", "programming", "software engineering"],
+        quickAnswer:
+            "Software development is the process of designing, creating, testing, deploying, and maintaining software.",
+        howItWorks:
+            "Development typically involves requirements, design, implementation, testing, deployment, monitoring, and ongoing maintenance.",
+        whyItMatters:
+            "A structured development process helps teams build reliable and maintainable software.",
+        example:
+            "A development team might design a web application, write the code, test it, deploy it, and continue improving it.",
+        deepDive:
+            "Software development can use methodologies such as agile approaches, continuous integration, automated testing, code review, and version control.",
+        keyPoints: [
+            "Development includes more than writing code.",
+            "Testing is an important part of development.",
+            "Version control helps manage source code.",
+            "Software requires maintenance after release.",
+            "Development processes vary between teams."
+        ],
+        related: ["programming", "version-control", "software"]
+    },
+
+
+    "web-development": {
+        title: "Web Development",
+        category: "Programming",
+        icon: "🌐",
+        keywords: ["web development", "website development", "frontend", "backend", "web programming"],
+        quickAnswer:
+            "Web development is the process of creating websites and web applications.",
+        howItWorks:
+            "Web development commonly combines browser-side technologies with server-side software, databases, APIs, and network protocols.",
+        whyItMatters:
+            "Web technologies power websites, online services, web applications, and many digital products.",
+        example:
+            "A website can use HTML for structure, CSS for presentation, and JavaScript for interactive behavior.",
+        deepDive:
+            "Web development can include frontend development, backend development, databases, APIs, authentication, deployment, performance, and security.",
+        keyPoints: [
+            "Web development creates websites and web applications.",
+            "HTML provides structure.",
+            "CSS controls presentation.",
+            "JavaScript can provide interactivity.",
+            "Backend systems can process requests and data."
+        ],
+        related: ["html", "css", "javascript"]
+    },
+
+
+    html: {
+        title: "HTML",
+        category: "Programming",
+        icon: "📄",
+        keywords: ["html", "hypertext markup language", "web pages", "markup"],
+        quickAnswer:
+            "HTML is the markup language used to structure content on web pages.",
+        howItWorks:
+            "Browsers parse HTML documents and build a document structure that can be displayed and manipulated by other web technologies.",
+        whyItMatters:
+            "HTML provides the basic structure for websites and web documents.",
+        example:
+            "HTML can define headings, paragraphs, links, images, forms, and other page elements.",
+        deepDive:
+            "HTML uses elements and attributes to describe document structure and meaning. Modern HTML is standardized as part of the HTML Living Standard.",
+        keyPoints: [
+            "HTML stands for HyperText Markup Language.",
+            "HTML provides structure.",
+            "Browsers parse HTML.",
+            "HTML uses elements and attributes.",
+            "HTML works with CSS and JavaScript."
+        ],
+        related: ["css", "javascript", "web-development"]
+    },
+
+
+    css: {
+        title: "CSS",
+        category: "Programming",
+        icon: "🎨",
+        keywords: ["css", "cascading style sheets", "web design", "styling"],
+        quickAnswer:
+            "CSS is a stylesheet language used to control the presentation and layout of web pages.",
+        howItWorks:
+            "Browsers apply CSS rules to HTML elements to determine properties such as colors, sizes, spacing, positioning, and responsive layouts.",
+        whyItMatters:
+            "CSS allows developers to create readable, responsive, and visually organized websites.",
+        example:
+            "CSS can change the size, spacing, alignment, and appearance of a navigation bar.",
+        deepDive:
+            "CSS includes selectors, the cascade, inheritance, layout systems such as Flexbox and Grid, media queries, animations, and many other features.",
+        keyPoints: [
+            "CSS controls presentation.",
+            "CSS works with HTML.",
+            "Selectors target elements.",
+            "Flexbox and Grid help with layout.",
+            "Media queries support responsive design."
+        ],
+        related: ["html", "javascript", "web-development"]
+    },
+
+
+    javascript: {
+        title: "JavaScript",
+        category: "Programming",
+        icon: "⚡",
+        keywords: ["javascript", "js", "web scripting", "frontend javascript"],
+        quickAnswer:
+            "JavaScript is a programming language widely used to add behavior and interactivity to web pages and applications.",
+        howItWorks:
+            "Browsers execute JavaScript using a JavaScript engine. Scripts can interact with page elements, respond to events, make network requests, and process data.",
+        whyItMatters:
+            "JavaScript is a core technology of modern interactive web applications.",
+        example:
+            "JavaScript can respond when a user clicks a button and then update content on the page.",
+        deepDive:
+            "JavaScript supports asynchronous programming, objects, functions, modules, APIs, and many modern language features.",
+        keyPoints: [
+            "JavaScript is a programming language.",
+            "Browsers can execute JavaScript.",
+            "JavaScript can modify web pages.",
+            "JavaScript can respond to user events.",
+            "JavaScript can communicate with web services."
+        ],
+        related: ["html", "css", "web-development"]
+    },
+
+
+    "database": {
+        title: "Database",
+        category: "Software",
+        icon: "🗄️",
+        keywords: ["database", "databases", "data storage", "sql", "nosql"],
+        quickAnswer:
+            "A database is an organized system for storing, managing, and retrieving data.",
+        howItWorks:
+            "Database systems store data according to a defined model and provide mechanisms for querying, updating, indexing, and protecting that data.",
+        whyItMatters:
+            "Databases allow applications to reliably manage large amounts of structured or semi-structured information.",
+        example:
+            "A website might store user accounts, products, posts, and settings in a database.",
+        deepDive:
+            "Relational databases organize data into tables and commonly use SQL. Other database models include document, key-value, graph, and wide-column systems.",
+        keyPoints: [
+            "Databases store organized information.",
+            "Applications use databases to persist data.",
+            "SQL is common with relational databases.",
+            "Indexes can improve query performance.",
+            "Different database models fit different use cases."
+        ],
+        related: ["sql", "web-development", "servers"]
+    },
+
+
+    sql: {
+        title: "SQL",
+        category: "Programming",
+        icon: "🗃️",
+        keywords: ["sql", "structured query language", "database queries"],
+        quickAnswer:
+            "SQL is a language used to work with many relational databases.",
+        howItWorks:
+            "SQL statements can retrieve, insert, update, and delete data and can also define database structures and permissions depending on the database system.",
+        whyItMatters:
+            "SQL provides a standard way to interact with relational data.",
+        example:
+            "An application can use a SQL query to retrieve customer records that match certain conditions.",
+        deepDive:
+            "SQL includes commands for data definition, manipulation, querying, transactions, and other database operations.",
+        keyPoints: [
+            "SQL stands for Structured Query Language.",
+            "SQL is widely used with relational databases.",
+            "SQL can retrieve data.",
+            "SQL can modify data.",
+            "SQL syntax varies somewhat between database systems."
+        ],
+        related: ["database", "programming", "servers"]
+    },
+
+
+    "computer-network": {
+        title: "Computer Network",
+        category: "Internet & Networking",
+        icon: "🌐",
+        keywords: ["network", "computer network", "networking", "lan", "wan"],
+        quickAnswer:
+            "A computer network is a group of connected devices that can exchange data and share resources.",
+        howItWorks:
+            "Networks use communication protocols, addressing systems, physical or wireless links, and networking hardware to move data between devices.",
+        whyItMatters:
+            "Networks allow computers and other devices to communicate and share services.",
+        example:
+            "A home network can connect phones, computers, printers, smart TVs, and other devices.",
+        deepDive:
+            "Networks can range from small local networks to large interconnected systems such as the Internet.",
+        keyPoints: [
+            "Networks connect devices.",
+            "Networks use communication protocols.",
+            "LANs cover local areas.",
+            "WANs connect larger geographic areas.",
+            "The Internet is a global network of networks."
+        ],
+        related: ["router", "network-switch", "internet"]
+    },
+
+
+    internet: {
+        title: "Internet",
+        category: "Internet & Networking",
+        icon: "🌎",
+        keywords: ["internet", "online", "world wide web", "network of networks"],
+        quickAnswer:
+            "The Internet is a global system of interconnected networks that communicate using standardized protocols.",
+        howItWorks:
+            "Devices and networks exchange packets using Internet protocols such as IP, while higher-level protocols provide services such as web browsing, email, and DNS.",
+        whyItMatters:
+            "The Internet provides the infrastructure for a huge range of communication and online services.",
+        example:
+            "When you visit a website, your device communicates across networks using Internet protocols to reach the site's servers.",
+        deepDive:
+            "The Internet is decentralized and consists of many independently operated networks connected through routing systems and shared protocols.",
+        keyPoints: [
+            "The Internet is a network of networks.",
+            "IP is a fundamental Internet protocol.",
+            "Packets carry network data.",
+            "Routers connect different networks.",
+            "The Web is a service that runs over the Internet."
+        ],
+        related: ["ip-address", "dns", "web-browser"]
+    },
+
+
+    ethernet: {
+        title: "Ethernet",
+        category: "Internet & Networking",
+        icon: "🔌",
+        keywords: ["ethernet", "wired network", "network cable", "lan"],
+        quickAnswer:
+            "Ethernet is a family of wired networking technologies commonly used to connect devices within local networks.",
+        howItWorks:
+            "Ethernet sends network frames across physical connections such as twisted-pair cables or fiber-optic links.",
+        whyItMatters:
+            "Ethernet provides reliable wired networking for computers, servers, switches, routers, and many other devices.",
+        example:
+            "A desktop PC can connect to a router or switch using an Ethernet cable.",
+        deepDive:
+            "Ethernet standards support different speeds and physical media. Modern Ethernet can operate from common gigabit speeds to much higher data rates.",
+        keyPoints: [
+            "Ethernet is commonly wired.",
+            "Ethernet is widely used in local networks.",
+            "Ethernet uses frames.",
+            "Ethernet can provide high-speed connections.",
+            "Ethernet connections can be made through switches and routers."
+        ],
+        related: ["network-switch", "router", "wifi"]
+    },
+
+
+    router: {
+        title: "Router",
+        category: "Internet & Networking",
+        icon: "📡",
+        keywords: ["router", "routing", "network router"],
+        quickAnswer:
+            "A router connects networks and forwards network traffic toward its destination.",
+        howItWorks:
+            "Routers examine packet addressing information and use routing information to determine where packets should be forwarded.",
+        whyItMatters:
+            "Routers allow different networks to communicate, including connections between home networks and the Internet.",
+        example:
+            "Your home router connects devices on your local network to your Internet service provider.",
+        deepDive:
+            "Routers can maintain routing tables, perform network address translation, provide firewall functions, and support wireless access depending on the device.",
+        keyPoints: [
+            "Routers connect networks.",
+            "Routers forward packets.",
+            "Routing decisions use destination information.",
+            "Home routers often provide several networking functions.",
+            "Routers are different from switches."
+        ],
+        related: ["ip-address", "network-switch", "dhcp"]
+    },
+
+
+    "network-switch": {
+        title: "Network Switch",
+        category: "Internet & Networking",
+        icon: "🔀",
+        keywords: ["switch", "network switch", "ethernet switch", "lan switch"],
+        quickAnswer:
+            "A network switch connects devices within a local network and forwards Ethernet frames to appropriate ports.",
+        howItWorks:
+            "A switch learns which devices are reachable through its ports and uses that information to forward frames.",
+        whyItMatters:
+            "Switches allow many wired devices to communicate efficiently on a local network.",
+        example:
+            "A business can connect dozens of computers to a network switch using Ethernet cables.",
+        deepDive:
+            "Most modern switches use MAC addresses to make forwarding decisions. Managed switches can provide additional configuration and monitoring features.",
+        keyPoints: [
+            "Switches commonly connect devices on LANs.",
+            "They forward Ethernet frames.",
+            "Switches learn device locations.",
+            "Managed switches offer additional configuration.",
+            "Switches and routers serve different primary purposes."
+        ],
+        related: ["ethernet", "router", "ip-address"]
+    },
+
+
+    "ip-address": {
+        title: "IP Address",
+        category: "Internet & Networking",
+        icon: "🌐",
+        keywords: ["ip", "ip address", "ipv4", "ipv6", "internet protocol"],
+        quickAnswer:
+            "An IP address is an identifier associated with a network interface that helps deliver network traffic.",
+        howItWorks:
+            "IP addressing allows packets to contain source and destination addressing information used by networks.",
+        whyItMatters:
+            "IP addressing provides a fundamental way for devices and networks to communicate.",
+        example:
+            "Devices on a home network can have private IP addresses while the router communicates with the wider Internet.",
+        deepDive:
+            "IPv4 uses 32-bit addresses and IPv6 uses 128-bit addresses. IPv6 provides a vastly larger address space.",
+        keyPoints: [
+            "IP means Internet Protocol.",
+            "IPv4 and IPv6 are major versions.",
+            "Private and public addresses have different uses.",
+            "IP addresses help route packets.",
+            "IP addresses are different from domain names."
+        ],
+        related: ["dns", "router", "internet"]
+    },
+
+
+    dns: {
+        title: "DNS — Domain Name System",
+        category: "Internet & Networking",
+        icon: "🔎",
+        keywords: ["dns", "domain name system", "domain", "name resolution"],
+        quickAnswer:
+            "DNS provides a naming system that helps translate domain names into network information such as IP addresses.",
+        howItWorks:
+            "A DNS resolver obtains information from DNS servers so a device can determine where a requested domain's services are located.",
+        whyItMatters:
+            "DNS lets people use memorable names instead of having to remember numerical IP addresses.",
+        example:
+            "When you enter a website domain into a browser, DNS helps determine where the website can be reached.",
+        deepDive:
+            "DNS uses a distributed hierarchy involving root servers, top-level domain servers, authoritative servers, and recursive resolvers.",
+        keyPoints: [
+            "DNS means Domain Name System.",
+            "DNS provides name resolution.",
+            "DNS is distributed.",
+            "DNS can contain several record types.",
+            "DNS is essential to many Internet services."
+        ],
+        related: ["ip-address", "web-browser", "internet"]
+    },
+
+
+    dhcp: {
+        title: "DHCP",
+        category: "Internet & Networking",
+        icon: "📋",
+        keywords: ["dhcp", "dynamic host configuration protocol", "ip assignment"],
+        quickAnswer:
+            "DHCP automatically provides network configuration information to devices joining a network.",
+        howItWorks:
+            "A DHCP server can provide information such as an IP address, subnet configuration, gateway, and DNS servers.",
+        whyItMatters:
+            "DHCP saves administrators and users from manually configuring every device on many networks.",
+        example:
+            "When your phone joins a home Wi-Fi network, the router can automatically provide it with network configuration.",
+        deepDive:
+            "DHCP uses a client-server process that includes discovery, offers, requests, and acknowledgments.",
+        keyPoints: [
+            "DHCP automates network configuration.",
+            "It can assign IP addresses.",
+            "It can provide gateway information.",
+            "It can provide DNS server information.",
+            "It reduces manual configuration."
+        ],
+        related: ["ip-address", "router", "dns"]
+    },
+
+
+    "http-https": {
+        title: "HTTP & HTTPS",
+        category: "Internet & Networking",
+        icon: "🔐",
+        keywords: ["http", "https", "web protocol", "tls", "web traffic"],
+        quickAnswer:
+            "HTTP is a protocol used to exchange web information, while HTTPS uses HTTP over a protected TLS connection.",
+        howItWorks:
+            "A browser sends requests to a web server and receives responses. HTTPS adds cryptographic protection to the connection.",
+        whyItMatters:
+            "HTTPS helps protect information exchanged between a browser and a website against certain forms of interception or modification.",
+        example:
+            "When you visit a secure website, your browser commonly uses HTTPS to communicate with the server.",
+        deepDive:
+            "HTTPS relies on TLS to provide encryption, authentication, and integrity protections for network communication.",
+        keyPoints: [
+            "HTTP is a web communication protocol.",
+            "HTTPS uses TLS protection.",
+            "HTTPS helps protect data in transit.",
+            "Browsers and servers communicate using requests and responses.",
+            "HTTPS does not make a website automatically trustworthy."
+        ],
+        related: ["web-browser", "dns", "internet"]
+    },
+
+
+    "web-browser": {
+        title: "Web Browser",
+        category: "Internet & Networking",
+        icon: "🌎",
+        keywords: ["browser", "web browser", "chrome", "firefox", "safari", "edge"],
+        quickAnswer:
+            "A web browser is software that retrieves and displays content from websites and web applications.",
+        howItWorks:
+            "The browser resolves domain names, establishes network connections, requests resources, interprets web technologies, and renders pages.",
+        whyItMatters:
+            "Browsers provide the main interface through which people interact with the World Wide Web.",
+        example:
+            "Chrome, Firefox, Safari, and Edge can retrieve a website and display its HTML, CSS, JavaScript, images, and other resources.",
+        deepDive:
+            "Modern browsers contain networking systems, rendering engines, JavaScript engines, security features, storage systems, and sandboxing technologies.",
+        keyPoints: [
+            "Browsers display web content.",
+            "They communicate with web servers.",
+            "They interpret HTML, CSS, and JavaScript.",
+            "Browsers include security features.",
+            "Modern browsers are complex software platforms."
+        ],
+        related: ["html", "css", "javascript"]
+    },    "search-engine": {
+        title: "Search Engine",
+        category: "Internet & Networking",
+        icon: "🔍",
+        keywords: ["search engine", "google", "bing", "web search"],
+        quickAnswer:
+            "A search engine is a system that helps people find information on the Internet by searching an indexed collection of web content.",
+        howItWorks:
+            "Search engines discover web pages, analyze and index their content, and then use ranking systems to return relevant results for user queries.",
+        whyItMatters:
+            "Search engines make it easier to locate information across the enormous amount of content available online.",
+        example:
+            "A person can search for a programming concept and receive a list of relevant web pages.",
+        deepDive:
+            "Search engines commonly use crawlers, indexes, ranking systems, query processing, and many other technologies to provide results.",
+        keyPoints: [
+            "Search engines help locate information.",
+            "Search engines maintain indexes.",
+            "Crawlers discover web content.",
+            "Ranking systems determine result order.",
+            "Search engines process user queries."
+        ],
+        related: ["internet", "web-browser", "dns"]
+    },
+
+
+    "web-server": {
+        title: "Web Server",
+        category: "Internet & Networking",
+        icon: "🖥️",
+        keywords: [
+            "web server",
+            "website server",
+            "http server",
+            "web hosting server"
+        ],
+        quickAnswer:
+            "A web server is software or a computer system that receives web requests and provides web content or services in response.",
+        howItWorks:
+            "A browser sends an HTTP or HTTPS request to a web server. The server processes the request and sends back a response such as an HTML page, image, file, or API result.",
+        whyItMatters:
+            "Web servers provide the infrastructure that allows websites and web applications to be accessed over networks.",
+        example:
+            "When you open a website, a web server can receive your browser's request and return the requested page.",
+        deepDive:
+            "Web servers can serve static files or forward requests to application software that generates dynamic responses.",
+        keyPoints: [
+            "Web servers handle web requests.",
+            "HTTP and HTTPS are commonly used.",
+            "Servers can deliver files.",
+            "Servers can communicate with application software.",
+            "Web servers are an important part of website infrastructure."
+        ],
+        related: ["http-https", "website-hosting", "computer-server"]
+    },
+
+
+    "computer-server": {
+        title: "Computer Server",
+        category: "Computers",
+        icon: "🖥️",
+        keywords: [
+            "server",
+            "computer server",
+            "server computer",
+            "server machine"
+        ],
+        quickAnswer:
+            "A server is a computer or software system that provides services or resources to other computers called clients.",
+        howItWorks:
+            "A server listens for requests and responds using a defined protocol. Servers can provide websites, files, databases, email, applications, and many other services.",
+        whyItMatters:
+            "Servers allow shared services and resources to be provided to many users or devices.",
+        example:
+            "A file server can store files that authorized computers access across a network.",
+        deepDive:
+            "Servers can be physical computers, virtual machines, containers, or cloud-based systems. A single computer can provide several different services.",
+        keyPoints: [
+            "Servers provide services or resources.",
+            "Clients request services from servers.",
+            "Servers can be physical or virtual.",
+            "Servers can provide many different services.",
+            "A server is not necessarily a special type of computer hardware."
+        ],
+        related: ["web-server", "database", "cloud-computing"]
+    },
+
+
+    "website-hosting": {
+        title: "Website Hosting",
+        category: "Internet & Networking",
+        icon: "🏠",
+        keywords: [
+            "hosting",
+            "website hosting",
+            "web hosting",
+            "host a website"
+        ],
+        quickAnswer:
+            "Website hosting is a service or infrastructure that makes website files and applications available over the Internet.",
+        howItWorks:
+            "A hosting system stores or runs website resources on connected servers so visitors can request and receive them through web protocols.",
+        whyItMatters:
+            "Hosting allows a website to be available to people outside the developer's own computer.",
+        example:
+            "A static website can be hosted on a platform that serves its HTML, CSS, JavaScript, and image files.",
+        deepDive:
+            "Hosting options include static hosting, shared hosting, virtual servers, dedicated servers, and cloud platforms.",
+        keyPoints: [
+            "Hosting makes websites available online.",
+            "Hosting can serve static files.",
+            "Dynamic sites may require application servers.",
+            "Hosting providers supply computing infrastructure.",
+            "Different hosting types have different capabilities and costs."
+        ],
+        related: ["web-server", "domain-name", "cloud-computing"]
+    },
+
+
+    "domain-name": {
+        title: "Domain Name",
+        category: "Internet & Networking",
+        icon: "🌐",
+        keywords: [
+            "domain",
+            "domain name",
+            "website domain",
+            "url domain",
+            "dns domain"
+        ],
+        quickAnswer:
+            "A domain name is a human-readable name used to identify an Internet resource, commonly a website.",
+        howItWorks:
+            "DNS translates domain names into information used by networked systems, such as IP addresses for websites.",
+        whyItMatters:
+            "Domain names provide memorable names instead of requiring users to remember numerical network addresses.",
+        example:
+            "A website can use a domain name such as example.com instead of asking visitors to type an IP address.",
+        deepDive:
+            "Domain names are hierarchical and consist of labels separated by dots. Domain registration and DNS hosting are related but separate services.",
+        keyPoints: [
+            "Domain names are human-readable Internet names.",
+            "DNS helps resolve domain names.",
+            "Domains have hierarchical structures.",
+            "A domain and website hosting are different things.",
+            "Domains can be registered through registrars."
+        ],
+        related: ["dns", "website-hosting", "internet"]
+    },
+
+
+    "url": {
+        title: "URL — Uniform Resource Locator",
+        category: "Internet & Networking",
+        icon: "🔗",
+        keywords: [
+            "url",
+            "uniform resource locator",
+            "web address",
+            "website address"
+        ],
+        quickAnswer:
+            "A URL is an address that identifies a resource and provides information about how it can be accessed.",
+        howItWorks:
+            "A URL can specify a scheme such as HTTPS, a domain, a path, and sometimes a query string or fragment.",
+        whyItMatters:
+            "URLs allow browsers and other software to identify and request specific resources.",
+        example:
+            "A web address can contain a protocol, domain name, path, and query parameters.",
+        deepDive:
+            "URL syntax can include schemes, authentication information, hostnames, ports, paths, queries, and fragments depending on the resource.",
+        keyPoints: [
+            "URL means Uniform Resource Locator.",
+            "URLs identify resources.",
+            "HTTPS is a common URL scheme.",
+            "URLs can contain paths and queries.",
+            "A URL is not exactly the same thing as a domain name."
+        ],
+        related: ["domain-name", "http-https", "web-browser"]
+    },
+
+
+    "cloud-computing": {
+        title: "Cloud Computing",
+        category: "Technology",
+        icon: "☁️",
+        keywords: [
+            "cloud",
+            "cloud computing",
+            "cloud services",
+            "cloud infrastructure"
+        ],
+        quickAnswer:
+            "Cloud computing provides computing resources such as servers, storage, databases, and applications through network-accessible infrastructure.",
+        howItWorks:
+            "Cloud providers operate large pools of computing resources and allow customers to use them through management interfaces, APIs, and other services.",
+        whyItMatters:
+            "Cloud computing can provide scalable infrastructure without requiring organizations to own and maintain all of the physical hardware themselves.",
+        example:
+            "A company can run a web application on cloud servers instead of maintaining its own physical data center.",
+        deepDive:
+            "Cloud services can include infrastructure, platforms, software, storage, databases, networking, machine learning, and many other capabilities.",
+        keyPoints: [
+            "Cloud computing uses remote infrastructure.",
+            "Cloud providers operate physical data centers.",
+            "Resources can often scale up or down.",
+            "Cloud services can be accessed through APIs.",
+            "Cloud computing does not mean data exists in an abstract location; physical infrastructure still exists."
+        ],
+        related: ["computer-server", "website-hosting", "artificial-intelligence"]
+    },
+
+
+    "virtual-machine": {
+        title: "Virtual Machine",
+        category: "Technology",
+        icon: "🖥️",
+        keywords: [
+            "virtual machine",
+            "vm",
+            "virtualization",
+            "virtual computer"
+        ],
+        quickAnswer:
+            "A virtual machine is a software-created computer environment that runs on physical hardware.",
+        howItWorks:
+            "A hypervisor or virtualization system provides virtual hardware resources to a guest operating system running inside the virtual machine.",
+        whyItMatters:
+            "Virtual machines allow multiple isolated computing environments to share physical hardware.",
+        example:
+            "A developer can run a Linux virtual machine on a Windows computer for testing software.",
+        deepDive:
+            "Virtualization abstracts CPU, memory, storage, and networking resources. Virtual machines can be used for development, testing, servers, security research, and cloud computing.",
+        keyPoints: [
+            "VM means Virtual Machine.",
+            "A VM simulates a computer environment.",
+            "VMs run guest operating systems.",
+            "Hypervisors manage virtualization.",
+            "Multiple VMs can share physical hardware."
+        ],
+        related: ["cloud-computing", "operating-system", "computer-server"]
+    },
+
+
+    "cybersecurity": {
+        title: "Cybersecurity",
+        category: "Cybersecurity",
+        icon: "🛡️",
+        keywords: [
+            "cybersecurity",
+            "cyber security",
+            "information security",
+            "computer security",
+            "security"
+        ],
+        quickAnswer:
+            "Cybersecurity is the practice of protecting computers, networks, systems, applications, and data from unauthorized access, misuse, disruption, or damage.",
+        howItWorks:
+            "Cybersecurity combines technologies, processes, policies, monitoring, secure design, authentication, access controls, and user awareness to reduce security risks.",
+        whyItMatters:
+            "Modern systems contain valuable information and provide important services, making security an important part of technology.",
+        example:
+            "Using strong authentication and keeping software updated are common cybersecurity practices.",
+        deepDive:
+            "Cybersecurity includes areas such as network security, application security, cloud security, identity management, incident response, vulnerability management, and security operations.",
+        keyPoints: [
+            "Cybersecurity protects digital systems and information.",
+            "Security involves both technology and people.",
+            "Authentication verifies identity.",
+            "Access control determines permissions.",
+            "Security is an ongoing process."
+        ],
+        related: ["authentication", "firewall", "malware"]
+    },
+
+
+    "malware": {
+        title: "Malware",
+        category: "Cybersecurity",
+        icon: "🦠",
+        keywords: [
+            "malware",
+            "malicious software",
+            "virus",
+            "trojan",
+            "ransomware",
+            "spyware"
+        ],
+        quickAnswer:
+            "Malware is software intentionally designed to perform harmful, unauthorized, or unwanted actions.",
+        howItWorks:
+            "Different types of malware use different techniques to execute, spread, collect information, disrupt systems, or perform other malicious actions.",
+        whyItMatters:
+            "Malware can affect confidentiality, integrity, availability, and the normal operation of systems.",
+        example:
+            "Ransomware is a type of malware associated with restricting access to data or systems and demanding payment.",
+        deepDive:
+            "Malware categories include viruses, worms, trojans, ransomware, spyware, rootkits, and other malicious programs. A single piece of malware can exhibit characteristics of multiple categories.",
+        keyPoints: [
+            "Malware means malicious software.",
+            "Viruses and worms are different concepts.",
+            "Trojans disguise malicious functionality.",
+            "Ransomware can disrupt access to data.",
+            "Security software and safe practices can reduce risk."
+        ],
+        related: ["cybersecurity", "antivirus", "phishing"]
+    },
+
+
+    phishing: {
+        title: "Phishing",
+        category: "Cybersecurity",
+        icon: "🎣",
+        keywords: [
+            "phishing",
+            "phishing attack",
+            "fake email",
+            "scam message",
+            "credential theft"
+        ],
+        quickAnswer:
+            "Phishing is a social engineering technique that attempts to trick people into revealing information or taking an unsafe action.",
+        howItWorks:
+            "An attacker may send a deceptive message or create a fraudulent website designed to appear legitimate and persuade a person to provide information or interact with malicious content.",
+        whyItMatters:
+            "Phishing can lead to compromised accounts, stolen information, malware infections, or financial losses.",
+        example:
+            "A fraudulent message might imitate a legitimate service and ask a user to sign in through a deceptive link.",
+        deepDive:
+            "Phishing can occur through email, text messages, social media, phone calls, and other communication channels. Targeted phishing is often called spear phishing.",
+        keyPoints: [
+            "Phishing relies heavily on deception.",
+            "Messages may imitate legitimate organizations.",
+            "Links should be checked carefully.",
+            "Unexpected requests for sensitive information deserve caution.",
+            "Multi-factor authentication can reduce the impact of stolen passwords."
+        ],
+        related: ["cybersecurity", "authentication", "social-engineering"]
+    },
+
+
+    "social-engineering": {
+        title: "Social Engineering",
+        category: "Cybersecurity",
+        icon: "🧠",
+        keywords: [
+            "social engineering",
+            "human manipulation",
+            "security awareness",
+            "psychological manipulation"
+        ],
+        quickAnswer:
+            "Social engineering involves manipulating people into revealing information, granting access, or performing actions that benefit an attacker.",
+        howItWorks:
+            "Attackers may use trust, urgency, authority, fear, curiosity, or other psychological techniques to influence a target.",
+        whyItMatters:
+            "Even strong technical security controls can be undermined when users are manipulated into bypassing them.",
+        example:
+            "An attacker may pretend to be a support employee and ask a user to reveal account information.",
+        deepDive:
+            "Social engineering can include phishing, pretexting, baiting, impersonation, and other deception-based techniques.",
+        keyPoints: [
+            "Social engineering targets people.",
+            "Attackers may impersonate trusted individuals.",
+            "Urgency is commonly used as a manipulation technique.",
+            "Security awareness can reduce risk.",
+            "Sensitive information should not be shared simply because someone asks for it."
+        ],
+        related: ["phishing", "cybersecurity", "authentication"]
+    },
+
+
+    authentication: {
+        title: "Authentication",
+        category: "Cybersecurity",
+        icon: "🔑",
+        keywords: [
+            "authentication",
+            "login",
+            "identity verification",
+            "password",
+            "mfa"
+        ],
+        quickAnswer:
+            "Authentication is the process of verifying that someone or something is the identity it claims to be.",
+        howItWorks:
+            "Authentication can use factors such as passwords, possession of a device or token, or biometric characteristics.",
+        whyItMatters:
+            "Authentication helps systems determine who or what is attempting to access a resource.",
+        example:
+            "Entering a password and completing a verification step can authenticate a user to an account.",
+        deepDive:
+            "Authentication is different from authorization. Authentication establishes identity, while authorization determines what an authenticated identity is allowed to do.",
+        keyPoints: [
+            "Authentication verifies identity.",
+            "Passwords are one authentication factor.",
+            "Multi-factor authentication uses multiple factors.",
+            "Authentication and authorization are different.",
+            "Strong authentication can reduce account compromise."
+        ],
+        related: ["authorization", "password-security", "cybersecurity"]
+    },
+
+
+    authorization: {
+        title: "Authorization",
+        category: "Cybersecurity",
+        icon: "🚪",
+        keywords: [
+            "authorization",
+            "permissions",
+            "access control",
+            "privileges"
+        ],
+        quickAnswer:
+            "Authorization determines what an authenticated user, system, or process is allowed to access or do.",
+        howItWorks:
+            "After identity is established, an access-control system evaluates permissions and determines whether the requested action is allowed.",
+        whyItMatters:
+            "Authorization limits access to resources and helps prevent users or programs from performing actions they should not be allowed to perform.",
+        example:
+            "A regular user might be allowed to read a file while an administrator is allowed to modify it.",
+        deepDive:
+            "Authorization models can include role-based access control, attribute-based access control, access control lists, and policy-based systems.",
+        keyPoints: [
+            "Authorization controls permissions.",
+            "Authentication verifies identity.",
+            "Least privilege limits unnecessary access.",
+            "Permissions can be assigned through roles.",
+            "Access-control policies should match business or system requirements."
+        ],
+        related: ["authentication", "cybersecurity", "password-security"]
+    },
+
+
+    "password-security": {
+        title: "Password Security",
+        category: "Cybersecurity",
+        icon: "🔐",
+        keywords: [
+            "password security",
+            "strong passwords",
+            "passwords",
+            "password manager",
+            "credential security"
+        ],
+        quickAnswer:
+            "Password security involves protecting passwords and using authentication practices that make account compromise more difficult.",
+        howItWorks:
+            "Secure systems should store passwords using appropriate password-hashing techniques rather than storing them as readable text. Users can reduce risk by using unique passwords and strong authentication.",
+        whyItMatters:
+            "Compromised passwords can provide unauthorized access to accounts and systems.",
+        example:
+            "Using a unique password for each important account reduces the chance that one stolen password compromises multiple accounts.",
+        deepDive:
+            "Password managers can generate and store unique passwords. Multi-factor authentication provides another layer of protection.",
+        keyPoints: [
+            "Avoid reusing important passwords.",
+            "Password managers can help manage unique passwords.",
+            "Passwords should be stored securely by services.",
+            "Multi-factor authentication adds protection.",
+            "Never share passwords unnecessarily."
+        ],
+        related: ["authentication", "cybersecurity", "phishing"]
+    },
+
+
+    "firewall": {
+        title: "Firewall",
+        category: "Cybersecurity",
+        icon: "🧱",
+        keywords: [
+            "firewall",
+            "network firewall",
+            "security firewall",
+            "packet filtering"
+        ],
+        quickAnswer:
+            "A firewall controls or filters network traffic according to defined security rules.",
+        howItWorks:
+            "A firewall examines network traffic and allows or blocks connections based on configured policies and characteristics.",
+        whyItMatters:
+            "Firewalls can help limit unwanted network communication and reduce exposure to certain threats.",
+        example:
+            "A firewall can allow approved network connections while blocking traffic that violates its rules.",
+        deepDive:
+            "Firewalls can operate on individual devices or at network boundaries and can use different techniques such as packet filtering, stateful inspection, and application-aware policies.",
+        keyPoints: [
+            "Firewalls filter network traffic.",
+            "Rules determine what traffic is allowed.",
+            "Firewalls can run on computers or network devices.",
+            "Firewalls are one layer of security.",
+            "A firewall does not replace other security controls."
+        ],
+        related: ["cybersecurity", "router", "network-security"]
+    },
+
+
+    "antivirus": {
+        title: "Antivirus Software",
+        category: "Cybersecurity",
+        icon: "🛡️",
+        keywords: [
+            "antivirus",
+            "anti-malware",
+            "malware protection",
+            "virus scanner"
+        ],
+        quickAnswer:
+            "Antivirus or anti-malware software helps detect, block, and remove malicious software.",
+        howItWorks:
+            "Security software can use signatures, behavioral analysis, reputation information, heuristics, and other techniques to identify suspicious or malicious activity.",
+        whyItMatters:
+            "Malicious software can compromise systems, so automated detection and protection can provide an important security layer.",
+        example:
+            "Security software may scan a downloaded file and warn the user if it appears malicious.",
+        deepDive:
+            "Modern endpoint security products often provide capabilities beyond traditional virus scanning, including behavior monitoring and threat detection.",
+        keyPoints: [
+            "Antivirus software helps detect malware.",
+            "Modern security products use multiple detection techniques.",
+            "Security software should be kept updated.",
+            "No security tool detects every possible threat.",
+            "Safe user behavior remains important."
+        ],
+        related: ["malware", "cybersecurity", "firewall"]
+    },
+
+
+    "network-security": {
+        title: "Network Security",
+        category: "Cybersecurity",
+        icon: "🔒",
+        keywords: [
+            "network security",
+            "network protection",
+            "secure networking",
+            "network defense"
+        ],
+        quickAnswer:
+            "Network security is the practice of protecting network infrastructure, traffic, systems, and services from unauthorized access and other threats.",
+        howItWorks:
+            "Network security uses controls such as firewalls, authentication, encryption, segmentation, monitoring, secure configuration, and access policies.",
+        whyItMatters:
+            "Networks connect many systems, making their security important for protecting information and services.",
+        example:
+            "A company can separate sensitive systems into network segments and restrict which devices can communicate with them.",
+        deepDive:
+            "Network security includes perimeter controls, internal segmentation, secure protocols, monitoring, intrusion detection, access control, and incident response.",
+        keyPoints: [
+            "Network security protects connected systems.",
+            "Firewalls can filter traffic.",
+            "Encryption can protect data in transit.",
+            "Segmentation can limit movement between systems.",
+            "Monitoring helps identify suspicious activity."
+        ],
+        related: ["firewall", "encryption", "cybersecurity"]
+    },
+
+
+    "encryption": {
+        title: "Encryption",
+        category: "Cybersecurity",
+        icon: "🔐",
+        keywords: [
+            "encryption",
+            "cryptography",
+            "encrypted data",
+            "data protection"
+        ],
+        quickAnswer:
+            "Encryption transforms readable information into protected ciphertext using a cryptographic process.",
+        howItWorks:
+            "An encryption algorithm uses a key to transform plaintext into ciphertext. Authorized systems can use the appropriate key to recover the original information.",
+        whyItMatters:
+            "Encryption can protect sensitive information from being understood by unauthorized parties who obtain the protected data.",
+        example:
+            "HTTPS uses cryptographic mechanisms to help protect information exchanged between a browser and a website.",
+        deepDive:
+            "Symmetric encryption uses related shared keys for encryption and decryption, while asymmetric cryptography uses public and private keys for different operations.",
+        keyPoints: [
+            "Encryption protects data using cryptography.",
+            "Plaintext is transformed into ciphertext.",
+            "Keys are central to encryption systems.",
+            "Symmetric and asymmetric cryptography have different designs.",
+            "Encryption protects data but does not solve every security problem."
+        ],
+        related: ["cryptography", "http-https", "cybersecurity"]
+    },
+
+
+    cryptography: {
+        title: "Cryptography",
+        category: "Cybersecurity",
+        icon: "🔢",
+        keywords: [
+            "cryptography",
+            "crypto",
+            "cryptographic algorithms",
+            "security mathematics"
+        ],
+        quickAnswer:
+            "Cryptography is the study and practice of techniques for protecting information and communications using mathematical methods.",
+        howItWorks:
+            "Cryptographic systems use algorithms and keys to provide properties such as confidentiality, integrity, authentication, and non-repudiation.",
+        whyItMatters:
+            "Cryptography provides the foundation for many security technologies used in modern computing and networking.",
+        example:
+            "Digital signatures can help verify that data came from a particular key holder and was not changed after signing.",
+        deepDive:
+            "Cryptography includes encryption, hashing, digital signatures, key exchange, authentication protocols, and other techniques.",
+        keyPoints: [
+            "Cryptography uses mathematical techniques.",
+            "Encryption can provide confidentiality.",
+            "Hashing can help verify data integrity.",
+            "Digital signatures provide authentication and integrity properties.",
+            "Keys must be managed securely."
+        ],
+        related: ["encryption", "hashing", "digital-signatures"]
+    },
+
+
+    hashing: {
+        title: "Hashing",
+        category: "Cybersecurity",
+        icon: "#️⃣",
+        keywords: [
+            "hashing",
+            "hash function",
+            "cryptographic hash",
+            "sha",
+            "sha256"
+        ],
+        quickAnswer:
+            "Hashing uses a mathematical function to produce a fixed-size value representing input data.",
+        howItWorks:
+            "A hash function processes input data and produces a digest. Good cryptographic hash functions make it difficult to find different inputs that produce the same result.",
+        whyItMatters:
+            "Hashing is useful for integrity checking, data structures, digital systems, and secure password storage designs.",
+        example:
+            "A software publisher can provide a file's hash so users can compare the downloaded file against the expected value.",
+        deepDive:
+            "Cryptographic hash functions such as SHA-256 are designed with properties including resistance to preimage and collision attacks.",
+        keyPoints: [
+            "Hashes are derived from input data.",
+            "Small input changes can produce very different hashes.",
+            "Cryptographic hashes are designed to resist certain attacks.",
+            "Hashing is not the same as encryption.",
+            "Password systems should use password-specific hashing approaches."
+        ],
+        related: ["cryptography", "encryption", "password-security"]
+    },
+
+
+    "digital-signatures": {
+        title: "Digital Signatures",
+        category: "Cybersecurity",
+        icon: "✍️",
+        keywords: [
+            "digital signature",
+            "digital signatures",
+            "signature",
+            "public key cryptography"
+        ],
+        quickAnswer:
+            "A digital signature is a cryptographic mechanism used to help verify the origin and integrity of digital information.",
+        howItWorks:
+            "A signer uses a private key to create a signature. A verifier uses the corresponding public key to check the signature.",
+        whyItMatters:
+            "Digital signatures can provide evidence that data was signed by someone controlling a particular private key and was not altered after signing.",
+        example:
+            "Software releases can be digitally signed so users and systems can verify their origin and integrity.",
+        deepDive:
+            "Digital signatures typically use public-key cryptography and cryptographic hash functions as part of the signing and verification process.",
+        keyPoints: [
+            "Digital signatures use cryptography.",
+            "Private keys are used to create signatures.",
+            "Public keys are used to verify signatures.",
+            "Signatures can help verify integrity.",
+            "A signature does not automatically prove that a person is trustworthy."
+        ],
+        related: ["cryptography", "hashing", "encryption"]
+    },
+
+
+    "artificial-intelligence": {
+        title: "Artificial Intelligence",
+        category: "Technology",
+        icon: "🤖",
+        keywords: [
+            "ai",
+            "artificial intelligence",
+            "machine intelligence",
+            "ai systems"
+        ],
+        quickAnswer:
+            "Artificial intelligence is a broad field involving computer systems designed to perform tasks that can require capabilities associated with human intelligence.",
+        howItWorks:
+            "AI systems can use algorithms, data, statistical methods, machine learning, rules, or combinations of techniques to produce outputs or decisions.",
+        whyItMatters:
+            "AI is used in areas such as search, recommendations, language processing, computer vision, automation, and scientific research.",
+        example:
+            "An AI system can analyze text and produce a response based on patterns learned or programmed into the system.",
+        deepDive:
+            "AI includes many approaches. Modern machine learning systems often learn patterns from data rather than relying entirely on manually written rules.",
+        keyPoints: [
+            "AI is a broad field.",
+            "AI systems can use different techniques.",
+            "Machine learning is one area of AI.",
+            "AI can process large amounts of data.",
+            "AI systems have limitations and can produce incorrect results."
+        ],
+        related: ["machine-learning", "gpu", "programming"]
+    },
+
+
+    "machine-learning": {
+        title: "Machine Learning",
+        category: "Technology",
+        icon: "🧠",
+        keywords: [
+            "machine learning",
+            "ml",
+            "training",
+            "models",
+            "machine learning models"
+        ],
+        quickAnswer:
+            "Machine learning is a field where computer systems learn patterns from data to make predictions, classifications, or other outputs.",
+        howItWorks:
+            "A machine-learning process typically uses data to train a model. The trained model can then process new inputs and produce predictions or other results.",
+        whyItMatters:
+            "Machine learning can automate pattern recognition and prediction across many domains.",
+        example:
+            "A model can be trained on examples of images and then used to classify new images.",
+        deepDive:
+            "Machine learning includes supervised learning, unsupervised learning, reinforcement learning, and many specialized approaches.",
+        keyPoints: [
+            "Machine learning uses data.",
+            "Models learn patterns from training information.",
+            "Training and inference are different stages.",
+            "Machine learning can perform classification and prediction.",
+            "Model quality depends on data, methods, and evaluation."
+        ],
+        related: ["artificial-intelligence", "gpu", "python"]
+    },
+
+
+    "internet-of-things": {
+        title: "Internet of Things — IoT",
+        category: "Technology",
+        icon: "📡",
+        keywords: [
+            "iot",
+            "internet of things",
+            "smart devices",
+            "connected devices"
+        ],
+        quickAnswer:
+            "The Internet of Things refers to physical devices that contain computing and networking capabilities and can communicate with other systems.",
+        howItWorks:
+            "IoT devices can collect information through sensors, communicate over networks, process data, and sometimes control physical systems.",
+        whyItMatters:
+            "Connected devices are used in homes, businesses, manufacturing, transportation, healthcare, agriculture, and many other environments.",
+        example:
+            "A smart thermostat can measure temperature and communicate with a networked service.",
+        deepDive:
+            "IoT systems can include sensors, embedded computers, wireless networks, cloud services, databases, APIs, and management platforms.",
+        keyPoints: [
+            "IoT connects physical devices to networks.",
+            "Sensors can collect information.",
+            "IoT devices can communicate with cloud services.",
+            "Security is important for connected devices.",
+            "IoT exists across many industries."
+        ],
+        related: ["computer-network", "cloud-computing", "cybersecurity"]
+    },
+
+
+    "computer-science": {
+        title: "Computer Science",
+        category: "Technology",
+        icon: "🧠",
+        keywords: [
+            "computer science",
+            "cs",
+            "computing",
+            "computer theory"
+        ],
+        quickAnswer:
+            "Computer science is the study of computation, algorithms, information, software, systems, and related computational concepts.",
+        howItWorks:
+            "Computer science combines theory and practical techniques to understand and build computational systems.",
+        whyItMatters:
+            "Computer science provides foundational ideas behind programming, algorithms, operating systems, networks, databases, artificial intelligence, and many other areas.",
+        example:
+            "Studying algorithms helps explain how computers can efficiently solve computational problems.",
+        deepDive:
+            "Computer science includes areas such as algorithms, programming languages, computer architecture, operating systems, networking, databases, security, artificial intelligence, and theoretical computer science.",
+        keyPoints: [
+            "Computer science is broader than programming.",
+            "Algorithms are a major area of study.",
+            "Computer science includes both theory and practice.",
+            "It covers many areas of computing.",
+            "Programming is an important tool within computer science."
+        ],
+        related: ["programming", "algorithms", "computer-network"]
+    },
+
+
+    "computer-architecture": {
+        title: "Computer Architecture",
+        category: "Computers",
+        icon: "🏗️",
+        keywords: [
+            "computer architecture",
+            "cpu architecture",
+            "computer organization",
+            "hardware architecture"
+        ],
+        quickAnswer:
+            "Computer architecture describes the organization and design of a computer system and how its components work together.",
+        howItWorks:
+            "Computer architecture covers processors, memory systems, instruction sets, storage, input/output, buses, and how these components communicate.",
+        whyItMatters:
+            "Understanding architecture helps explain how software instructions become operations performed by hardware.",
+        example:
+            "An instruction-set architecture defines the instructions that a processor can execute.",
+        deepDive:
+            "Computer architecture can include instruction-set architecture, microarchitecture, memory hierarchy, caching, pipelines, parallelism, and input/output systems.",
+        keyPoints: [
+            "Architecture describes computer organization.",
+            "CPUs execute instructions.",
+            "Memory hierarchy affects performance.",
+            "Instruction sets define processor operations.",
+            "Hardware and software interact through defined interfaces."
+        ],
+        related: ["cpu", "ram", "motherboard"]
+    },
+
+
+    "boot-process": {
+        title: "Computer Boot Process",
+        category: "Computers",
+        icon: "🚀",
+        keywords: [
+            "boot process",
+            "booting",
+            "startup",
+            "computer startup",
+            "boot sequence"
+        ],
+        quickAnswer:
+            "The boot process is the sequence of operations that occurs when a computer starts and loads its operating system.",
+        howItWorks:
+            "Firmware initializes hardware and identifies boot options, then a bootloader or related mechanism loads the operating system.",
+        whyItMatters:
+            "The boot process connects the initial hardware startup process to the running operating system.",
+        example:
+            "When a computer starts, firmware can locate a bootloader on a storage device and begin loading the operating system.",
+        deepDive:
+            "Modern systems can use UEFI firmware and boot managers. The exact process varies by hardware and operating system.",
+        keyPoints: [
+            "Booting begins when a computer starts.",
+            "Firmware initializes hardware.",
+            "A bootloader can load the operating system.",
+            "The operating system takes control after startup.",
+            "Boot problems can have hardware or software causes."
+        ],
+        related: ["bios-uefi", "operating-system", "file-system"]
+    },
+
+
+    "computer-memory": {
+        title: "Computer Memory",
+        category: "Computers",
+        icon: "💾",
+        keywords: [
+            "computer memory",
+            "memory",
+            "ram",
+            "cache",
+            "rom"
+        ],
+        quickAnswer:
+            "Computer memory refers to technologies used to store information for immediate or longer-term use by computing systems.",
+        howItWorks:
+            "Different types of memory provide different combinations of speed, capacity, persistence, and cost.",
+        whyItMatters:
+            "Computers rely on multiple levels of memory and storage to efficiently process and retain information.",
+        example:
+            "A CPU may use cache for very fast access while the computer uses RAM for active programs and an SSD for persistent storage.",
+        deepDive:
+            "Computer systems use a memory hierarchy that can include CPU registers, caches, RAM, and persistent storage.",
+        keyPoints: [
+            "Different memory technologies have different properties.",
+            "RAM is volatile.",
+            "Storage is generally persistent.",
+            "CPU cache is very fast.",
+            "Computer systems use a memory hierarchy."
+        ],
+        related: ["ram", "cpu", "ssd"]
+    },
+
+
+    "file-extension": {
+        title: "File Extension",
+        category: "Software",
+        icon: "📄",
+        keywords: [
+            "file extension",
+            "file type",
+            "extension",
+            ".exe",
+            ".txt",
+            ".html"
+        ],
+        quickAnswer:
+            "A file extension is a suffix in a filename that commonly indicates the file's format or intended type.",
+        howItWorks:
+            "Operating systems and applications can use file extensions as one piece of information when determining which program can open or handle a file.",
+        whyItMatters:
+            "File extensions help users and software identify different types of files.",
+        example:
+            "A filename ending in .html commonly indicates an HTML document.",
+        deepDive:
+            "An extension is not a guarantee of a file's actual contents. Software should not rely on an extension alone for security-sensitive decisions.",
+        keyPoints: [
+            "Extensions often appear after a filename.",
+            "Extensions can indicate file types.",
+            "Different applications use different formats.",
+            "An extension does not guarantee file contents.",
+            "Changing an extension does not necessarily convert a file."
+        ],
+        related: ["file-system", "software", "applications"]
+    },
+
+
+    "open-source": {
+        title: "Open Source Software",
+        category: "Software",
+        icon: "🔓",
+        keywords: [
+            "open source",
+            "open-source software",
+            "source code",
+            "free software"
+        ],
+        quickAnswer:
+            "Open-source software is software whose source code is made available under license terms that allow specified forms of use, study, modification, and redistribution.",
+        howItWorks:
+            "Developers can inspect and, depending on the license, modify and redistribute the source code. Projects may be maintained by individuals, organizations, or communities.",
+        whyItMatters:
+            "Open-source software supports collaboration, transparency, reuse, and development of shared software infrastructure.",
+        example:
+            "Many programming tools, operating systems, libraries, and web technologies are open source.",
+        deepDive:
+            "Open-source licenses define the rights and obligations associated with using, modifying, and distributing the software.",
+        keyPoints: [
+            "Open source refers to source-code availability under specific licenses.",
+            "Licenses determine what users can do.",
+            "Open-source projects can have many contributors.",
+            "Open source is not automatically the same as public domain.",
+            "Some open-source software is also commercially supported."
+        ],
+        related: ["software", "linux", "programming"]
+    },
+
+
+    "api": {
+        title: "API — Application Programming Interface",
+        category: "Programming",
+        icon: "🔌",
+        keywords: [
+            "api",
+            "application programming interface",
+            "software interface",
+            "web api"
+        ],
+        quickAnswer:
+            "An API is a defined interface that allows software systems or components to communicate and interact.",
+        howItWorks:
+            "An API specifies how software can request data or functionality from another system, often through defined operations, inputs, and outputs.",
+        whyItMatters:
+            "APIs allow different software systems to work together without requiring each system to know the other's internal implementation.",
+        example:
+            "A weather application can use an API to request weather data from another service.",
+        deepDive:
+            "APIs can be local programming interfaces, web APIs, operating-system APIs, library interfaces, or other forms of software contracts.",
+        keyPoints: [
+            "API means Application Programming Interface.",
+            "APIs define ways for software to interact.",
+            "Web APIs commonly use HTTP.",
+            "APIs can return structured data.",
+            "An API hides implementation details behind an interface."
+        ],
+        related: ["web-development", "http-https", "programming"]
+    },
+
+
+    "json": {
+        title: "JSON",
+        category: "Programming",
+        icon: "📦",
+        keywords: [
+            "json",
+            "javascript object notation",
+            "data format",
+            "json data"
+        ],
+        quickAnswer:
+            "JSON is a text-based data format commonly used to represent structured information.",
+        howItWorks:
+            "JSON represents objects, arrays, strings, numbers, booleans, and null values using a standardized syntax.",
+        whyItMatters:
+            "JSON is widely used for exchanging structured data between applications and services.",
+        example:
+            "A web API can return a JSON object containing information about a user or product.",
+        deepDive:
+            "JSON is language-independent even though its syntax originated from JavaScript notation. Many programming languages provide JSON parsing and serialization tools.",
+        keyPoints: [
+            "JSON stands for JavaScript Object Notation.",
+            "JSON is text-based.",
+            "JSON can represent structured data.",
+            "APIs commonly use JSON.",
+            "Many programming languages can parse JSON."
+        ],
+        related: ["api", "javascript", "database"]
+    },
+
+
+    "debugging": {
+        title: "Debugging",
+        category: "Programming",
+        icon: "🐛",
+        keywords: [
+            "debugging",
+            "debug",
+            "bugs",
+            "software bugs",
+            "troubleshooting code"
+        ],
+        quickAnswer:
+            "Debugging is the process of finding, understanding, and fixing problems in software.",
+        howItWorks:
+            "Developers reproduce a problem, inspect program behavior, identify its cause, make changes, and test the result.",
+        whyItMatters:
+            "Software can contain errors, and debugging helps developers make programs behave as intended.",
+        example:
+            "A developer can use a debugger to pause a program and inspect variable values while investigating a problem.",
+        deepDive:
+            "Debugging techniques include logging, breakpoints, tracing, testing, code inspection, reproduction of failures, and controlled experimentation.",
+        keyPoints: [
+            "A bug is an error or unexpected behavior.",
+            "Debugging investigates problems.",
+            "Reproducing a problem helps identify its cause.",
+            "Logs can provide useful evidence.",
+            "Testing confirms whether a fix works."
+        ],
+        related: ["programming", "software-development", "python"]
+    },
+
+
+    "operating-system-kernel": {
+        title: "Operating System Kernel",
+        category: "Operating Systems",
+        icon: "⚙️",
+        keywords: [
+            "kernel",
+            "operating system kernel",
+            "os kernel",
+            "kernel space"
+        ],
+        quickAnswer:
+            "The kernel is the central component of an operating system that manages hardware resources and provides core services.",
+        howItWorks:
+            "The kernel manages CPU scheduling, memory, hardware access, system calls, and other fundamental operations.",
+        whyItMatters:
+            "Applications depend on operating-system services that are provided or coordinated by the kernel.",
+        example:
+            "An application can request that the operating system read a file, and the kernel coordinates the underlying hardware operations.",
+        deepDive:
+            "Kernels can use different architectures and designs. Common concepts include processes, virtual memory, device drivers, system calls, and scheduling.",
+        keyPoints: [
+            "The kernel is central to an operating system.",
+            "It manages hardware resources.",
+            "Applications interact with kernel services.",
+            "System calls provide controlled access to operating-system functionality.",
+            "Different operating systems use different kernel designs."
+        ],
+        related: ["operating-system", "linux", "device-drivers"]
+    },
+
+
+    "process": {
+        title: "Computer Process",
         category: "Operating Systems",
         icon: "⚙️",
         keywords: [
             "process",
-            "processes",
             "computer process",
-            "program process"
+            "running program",
+            "process management"
         ],
         quickAnswer:
-            "A process is a running instance of a program managed by the operating system.",
-
+            "A process is a running instance of a program managed by an operating system.",
         howItWorks:
-            "When a program starts, the operating system creates a process and gives it resources such as memory and CPU time.",
-
+            "The operating system gives a process resources such as memory and CPU time and manages its execution state.",
         whyItMatters:
-            "Process management allows an operating system to run many programs at the same time while keeping their resources organized.",
-
+            "Processes allow an operating system to run multiple programs and tasks while managing their resources.",
         example:
-            "When you open a browser, the operating system creates one or more processes for it.",
-
+            "Opening a web browser causes the operating system to create one or more processes for the browser.",
         deepDive:
-            "Processes can contain threads, have memory spaces, use files and network connections, and interact with other processes through operating-system mechanisms.",
-
+            "Processes can contain one or more threads and have resources such as virtual memory, handles, and security credentials.",
         keyPoints: [
-            "A process is a running program.",
+            "A process is a running program instance.",
+            "Processes use system resources.",
             "The operating system manages processes.",
-            "Processes use memory and CPU time.",
-            "A process can contain multiple threads.",
-            "Operating systems isolate processes for security and stability."
+            "Processes can contain threads.",
+            "Processes are isolated to varying degrees depending on the operating system."
         ],
+        related: ["operating-system-kernel", "ram", "cpu"]
+    },
 
-        related: [
-            "operating-system",
-            "ram",
-            "cpu",
-            "os-kernel"
-        ]
+
+    "thread": {
+        title: "Computer Thread",
+        category: "Operating Systems",
+        icon: "🧵",
+        keywords: [
+            "thread",
+            "software thread",
+            "cpu thread",
+            "multithreading"
+        ],
+        quickAnswer:
+            "A thread is a unit of execution within a process.",
+        howItWorks:
+            "Threads within the same process generally share the process's memory and resources while having their own execution state.",
+        whyItMatters:
+            "Threads allow programs to perform multiple tasks concurrently and can help software take advantage of multiple CPU cores.",
+        example:
+            "A program may use separate threads for handling user interaction and processing background work.",
+        deepDive:
+            "Multithreading introduces opportunities for parallelism but also requires careful synchronization when threads access shared data.",
+        keyPoints: [
+            "Threads execute within processes.",
+            "Threads usually share process memory.",
+            "Multiple threads can run concurrently.",
+            "Multithreading can improve responsiveness.",
+            "Shared data can create synchronization challenges."
+        ],
+        related: ["process", "cpu", "operating-system"]
     },
 
 
@@ -772,130 +2239,250 @@ const topics = {
         icon: "🧠",
         keywords: [
             "virtual memory",
-            "memory management",
-            "paging",
-            "swap"
+            "memory paging",
+            "swap",
+            "page file"
         ],
         quickAnswer:
-            "Virtual memory is a memory-management technique that gives programs an abstraction of memory and can use storage to extend available memory.",
-
+            "Virtual memory is an operating-system technique that provides processes with an address space and can use storage as part of memory management.",
         howItWorks:
-            "The operating system divides memory into pages and manages mappings between virtual addresses and physical memory. Less-active data may be moved to storage when needed.",
-
+            "The operating system and hardware memory-management mechanisms map virtual addresses to physical memory and can move less-active pages to storage when appropriate.",
         whyItMatters:
-            "Virtual memory allows programs to operate in isolated address spaces and helps systems manage memory efficiently.",
-
+            "Virtual memory provides process isolation and flexible memory management and can allow systems to handle workloads that exceed available physical RAM, although storage is much slower than RAM.",
         example:
-            "If RAM becomes heavily used, an operating system may move some inactive memory pages to a swap file or partition.",
-
+            "An operating system can use a page file or swap area as part of its virtual-memory system.",
         deepDive:
-            "Virtual memory relies on hardware memory-management units and operating-system page tables. It provides isolation, address translation, and controlled access to memory.",
-
+            "Virtual memory commonly uses pages and page tables. Hardware memory-management units translate virtual addresses into physical addresses.",
         keyPoints: [
-            "Virtual memory provides an abstraction over physical memory.",
-            "Programs use virtual addresses.",
-            "The operating system manages memory pages.",
-            "Storage can be used for inactive pages.",
-            "Virtual memory improves isolation and memory management."
+            "Virtual memory provides virtual address spaces.",
+            "Processes can have isolated address spaces.",
+            "Pages can be mapped to physical memory.",
+            "Storage can be used for paging.",
+            "Virtual memory is not a replacement for sufficient RAM."
         ],
-
-        related: [
-            "ram",
-            "operating-system",
-            "computer-processes"
-        ]
+        related: ["ram", "operating-system-kernel", "process"]
     },
 
 
-    "software-updates": {
-        title: "Software Updates",
-        category: "Software",
-        icon: "🔄",
+    "computer-security-basics": {
+        title: "Computer Security Basics",
+        category: "Cybersecurity",
+        icon: "🔐",
         keywords: [
-            "software updates",
-            "updates",
-            "patches",
-            "security updates"
+            "computer security",
+            "security basics",
+            "computer protection",
+            "security fundamentals"
         ],
         quickAnswer:
-            "Software updates modify existing software to fix bugs, improve functionality, or address security problems.",
-
+            "Computer security basics involve protecting systems, accounts, networks, applications, and data from unauthorized or harmful activity.",
         howItWorks:
-            "Developers release updated versions or patches. Devices download and install those updates using update systems or package managers.",
-
+            "Security uses multiple layers including authentication, authorization, updates, backups, encryption, secure configuration, monitoring, and user awareness.",
         whyItMatters:
-            "Keeping software updated can fix known security vulnerabilities and improve reliability.",
-
+            "No single security feature protects every part of a computer system, so layered defenses are important.",
         example:
-            "An operating system may release a security patch that fixes a vulnerability discovered by researchers.",
-
+            "Keeping software updated, using strong authentication, and maintaining backups are basic security practices.",
         deepDive:
-            "Updates can range from small patches to major version upgrades. Organizations often test updates before deploying them broadly.",
-
+            "Security programs often consider confidentiality, integrity, and availability, commonly called the CIA triad.",
         keyPoints: [
-            "Updates can fix bugs.",
-            "Security patches can address vulnerabilities.",
-            "Updates can add features.",
-            "Package managers can automate software updates.",
-            "Organizations often test updates before deployment."
+            "Security uses multiple layers.",
+            "Updates help address known vulnerabilities.",
+            "Authentication protects accounts.",
+            "Backups help recover from some incidents.",
+            "Security requires ongoing attention."
         ],
-
-        related: [
-            "operating-system",
-            "cybersecurity",
-            "applications"
-        ]
+        related: ["cybersecurity", "authentication", "malware"]
     },
 
 
-    /* =================================================
-       INTERNET & NETWORKING
-    ================================================= */
+    "backup": {
+        title: "Backup",
+        category: "Technology",
+        icon: "💾",
+        keywords: [
+            "backup",
+            "backups",
+            "data backup",
+            "file backup",
+            "backup strategy"
+        ],
+        quickAnswer:
+            "A backup is a separate copy of data maintained so it can be restored if the original data is lost or damaged.",
+        howItWorks:
+            "Backup systems copy selected data to another storage location or service according to a defined schedule or process.",
+        whyItMatters:
+            "Backups can help recover from accidental deletion, hardware failure, software problems, and some security incidents.",
+        example:
+            "A person can maintain copies of important files on an external drive and another storage location.",
+        deepDive:
+            "Backup strategies can use full, incremental, or differential backups and can follow practices such as keeping multiple copies in different locations.",
+        keyPoints: [
+            "Backups are copies of data.",
+            "Backups should be separate from the original.",
+            "Multiple backup locations can improve resilience.",
+            "Backups should be tested by restoring data.",
+            "A backup strategy should consider what data needs protection."
+        ],
+        related: ["file-system", "cybersecurity", "cloud-computing"]
+    },
 
-    internet: {
-        title: "The Internet",
+
+    "data-center": {
+        title: "Data Center",
+        category: "Technology",
+        icon: "🏢",
+        keywords: [
+            "data center",
+            "datacenter",
+            "server facility",
+            "data centre"
+        ],
+        quickAnswer:
+            "A data center is a facility designed to house computing, networking, storage, power, cooling, and other infrastructure.",
+        howItWorks:
+            "Data centers provide controlled environments and infrastructure for operating servers and other technology systems.",
+        whyItMatters:
+            "Data centers support websites, cloud services, enterprise systems, databases, communications, and many other digital services.",
+        example:
+            "A cloud provider can operate large data centers containing many servers that customers access remotely.",
+        deepDive:
+            "Data centers require power systems, cooling, networking, physical security, monitoring, redundancy, and operational procedures.",
+        keyPoints: [
+            "Data centers house computing infrastructure.",
+            "They require reliable power.",
+            "Cooling is essential.",
+            "Networking connects systems.",
+            "Redundancy can improve availability."
+        ],
+        related: ["cloud-computing", "computer-server", "computer-cooling"]
+    },
+
+
+    "artificial-neural-network": {
+        title: "Artificial Neural Network",
+        category: "Technology",
+        icon: "🧠",
+        keywords: [
+            "neural network",
+            "artificial neural network",
+            "ann",
+            "deep learning"
+        ],
+        quickAnswer:
+            "An artificial neural network is a computational model made of interconnected processing units that can learn patterns from data.",
+        howItWorks:
+            "A neural network processes inputs through layers of interconnected units and adjusts parameters during training to reduce errors according to a chosen objective.",
+        whyItMatters:
+            "Neural networks are used in areas such as image recognition, language processing, prediction, and other machine-learning tasks.",
+        example:
+            "A neural network can be trained to classify images into different categories.",
+        deepDive:
+            "Modern neural networks can contain many layers and parameters. Deep learning refers broadly to machine learning using multi-layer neural networks.",
+        keyPoints: [
+            "Neural networks can learn patterns from data.",
+            "Networks contain layers and parameters.",
+            "Training adjusts model parameters.",
+            "Deep learning commonly uses many layers.",
+            "Neural networks are one family of machine-learning models."
+        ],
+        related: ["machine-learning", "artificial-intelligence", "gpu"]
+    },
+
+
+    "computer-file": {
+        title: "Computer File",
+        category: "Software",
+        icon: "📄",
+        keywords: [
+            "file",
+            "computer file",
+            "data file",
+            "digital file"
+        ],
+        quickAnswer:
+            "A computer file is a named collection of data stored by a computer system.",
+        howItWorks:
+            "The operating system and file system keep track of files and their metadata, locations, permissions, and other properties.",
+        whyItMatters:
+            "Files provide a basic way for users and software to store information persistently.",
+        example:
+            "A document, image, program, or configuration file can all be stored as files.",
+        deepDive:
+            "Files can contain many different formats of data. The operating system uses file-system structures and metadata to manage them.",
+        keyPoints: [
+            "Files store digital information.",
+            "Files can have different formats.",
+            "File systems organize files.",
+            "Files can have permissions and metadata.",
+            "Applications interpret file contents according to their formats."
+        ],
+        related: ["file-system", "file-extension", "applications"]
+    },
+
+
+    "computer-network-protocol": {
+        title: "Network Protocol",
+        category: "Internet & Networking",
+        icon: "📡",
+        keywords: [
+            "network protocol",
+            "protocol",
+            "communication protocol",
+            "networking protocols"
+        ],
+        quickAnswer:
+            "A network protocol is a defined set of rules that allows devices and software to communicate.",
+        howItWorks:
+            "Protocols specify how information is formatted, transmitted, received, interpreted, and sometimes how errors are handled.",
+        whyItMatters:
+            "Shared protocols allow different devices and systems to communicate even when they are made by different organizations.",
+        example:
+            "HTTP defines rules used by web clients and servers to exchange web information.",
+        deepDive:
+            "Networking uses multiple protocol layers. Examples include Ethernet, IP, TCP, UDP, DNS, and HTTP.",
+        keyPoints: [
+            "Protocols define communication rules.",
+            "Different protocols perform different functions.",
+            "Networking commonly uses multiple protocol layers.",
+            "Protocols allow interoperability.",
+            "Internet communication relies on many standardized protocols."
+        ],
+        related: ["internet", "http-https", "ip-address"]
+    },
+
+
+    "tcp-ip": {
+        title: "TCP/IP",
         category: "Internet & Networking",
         icon: "🌐",
         keywords: [
-            "internet",
-            "network",
-            "world wide web",
-            "online"
+            "tcp ip",
+            "tcp/ip",
+            "transmission control protocol",
+            "internet protocol suite"
         ],
         quickAnswer:
-            "The Internet is a global network of interconnected networks that communicate using standardized protocols.",
-
+            "TCP/IP refers to the family of networking protocols used as the foundation of Internet communication.",
         howItWorks:
-            "Devices communicate across networks using protocols such as IP and TCP. Routers forward packets between networks until they reach their destinations.",
-
+            "Different protocols handle different responsibilities, including addressing, routing, reliable transport, and application communication.",
         whyItMatters:
-            "The Internet allows computers and people around the world to communicate and exchange information.",
-
+            "TCP/IP allows diverse networks and devices to communicate using standardized protocols.",
         example:
-            "When you visit a website, your device communicates with remote servers through multiple networks.",
-
+            "A web connection can use IP for addressing and routing, TCP for transport, and HTTP for application-level communication.",
         deepDive:
-            "The Internet is decentralized and consists of networks operated by many organizations. Internet protocols allow these networks to interoperate.",
-
+            "The Internet protocol suite includes IP, TCP, UDP, DNS, HTTP, and many other protocols. The exact stack depends on the application.",
         keyPoints: [
-            "The Internet is a network of networks.",
-            "IP provides addressing and routing.",
-            "Routers forward network traffic.",
-            "Many organizations operate parts of the Internet.",
-            "The Web is a service that operates over the Internet."
+            "TCP/IP is a protocol suite.",
+            "IP handles addressing and routing.",
+            "TCP provides reliable ordered transport.",
+            "UDP provides connectionless transport.",
+            "Applications use higher-level protocols."
         ],
-
-        related: [
-            "ip-address",
-            "dns",
-            "router",
-            "http-https",
-            "server"
-        ]
+        related: ["ip-address", "computer-network-protocol", "http-https"]
     },
 
 
-    wifi: {
+    "wifi": {
         title: "Wi-Fi",
         category: "Internet & Networking",
         icon: "📶",
@@ -906,2951 +2493,904 @@ const topics = {
             "wireless internet"
         ],
         quickAnswer:
-            "Wi-Fi is a family of wireless networking technologies that allows devices to communicate over radio waves.",
-
+            "Wi-Fi is a family of wireless networking technologies used to connect devices to local networks.",
         howItWorks:
-            "Wi-Fi devices communicate with wireless access points using radio signals and standardized protocols.",
-
+            "Wi-Fi uses radio communication between compatible devices and wireless access points or routers.",
         whyItMatters:
-            "Wi-Fi provides convenient wireless network access for computers, phones, smart devices, and other equipment.",
-
+            "Wi-Fi allows devices to connect to networks without a physical Ethernet cable.",
         example:
-            "A laptop can connect to a home router over Wi-Fi to access the Internet.",
-
+            "A phone can connect to a home network through a Wi-Fi router.",
         deepDive:
-            "Wi-Fi standards have evolved over time, improving speed, efficiency, range, and reliability. Security protocols such as WPA2 and WPA3 help protect wireless networks.",
-
+            "Wi-Fi standards operate over specified radio bands and provide different capabilities for speed, range, security, and network efficiency.",
         keyPoints: [
+            "Wi-Fi is wireless networking technology.",
             "Wi-Fi uses radio communication.",
             "Wireless access points provide network connectivity.",
-            "Modern Wi-Fi standards provide high-speed networking.",
-            "WPA2 and WPA3 are common Wi-Fi security standards.",
+            "Wi-Fi networks should use appropriate security.",
             "Wi-Fi and the Internet are not the same thing."
         ],
-
-        related: [
-            "router",
-            "ethernet",
-            "ip-address",
-            "cybersecurity"
-        ]
+        related: ["router", "computer-network", "ethernet"]
     },
 
 
-    ethernet: {
-        title: "Ethernet",
-        category: "Internet & Networking",
-        icon: "🔌",
+    "computer-security-update": {
+        title: "Software Updates",
+        category: "Cybersecurity",
+        icon: "🔄",
         keywords: [
-            "ethernet",
-            "wired network",
-            "network cable",
-            "lan"
+            "software updates",
+            "updates",
+            "security updates",
+            "patches",
+            "software patch"
         ],
         quickAnswer:
-            "Ethernet is a family of wired networking technologies commonly used in local area networks.",
-
+            "Software updates modify software to add features, fix bugs, improve compatibility, or address security vulnerabilities.",
         howItWorks:
-            "Ethernet sends data across physical network connections using standardized protocols and frames.",
-
+            "Developers release updated versions or patches that replace or modify components of existing software.",
         whyItMatters:
-            "Ethernet provides reliable high-speed connections for computers, servers, switches, routers, and other network equipment.",
-
+            "Security updates can address known vulnerabilities that could otherwise be exploited.",
         example:
-            "A desktop computer can connect to a router with an Ethernet cable.",
-
+            "An operating system may release a security update that fixes a vulnerability in a system component.",
         deepDive:
-            "Modern Ethernet commonly uses twisted-pair copper cables or fiber optic connections. Different Ethernet standards support different speeds.",
-
+            "Patch management is an important part of system administration and security operations. Organizations may test updates before widespread deployment.",
         keyPoints: [
-            "Ethernet is commonly wired.",
-            "It is widely used in local networks.",
-            "Ethernet can provide high bandwidth.",
-            "Ethernet cables use standardized connectors and wiring.",
-            "Ethernet can be used between computers, switches, and routers."
+            "Updates can fix security vulnerabilities.",
+            "Updates can also add features and fix bugs.",
+            "Delaying critical security patches can increase exposure.",
+            "Organizations may test updates before deployment.",
+            "Only trusted update sources should be used."
         ],
-
-        related: [
-            "wifi",
-            "network-switch",
-            "router",
-            "computer-ports"
-        ]
+        related: ["cybersecurity", "operating-system", "malware"]
     },
 
 
-    router: {
-        title: "Router",
-        category: "Internet & Networking",
-        icon: "📡",
+    "security-vulnerability": {
+        title: "Security Vulnerability",
+        category: "Cybersecurity",
+        icon: "⚠️",
         keywords: [
-            "router",
-            "network router",
-            "internet router",
-            "routing"
+            "vulnerability",
+            "security vulnerability",
+            "software vulnerability",
+            "security flaw",
+            "weakness"
         ],
         quickAnswer:
-            "A router forwards network traffic between different networks.",
-
+            "A security vulnerability is a weakness in a system that could potentially be used to violate security requirements.",
         howItWorks:
-            "Routers examine packet destination information and use routing tables to determine where traffic should be forwarded.",
-
+            "Vulnerabilities can exist in software, hardware, configurations, processes, or human practices and may create opportunities for unauthorized actions.",
         whyItMatters:
-            "Routers allow separate networks to communicate and provide important network-management functions.",
-
+            "Unaddressed vulnerabilities can increase security risk and may be exploited by attackers.",
         example:
-            "A home router connects devices on your local network to your Internet service provider.",
-
+            "A software bug that allows unauthorized access to protected information can be a security vulnerability.",
         deepDive:
-            "Routers can perform routing, network address translation, firewalling, DHCP, wireless access, and other functions depending on the device.",
-
+            "Security teams identify, assess, prioritize, remediate, and monitor vulnerabilities using vulnerability-management processes.",
         keyPoints: [
-            "Routers connect networks.",
-            "They forward packets.",
-            "Routing tables help determine packet destinations.",
-            "Home routers often provide multiple networking services.",
-            "Routers are different from switches."
+            "Vulnerabilities are weaknesses.",
+            "They can exist in software or configurations.",
+            "Not every vulnerability has the same risk.",
+            "Patching can remediate some vulnerabilities.",
+            "Vulnerability management is ongoing."
         ],
-
-        related: [
-            "network-switch",
-            "ip-address",
-            "dhcp",
-            "subnetting",
-            "firewall"
-        ]
+        related: ["cybersecurity", "computer-security-update", "firewall"]
     },
 
 
-    "network-switch": {
-        title: "Network Switch",
-        category: "Internet & Networking",
-        icon: "🔀",
+    "zero-day": {
+        title: "Zero-Day Vulnerability",
+        category: "Cybersecurity",
+        icon: "⏱️",
         keywords: [
-            "switch",
-            "network switch",
-            "ethernet switch",
-            "lan switch"
+            "zero day",
+            "zero-day",
+            "zero day vulnerability",
+            "zero-day exploit"
         ],
         quickAnswer:
-            "A network switch connects devices within a local network and forwards Ethernet frames to the appropriate destination.",
-
+            "A zero-day generally refers to a vulnerability or related exploit that is unknown to the party responsible for fixing or defending against it, or for which no effective patch is yet available, depending on context.",
         howItWorks:
-            "A switch learns which devices are connected to its ports by observing MAC addresses and uses that information to forward frames.",
-
+            "A zero-day situation can create a security gap before defenders have developed and deployed an effective fix.",
         whyItMatters:
-            "Switches allow many wired devices to communicate efficiently within a local network.",
-
+            "Security teams have fewer defensive options when a vulnerability is newly discovered and lacks an available patch or established mitigation.",
         example:
-            "An office may connect dozens of computers to a central Ethernet switch.",
-
+            "A newly discovered software vulnerability with no available vendor patch may be described as a zero-day vulnerability.",
         deepDive:
-            "Managed switches can provide features such as VLANs, monitoring, redundancy, port security, and traffic controls.",
-
+            "The term can refer to the vulnerability, exploit, or broader period before a fix is available. Context matters when interpreting the term.",
         keyPoints: [
-            "Switches connect devices in local networks.",
-            "Switches use MAC addresses.",
-            "They forward Ethernet frames.",
-            "Managed switches provide advanced configuration.",
-            "Switches are commonly used in offices and data centers."
+            "Zero-day terminology relates to newly discovered or unpatched vulnerabilities.",
+            "Definitions can vary depending on context.",
+            "Defenders may use mitigations before a patch exists.",
+            "Vendors can release patches after vulnerabilities are reported.",
+            "Security monitoring remains important."
         ],
-
-        related: [
-            "ethernet",
-            "router",
-            "ip-address",
-            "subnetting"
-        ]
+        related: ["security-vulnerability", "cybersecurity", "computer-security-update"]
     },
 
 
-    "ip-address": {
-        title: "IP Address",
-        category: "Internet & Networking",
-        icon: "📍",
-        keywords: [
-            "ip",
-            "ip address",
-            "ipv4",
-            "ipv6"
-        ],
-        quickAnswer:
-            "An IP address identifies a network interface so devices can communicate across IP networks.",
-
-        howItWorks:
-            "When devices communicate using IP, packets contain source and destination IP addresses. Routers use destination addresses to forward traffic.",
-
-        whyItMatters:
-            "IP addressing allows devices and networks to communicate and route traffic across interconnected networks.",
-
-        example:
-            "A device on a home network might receive a private IPv4 address such as 192.168.1.20.",
-
-        deepDive:
-            "IPv4 uses 32-bit addresses while IPv6 uses 128-bit addresses. IPv6 provides a vastly larger address space.",
-
-        keyPoints: [
-            "IP addresses identify network interfaces.",
-            "IPv4 uses 32-bit addresses.",
-            "IPv6 uses 128-bit addresses.",
-            "Private IP addresses are commonly used inside local networks.",
-            "Routers use IP addresses for routing."
-        ],
-
-        related: [
-            "router",
-            "dhcp",
-            "dns",
-            "subnetting"
-        ]
-    },
-
-
-    dns: {
-        title: "DNS (Domain Name System)",
-        category: "Internet & Networking",
-        icon: "🔎",
-        keywords: [
-            "dns",
-            "domain name system",
-            "domain names",
-            "dns server"
-        ],
-        quickAnswer:
-            "DNS translates human-readable domain names into IP addresses and provides other types of network information.",
-
-        howItWorks:
-            "When you enter a domain name, a DNS resolver can query DNS servers to find the appropriate records, such as an IP address.",
-
-        whyItMatters:
-            "DNS makes the Internet easier to use by allowing people to use names instead of remembering numerical IP addresses.",
-
-        example:
-            "When a browser connects to a website domain, DNS can help determine which IP address hosts that site.",
-
-        deepDive:
-            "DNS uses different record types including A, AAAA, CNAME, MX, TXT, and NS records. DNS resolution can involve recursive resolvers and authoritative name servers.",
-
-        keyPoints: [
-            "DNS stands for Domain Name System.",
-            "DNS translates domain names into network information.",
-            "A records map names to IPv4 addresses.",
-            "AAAA records map names to IPv6 addresses.",
-            "DNS is a distributed system."
-        ],
-
-        related: [
-            "ip-address",
-            "http-https",
-            "server",
-            "cdn"
-        ]
-    },
-
-
-    dhcp: {
-        title: "DHCP",
-        category: "Internet & Networking",
-        icon: "📋",
-        keywords: [
-            "dhcp",
-            "dynamic host configuration protocol",
-            "ip assignment"
-        ],
-        quickAnswer:
-            "DHCP automatically provides network configuration information such as IP addresses to devices.",
-
-        howItWorks:
-            "A DHCP client requests configuration information from a DHCP server. The server can provide an IP address, subnet information, gateway, and DNS server settings.",
-
-        whyItMatters:
-            "DHCP makes it easier to configure many devices on a network without manually assigning every address.",
-
-        example:
-            "When a phone joins a home Wi-Fi network, the router's DHCP service may assign it an IP address.",
-
-        deepDive:
-            "DHCP uses a lease system. Devices can renew their leases to continue using assigned addresses.",
-
-        keyPoints: [
-            "DHCP automatically provides network configuration.",
-            "DHCP can assign IP addresses.",
-            "DHCP can provide gateway and DNS information.",
-            "Addresses are commonly leased for a period of time.",
-            "Home routers often provide DHCP services."
-        ],
-
-        related: [
-            "ip-address",
-            "router",
-            "subnetting"
-        ]
-    },
-
-
-    "http-https": {
-        title: "HTTP and HTTPS",
-        category: "Internet & Networking",
+    "data-privacy": {
+        title: "Data Privacy",
+        category: "Cybersecurity",
         icon: "🔒",
         keywords: [
-            "http",
-            "https",
-            "web protocol",
-            "tls",
-            "web security"
+            "privacy",
+            "data privacy",
+            "personal data",
+            "privacy protection",
+            "data protection"
         ],
         quickAnswer:
-            "HTTP is a protocol used to transfer web resources, while HTTPS uses HTTP with encryption and authentication provided by TLS.",
-
+            "Data privacy concerns how information about people is collected, used, shared, stored, and protected.",
         howItWorks:
-            "A browser sends HTTP requests to a server. With HTTPS, the connection uses TLS to help protect data in transit and authenticate the server.",
-
+            "Organizations can use policies, technical controls, access restrictions, data minimization, retention practices, and other measures to manage personal information.",
         whyItMatters:
-            "HTTPS helps protect information from being read or modified while traveling between a browser and server.",
-
+            "Personal information can affect people's safety, finances, identity, and autonomy, so appropriate handling is important.",
         example:
-            "When you visit a website beginning with https://, the browser establishes a secure TLS connection before exchanging normal HTTP data.",
-
+            "A website may limit access to personal information to employees who need it for a specific purpose.",
         deepDive:
-            "HTTPS protects the confidentiality and integrity of application data in transit and uses digital certificates as part of server authentication.",
-
+            "Privacy requirements vary by jurisdiction and context. Technical security and privacy are related but not identical concepts.",
         keyPoints: [
-            "HTTP is a web communication protocol.",
-            "HTTPS uses HTTP over TLS.",
-            "TLS provides encryption and authentication.",
-            "HTTPS helps protect data in transit.",
-            "Web browsers use HTTPS for secure web connections."
+            "Privacy concerns the handling of information about people.",
+            "Security helps protect data but is not identical to privacy.",
+            "Data minimization can reduce unnecessary collection.",
+            "Access controls can restrict who can view information.",
+            "Retention policies determine how long information is kept."
         ],
-
-        related: [
-            "web-browser",
-            "server",
-            "dns",
-            "cybersecurity"
-        ]
+        related: ["cybersecurity", "encryption", "database"]
     },
 
 
-    "web-browser": {
-        title: "Web Browser",
-        category: "Internet & Networking",
-        icon: "🌍",
+    "computer-ethics": {
+        title: "Computer Ethics",
+        category: "Technology",
+        icon: "⚖️",
         keywords: [
-            "browser",
-            "web browser",
-            "chrome",
-            "firefox",
-            "edge"
+            "computer ethics",
+            "technology ethics",
+            "digital ethics",
+            "ethical computing"
         ],
         quickAnswer:
-            "A web browser is software that retrieves and displays web content.",
-
+            "Computer ethics concerns responsible principles for designing, using, and managing computer systems and technology.",
         howItWorks:
-            "A browser resolves domain names, connects to servers, requests resources, interprets HTML, CSS, and JavaScript, and renders the resulting page.",
-
+            "Ethical decisions in computing can involve privacy, security, fairness, access, transparency, intellectual property, safety, and the effects of technology on people.",
         whyItMatters:
-            "Browsers are one of the main ways people access websites and web applications.",
-
+            "Technology can affect individuals and society, so technical decisions can have consequences beyond whether a system simply works.",
         example:
-            "When you open a website, the browser downloads the page's resources and renders them on your screen.",
-
+            "A developer might consider whether collecting certain user information is necessary and appropriate before adding the feature.",
         deepDive:
-            "Modern browsers contain rendering engines, JavaScript engines, networking components, security sandboxes, storage systems, and developer tools.",
-
+            "Computing ethics can involve competing values and requires considering stakeholders, consequences, rights, responsibilities, and applicable rules.",
         keyPoints: [
-            "Browsers retrieve web resources.",
-            "Browsers interpret HTML, CSS, and JavaScript.",
-            "Browsers communicate with web servers.",
-            "Browsers provide security protections.",
-            "Developer tools help inspect websites."
+            "Technology decisions can affect people.",
+            "Privacy is an ethical consideration.",
+            "Security and safety can create responsibilities.",
+            "Developers should consider consequences of system design.",
+            "Ethical questions can involve competing values."
         ],
-
-        related: [
-            "http-https",
-            "html",
-            "css",
-            "javascript"
-        ]
+        related: ["data-privacy", "cybersecurity", "computer-science"]
     },
 
 
-    server: {
-        title: "Server",
-        category: "Internet & Networking",
-        icon: "🖥️",
-        keywords: [
-            "server",
-            "web server",
-            "computer server",
-            "hosting"
-        ],
-        quickAnswer:
-            "A server is a computer or software system that provides services or resources to other computers called clients.",
-
-        howItWorks:
-            "A server listens for requests and responds using a defined protocol. Servers can provide websites, files, databases, email, applications, and many other services.",
-
-        whyItMatters:
-            "Servers provide the infrastructure behind many websites, applications, cloud systems, and network services.",
-
-        example:
-            "A web server receives browser requests and sends back website files or generated responses.",
-
-        deepDive:
-            "Servers can run on physical hardware, virtual machines, containers, or cloud infrastructure. One physical system can host multiple services.",
-
-        keyPoints: [
-            "Servers provide services to clients.",
-            "Servers can host websites.",
-            "Servers can run databases and applications.",
-            "Servers can be physical or virtual.",
-            "Servers communicate using protocols."
-        ],
-
-        related: [
-            "http-https",
-            "web-development",
-            "databases",
-            "cloud-computing"
-        ]
-    },
-
-
-    /* =================================================
-       WEB DEVELOPMENT
-    ================================================= */
-
-    html: {
-        title: "HTML",
-        category: "Web Development",
-        icon: "🌐",
-        keywords: [
-            "html",
-            "hypertext markup language",
-            "web pages",
-            "markup"
-        ],
-        quickAnswer:
-            "HTML is the markup language used to structure content on web pages.",
-
-        howItWorks:
-            "HTML uses elements and tags to describe things such as headings, paragraphs, links, images, forms, and sections. Browsers interpret the HTML and build a document structure.",
-
-        whyItMatters:
-            "HTML provides the basic structure of websites and works together with CSS and JavaScript to create modern web experiences.",
-
-        example:
-            "A heading can be represented with an h1 element, while a paragraph can be represented with a p element.",
-
-        deepDive:
-            "HTML defines semantic structure and meaning. Elements can contain attributes that provide additional information or behavior.",
-
-        keyPoints: [
-            "HTML stands for HyperText Markup Language.",
-            "HTML structures web content.",
-            "Browsers interpret HTML.",
-            "HTML works with CSS and JavaScript.",
-            "Semantic HTML improves structure and accessibility."
-        ],
-
-        related: [
-            "css",
-            "javascript",
-            "web-development",
-            "web-browser"
-        ]
-    },
-
-
-    css: {
-        title: "CSS",
-        category: "Web Development",
-        icon: "🎨",
-        keywords: [
-            "css",
-            "cascading style sheets",
-            "web design",
-            "styling"
-        ],
-        quickAnswer:
-            "CSS controls the visual presentation and layout of HTML content.",
-
-        howItWorks:
-            "CSS rules select HTML elements and apply properties such as colors, spacing, fonts, sizes, positioning, and responsive layouts.",
-
-        whyItMatters:
-            "CSS turns basic HTML structure into visually organized and responsive web pages.",
-
-        example:
-            "A CSS rule can change the font size, background, spacing, or layout of a website section.",
-
-        deepDive:
-            "CSS includes the cascade, specificity, inheritance, box model, flexbox, grid, animations, media queries, and many other layout and styling systems.",
-
-        keyPoints: [
-            "CSS stands for Cascading Style Sheets.",
-            "CSS controls presentation.",
-            "The box model is fundamental to layout.",
-            "Flexbox and Grid are major layout systems.",
-            "Media queries help create responsive websites."
-        ],
-
-        related: [
-            "html",
-            "javascript",
-            "web-development"
-        ]
-    },
-
-
-    javascript: {
-        title: "JavaScript",
-        category: "Web Development",
-        icon: "⚡",
-        keywords: [
-            "javascript",
-            "js",
-            "web programming",
-            "browser programming"
-        ],
-        quickAnswer:
-            "JavaScript is a programming language widely used to add behavior and interactivity to websites and applications.",
-
-        howItWorks:
-            "Browsers contain JavaScript engines that execute JavaScript code. Scripts can respond to events, change web pages, communicate with servers, and perform calculations.",
-
-        whyItMatters:
-            "JavaScript is a major part of modern web development and is also used outside browsers for servers, tools, automation, and applications.",
-
-        example:
-            "A website can use JavaScript to make a search box update results without reloading the entire page.",
-
-        deepDive:
-            "JavaScript supports variables, functions, objects, classes, asynchronous programming, modules, APIs, and event-driven programming.",
-
-        keyPoints: [
-            "JavaScript is a programming language.",
-            "Browsers can execute JavaScript.",
-            "JavaScript can modify HTML and CSS through the DOM.",
-            "JavaScript can communicate with servers.",
-            "JavaScript can also run outside browsers."
-        ],
-
-        related: [
-            "html",
-            "css",
-            "programming",
-            "apis",
-            "debugging"
-        ]
-    },
-
-
-    "web-development": {
-        title: "Web Development",
-        category: "Web Development",
-        icon: "💻",
-        keywords: [
-            "web development",
-            "website development",
-            "websites",
-            "web apps"
-        ],
-        quickAnswer:
-            "Web development is the process of creating websites and web applications.",
-
-        howItWorks:
-            "Web development commonly combines front-end technologies such as HTML, CSS, and JavaScript with back-end systems, databases, APIs, servers, and networking.",
-
-        whyItMatters:
-            "Web development powers websites, online tools, web applications, stores, educational platforms, and many other Internet services.",
-
-        example:
-            "A learning website might use HTML for structure, CSS for appearance, JavaScript for search functionality, and a server or database for additional services.",
-
-        deepDive:
-            "Modern web development can involve client-side rendering, server-side rendering, APIs, authentication, databases, deployment systems, testing, and security.",
-
-        keyPoints: [
-            "Web development creates websites and web applications.",
-            "HTML provides structure.",
-            "CSS controls presentation.",
-            "JavaScript adds behavior.",
-            "Back-end systems provide services and data."
-        ],
-
-        related: [
-            "html",
-            "css",
-            "javascript",
-            "front-end-development",
-            "back-end-development",
-            "full-stack-development"
-        ]
-    },
-
-
-    "front-end-development": {
-        title: "Front-End Development",
-        category: "Web Development",
-        icon: "🖼️",
-        keywords: [
-            "front end",
-            "frontend",
-            "front-end development",
-            "client side"
-        ],
-        quickAnswer:
-            "Front-end development focuses on the parts of a website or web application that users interact with directly.",
-
-        howItWorks:
-            "Front-end code runs primarily in the user's browser and commonly uses HTML, CSS, and JavaScript.",
-
-        whyItMatters:
-            "Front-end development determines how users interact with websites and how information is presented.",
-
-        example:
-            "A website's navigation menu, search interface, buttons, animations, and page layout are examples of front-end work.",
-
-        deepDive:
-            "Front-end developers may use frameworks, component systems, build tools, browser APIs, accessibility practices, and performance optimization techniques.",
-
-        keyPoints: [
-            "Front-end code runs mainly in the browser.",
-            "HTML, CSS, and JavaScript are core technologies.",
-            "Front-end development focuses on user interaction.",
-            "Accessibility is an important part of front-end development.",
-            "Performance affects the user experience."
-        ],
-
-        related: [
-            "html",
-            "css",
-            "javascript",
-            "web-development"
-        ]
-    },
-
-
-    "back-end-development": {
-        title: "Back-End Development",
-        category: "Web Development",
-        icon: "🛠️",
-        keywords: [
-            "back end",
-            "backend",
-            "back-end development",
-            "server side"
-        ],
-        quickAnswer:
-            "Back-end development focuses on server-side software, data processing, APIs, authentication, and other services behind a website or application.",
-
-        howItWorks:
-            "A client sends requests to a server. Back-end software processes those requests, communicates with databases or other services, and returns responses.",
-
-        whyItMatters:
-            "Back-end systems handle data and logic that should not be performed entirely in the user's browser.",
-
-        example:
-            "When a user logs into a website, a back-end service may verify the account credentials and retrieve account information from a database.",
-
-        deepDive:
-            "Back-end systems can be built using many programming languages and frameworks and often involve APIs, databases, authentication, caching, logging, and security controls.",
-
-        keyPoints: [
-            "Back-end software runs on servers.",
-            "It handles application logic and data.",
-            "APIs connect clients to back-end services.",
-            "Databases are commonly used by back-end systems.",
-            "Security is a major back-end concern."
-        ],
-
-        related: [
-            "server",
-            "apis",
-            "databases",
-            "full-stack-development",
-            "cybersecurity"
-        ]
-    },
-
-
-    "full-stack-development": {
-        title: "Full-Stack Development",
-        category: "Web Development",
-        icon: "🔗",
-        keywords: [
-            "full stack",
-            "full-stack",
-            "full stack development",
-            "web developer"
-        ],
-        quickAnswer:
-            "Full-stack development involves working across both front-end and back-end parts of a web application.",
-
-        howItWorks:
-            "A full-stack system can include the browser interface, server-side application, APIs, databases, authentication, deployment, and infrastructure.",
-
-        whyItMatters:
-            "Understanding the complete stack helps developers see how user interfaces, application logic, data, and infrastructure work together.",
-
-        example:
-            "A full-stack developer might build a website interface, create the API behind it, connect a database, and deploy the application.",
-
-        deepDive:
-            "Full-stack development requires understanding multiple layers rather than mastering every technology in existence. Developers commonly specialize while maintaining broad knowledge across the stack.",
-
-        keyPoints: [
-            "Full-stack development covers front end and back end.",
-            "It often includes databases and APIs.",
-            "Deployment and infrastructure can also be part of the stack.",
-            "Full-stack developers work across multiple layers.",
-            "The exact technology stack can vary greatly."
-        ],
-
-        related: [
-            "front-end-development",
-            "back-end-development",
-            "apis",
-            "databases",
-            "web-development"
-        ]
-    },
-
-
-    /* =================================================
-       PROGRAMMING & DATA
-    ================================================= */
-
-    programming: {
-        title: "Programming",
-        category: "Programming & Data",
-        icon: "💻",
-        keywords: [
-            "programming",
-            "coding",
-            "software development",
-            "code"
-        ],
-        quickAnswer:
-            "Programming is the process of creating instructions that computers can execute.",
-
-        howItWorks:
-            "Programmers write code using programming languages. That code is translated or interpreted so computers can perform the requested operations.",
-
-        whyItMatters:
-            "Programming is used to create applications, websites, games, operating systems, automation tools, and many other technologies.",
-
-        example:
-            "A simple program might take a user's input, perform a calculation, and display the result.",
-
-        deepDive:
-            "Programming involves concepts such as variables, functions, control flow, data structures, algorithms, abstraction, testing, and debugging.",
-
-        keyPoints: [
-            "Programming creates computer instructions.",
-            "Programming languages provide ways to express those instructions.",
-            "Programs use logic and data.",
-            "Testing and debugging are important development activities.",
-            "Programming is used across many technology fields."
-        ],
-
-        related: [
-            "programming-languages",
-            "variables",
-            "functions",
-            "algorithms",
-            "debugging"
-        ]
-    },
-
-
-    "programming-languages": {
-        title: "Programming Languages",
-        category: "Programming & Data",
-        icon: "🧑‍💻",
-        keywords: [
-            "programming languages",
-            "python",
-            "javascript",
-            "java",
-            "c++",
-            "programming"
-        ],
-        quickAnswer:
-            "Programming languages provide structured ways for humans to write instructions that computers can execute.",
-
-        howItWorks:
-            "A programming language defines syntax and rules for expressing operations. A compiler, interpreter, or runtime system then helps execute those instructions.",
-
-        whyItMatters:
-            "Different programming languages are designed with different strengths and are used for different kinds of software.",
-
-        example:
-            "Python is commonly used for automation, data science, and learning programming, while JavaScript is widely used for web development.",
-
-        deepDive:
-            "Programming languages can be categorized in many ways, including compiled or interpreted, high-level or low-level, procedural, object-oriented, functional, and systems-oriented.",
-
-        keyPoints: [
-            "Programming languages define rules for writing code.",
-            "Different languages have different strengths.",
-            "Some languages are compiled.",
-            "Some languages use interpreters or runtimes.",
-            "Learning programming concepts is often more important than memorizing syntax."
-        ],
-
-        related: [
-            "programming",
-            "compilers-interpreters",
-            "javascript",
-            "machine-code"
-        ]
-    },
-
-
-    algorithms: {
-        title: "Algorithms",
-        category: "Programming & Data",
-        icon: "🧮",
-        keywords: [
-            "algorithms",
-            "algorithm",
-            "problem solving",
-            "computer algorithms"
-        ],
-        quickAnswer:
-            "An algorithm is a defined sequence of steps for solving a problem or performing a task.",
-
-        howItWorks:
-            "An algorithm takes input, processes it using a sequence of operations, and produces an output or result.",
-
-        whyItMatters:
-            "Good algorithms can solve problems efficiently and are fundamental to computer science and software development.",
-
-        example:
-            "A search algorithm can examine a collection of data to find a specific value.",
-
-        deepDive:
-            "Algorithms are often evaluated using time and space complexity. Common algorithmic techniques include sorting, searching, recursion, dynamic programming, and graph algorithms.",
-
-        keyPoints: [
-            "Algorithms are step-by-step procedures.",
-            "Algorithms can process data.",
-            "Different algorithms can solve the same problem.",
-            "Efficiency matters for large inputs.",
-            "Algorithms are used throughout software."
-        ],
-
-        related: [
-            "programming",
-            "data-structures",
-            "loops",
-            "conditional-statements"
-        ]
-    },
-
-
-    variables: {
-        title: "Variables",
-        category: "Programming & Data",
-        icon: "📦",
-        keywords: [
-            "variables",
-            "variable",
-            "programming variables",
-            "data storage"
-        ],
-        quickAnswer:
-            "A variable is a named location or reference used by a program to store or represent data.",
-
-        howItWorks:
-            "Programs assign values to variables and later read or modify those values as the program executes.",
-
-        whyItMatters:
-            "Variables allow programs to work with changing information such as numbers, text, user input, and program state.",
-
-        example:
-            "A program could store a user's name in a variable and use that value later.",
-
-        deepDive:
-            "Different languages have different variable and type systems. Some require explicit type declarations while others infer types automatically.",
-
-        keyPoints: [
-            "Variables represent data used by programs.",
-            "Variables can hold different kinds of values.",
-            "Programs can change variable values.",
-            "Variable rules differ between languages.",
-            "Good variable names improve code readability."
-        ],
-
-        related: [
-            "data-types",
-            "programming",
-            "functions"
-        ]
-    },
-
-
-    functions: {
-        title: "Functions",
-        category: "Programming & Data",
-        icon: "⚙️",
-        keywords: [
-            "functions",
-            "function",
-            "methods",
-            "programming functions"
-        ],
-        quickAnswer:
-            "A function is a reusable block of code designed to perform a specific task.",
-
-        howItWorks:
-            "A function can receive input through parameters, execute instructions, and optionally return a result.",
-
-        whyItMatters:
-            "Functions reduce repeated code and help programmers organize large programs into smaller pieces.",
-
-        example:
-            "A calculateTotal function could receive prices and return the final total.",
-
-        deepDive:
-            "Functions are central to abstraction and modular programming. Different languages support functions in different ways, including anonymous functions, closures, and methods.",
-
-        keyPoints: [
-            "Functions group reusable logic.",
-            "Functions can accept parameters.",
-            "Functions can return values.",
-            "Functions improve code organization.",
-            "Functions support abstraction."
-        ],
-
-        related: [
-            "variables",
-            "programming",
-            "object-oriented-programming"
-        ]
-    },
-
-
-    apis: {
-        title: "APIs",
-        category: "Programming & Data",
-        icon: "🔗",
-        keywords: [
-            "api",
-            "apis",
-            "application programming interface",
-            "web api"
-        ],
-        quickAnswer:
-            "An API is a defined interface that allows software systems to communicate with each other.",
-
-        howItWorks:
-            "An API defines available operations, inputs, outputs, and rules that software can use to request or provide functionality.",
-
-        whyItMatters:
-            "APIs allow applications to reuse services and communicate without needing to know every internal implementation detail.",
-
-        example:
-            "A weather application can use a weather API to request current conditions from a remote service.",
-
-        deepDive:
-            "APIs can use many communication styles and protocols. Web APIs commonly use HTTP and formats such as JSON.",
-
-        keyPoints: [
-            "APIs connect software systems.",
-            "APIs define rules for communication.",
-            "Web APIs often use HTTP.",
-            "JSON is commonly used for data exchange.",
-            "APIs hide implementation details behind an interface."
-        ],
-
-        related: [
-            "javascript",
-            "back-end-development",
-            "databases",
-            "http-https"
-        ]
-    },
-
-
-    databases: {
-        title: "Databases",
-        category: "Programming & Data",
-        icon: "🗃️",
-        keywords: [
-            "database",
-            "databases",
-            "sql",
-            "data storage",
-            "database management"
-        ],
-        quickAnswer:
-            "A database is a system used to store, organize, retrieve, and manage data.",
-
-        howItWorks:
-            "Applications send queries or commands to database systems. The database stores data using structures designed for efficient retrieval and management.",
-
-        whyItMatters:
-            "Databases allow applications to store information such as accounts, products, messages, records, and settings.",
-
-        example:
-            "An online store might use a database to store products, customers, orders, and inventory.",
-
-        deepDive:
-            "Relational databases organize data into tables and commonly use SQL. Other database models include document, key-value, graph, and wide-column systems.",
-
-        keyPoints: [
-            "Databases store structured or semi-structured data.",
-            "Relational databases use tables.",
-            "SQL is widely used with relational databases.",
-            "Applications communicate with databases through queries.",
-            "Database security and backups are important."
-        ],
-
-        related: [
-            "apis",
-            "back-end-development",
-            "data-structures"
-        ]
-    },
-
-
-    binary: {
+    "binary": {
         title: "Binary",
-        category: "Programming & Data",
-        icon: "01",
+        category: "Computers",
+        icon: "0️⃣",
         keywords: [
             "binary",
             "binary numbers",
+            "base 2",
             "bits",
-            "bytes",
-            "base 2"
+            "computer binary"
         ],
         quickAnswer:
-            "Binary is a base-2 number system that uses only 0 and 1 and is fundamental to digital computing.",
-
+            "Binary is a number system that uses only two digits: 0 and 1.",
         howItWorks:
-            "Digital systems represent information using bits. A bit can have one of two states, commonly represented as 0 or 1.",
-
+            "Each position in a binary number represents a power of two. Computers use binary representations because digital hardware can represent two distinct states.",
         whyItMatters:
-            "Computers use digital electronics that naturally represent information using two-state signals, making binary fundamental to computing.",
-
+            "Binary is fundamental to how digital computers represent and process information.",
         example:
-            "Eight binary bits make one byte. A byte can represent 256 different combinations.",
-
+            "The decimal number 5 can be represented in binary as 101.",
         deepDive:
-            "Binary representations are used for numbers, text, instructions, colors, files, network packets, and virtually every kind of digital information.",
-
+            "Binary can represent numbers, text, images, instructions, and many other forms of information when combined with defined encoding systems.",
         keyPoints: [
-            "Binary uses two symbols: 0 and 1.",
-            "A bit is a binary digit.",
+            "Binary uses 0 and 1.",
+            "Binary is base 2.",
+            "Each position represents a power of two.",
+            "Digital systems commonly use binary states.",
+            "Binary representation can encode many kinds of information."
+        ],
+        related: ["bit", "byte", "computer-architecture"]
+    },
+
+
+    "bit": {
+        title: "Bit",
+        category: "Computers",
+        icon: "1️⃣",
+        keywords: [
+            "bit",
+            "binary digit",
+            "binary bit",
+            "bits"
+        ],
+        quickAnswer:
+            "A bit is the smallest basic unit of digital information and can represent one of two values, commonly written as 0 or 1.",
+        howItWorks:
+            "Digital systems use physical or logical states to represent bit values.",
+        whyItMatters:
+            "Bits are the foundation of digital data representation and computing.",
+        example:
+            "Eight bits make one byte.",
+        deepDive:
+            "Groups of bits can represent larger numbers and encoded information. Network speeds are often measured in bits per second.",
+        keyPoints: [
+            "Bit means binary digit.",
+            "A bit has two possible values.",
+            "Bits can be grouped together.",
             "Eight bits make a byte.",
-            "Computers represent digital information using bits.",
-            "Binary is a base-2 number system."
+            "Network speeds are commonly measured in bits per second."
         ],
-
-        related: [
-            "machine-code",
-            "cpu",
-            "data-structures"
-        ]
+        related: ["binary", "byte", "computer-memory"]
     },
 
 
-    "data-structures": {
-        title: "Data Structures",
-        category: "Programming & Data",
-        icon: "🗂️",
+    "byte": {
+        title: "Byte",
+        category: "Computers",
+        icon: "📦",
         keywords: [
-            "data structures",
-            "arrays",
-            "lists",
-            "stacks",
-            "queues",
-            "trees"
+            "byte",
+            "bytes",
+            "8 bits",
+            "digital storage unit"
         ],
         quickAnswer:
-            "Data structures are ways of organizing and storing data so programs can use it efficiently.",
-
+            "A byte is a group of eight bits and is a common basic unit for representing data.",
         howItWorks:
-            "Different data structures provide different ways to store, access, search, and modify information.",
-
+            "Eight binary digits can represent 256 different combinations, from 00000000 through 11111111.",
         whyItMatters:
-            "Choosing an appropriate data structure can make software easier to build and more efficient.",
-
+            "Bytes are widely used to measure file sizes, memory capacity, and storage capacity.",
         example:
-            "An array can store an ordered collection of values, while a queue can represent items waiting to be processed.",
-
+            "A text encoding can use one or more bytes to represent a character.",
         deepDive:
-            "Common data structures include arrays, linked lists, stacks, queues, hash tables, trees, graphs, and heaps.",
-
+            "Larger quantities are commonly expressed using units such as kilobytes, megabytes, gigabytes, and terabytes, although decimal and binary conventions differ.",
         keyPoints: [
-            "Data structures organize information.",
-            "Different structures have different strengths.",
-            "Arrays provide indexed access.",
-            "Hash tables can provide fast key-based lookup.",
-            "Trees and graphs represent relationships."
+            "One byte contains eight bits.",
+            "Bytes are used to represent data.",
+            "File sizes are often measured in bytes.",
+            "Memory capacity is commonly measured in bytes.",
+            "Decimal and binary storage units can differ."
         ],
-
-        related: [
-            "algorithms",
-            "programming",
-            "databases"
-        ]
+        related: ["bit", "binary", "ram"]
     },
 
 
-    "version-control": {
-        title: "Version Control",
-        category: "Programming & Data",
-        icon: "🕒",
+    "computer-input-output": {
+        title: "Input & Output",
+        category: "Computers",
+        icon: "↔️",
         keywords: [
-            "version control",
-            "git",
-            "github",
-            "source control",
-            "repositories"
+            "input output",
+            "i/o",
+            "io",
+            "computer input",
+            "computer output"
         ],
         quickAnswer:
-            "Version control systems track changes to files so developers can collaborate, review history, and restore earlier versions.",
-
+            "Input and output, often called I/O, describe how a computer receives information and produces or transfers information.",
         howItWorks:
-            "Developers create commits or other recorded changes. Systems such as Git maintain a history that can be branched, merged, compared, and shared.",
-
+            "Input devices and systems provide information to a computer, while output devices and systems present or transmit results.",
         whyItMatters:
-            "Version control helps developers manage projects safely and collaborate without losing previous work.",
-
+            "I/O allows computers to interact with users, storage, networks, sensors, and other systems.",
         example:
-            "A developer can use Git to save changes to a website and later return to an earlier version if a change causes a problem.",
-
+            "A keyboard provides input while a monitor provides output.",
         deepDive:
-            "Git is a distributed version-control system. Platforms such as GitHub provide collaboration features around Git repositories.",
-
+            "I/O can involve physical devices, storage, network communication, and software interfaces.",
         keyPoints: [
-            "Version control tracks changes.",
-            "Git is a popular version-control system.",
-            "Commits record project history.",
-            "Branches allow separate lines of development.",
-            "Version control helps teams collaborate."
+            "Input provides information to a system.",
+            "Output provides information from a system.",
+            "I/O includes more than keyboards and monitors.",
+            "Storage and networking can involve I/O.",
+            "Operating systems manage many I/O operations."
         ],
-
-        related: [
-            "programming",
-            "debugging",
-            "web-development"
-        ]
+        related: ["computer-ports", "operating-system", "computer-network"]
     },
 
 
-    "object-oriented-programming": {
-        title: "Object-Oriented Programming",
-        category: "Programming & Data",
-        icon: "🧱",
+    "computer-peripherals": {
+        title: "Computer Peripherals",
+        category: "Computers",
+        icon: "🖱️",
         keywords: [
-            "oop",
-            "object oriented programming",
-            "classes",
-            "objects",
-            "inheritance"
+            "peripherals",
+            "computer peripherals",
+            "keyboard",
+            "mouse",
+            "printer",
+            "external devices"
         ],
         quickAnswer:
-            "Object-oriented programming is a programming approach that organizes software around objects containing data and behavior.",
-
+            "Computer peripherals are devices connected to a computer that provide input, output, storage, communication, or other functionality.",
         howItWorks:
-            "Programs define classes or other object structures that describe data and behavior. Objects are created from those structures and interact with each other.",
-
+            "Peripherals communicate with a computer through interfaces such as USB, Bluetooth, Ethernet, or other connections.",
         whyItMatters:
-            "OOP can help organize large software projects by grouping related state and behavior into reusable components.",
-
+            "Peripherals expand what a computer can do and how users interact with it.",
         example:
-            "A game might define a Player class containing information such as health and methods such as move().",
-
+            "A keyboard, mouse, webcam, printer, or external storage device can function as a peripheral.",
         deepDive:
-            "Common OOP concepts include encapsulation, inheritance, polymorphism, and abstraction. Different languages implement these concepts differently.",
-
+            "Peripheral devices can use device drivers and standardized interfaces so operating systems can communicate with them.",
         keyPoints: [
-            "OOP organizes software around objects.",
-            "Objects can contain data and behavior.",
-            "Classes are commonly used as blueprints.",
-            "Encapsulation hides internal implementation details.",
-            "Inheritance and polymorphism are common OOP concepts."
+            "Peripherals extend computer functionality.",
+            "They can provide input or output.",
+            "Some peripherals provide storage.",
+            "Peripherals use different connection technologies.",
+            "Drivers may be required for certain devices."
         ],
-
-        related: [
-            "programming",
-            "functions",
-            "data-structures"
-        ]
+        related: ["computer-ports", "device-drivers", "computer-input-output"]
     },
 
 
-    loops: {
-        title: "Loops",
-        category: "Programming & Data",
-        icon: "🔁",
+    "computer-performance": {
+        title: "Computer Performance",
+        category: "Computers",
+        icon: "📈",
         keywords: [
-            "loops",
-            "loop",
-            "for loop",
-            "while loop",
-            "iteration"
+            "computer performance",
+            "pc performance",
+            "system performance",
+            "performance"
         ],
         quickAnswer:
-            "Loops repeatedly execute a block of code while a condition remains satisfied or for a defined number of iterations.",
-
+            "Computer performance describes how quickly and efficiently a computer system completes tasks.",
         howItWorks:
-            "A loop evaluates a condition or sequence and repeatedly executes its body until the loop should stop.",
-
+            "Performance depends on factors including processor capabilities, memory, storage, software, workload, thermals, and system configuration.",
         whyItMatters:
-            "Loops allow programs to process collections of data and repeat operations without writing the same code many times.",
-
+            "Understanding performance helps explain why different systems behave differently under different workloads.",
         example:
-            "A loop can examine every item in a list and perform an operation on each item.",
-
+            "A system with a faster SSD may load applications more quickly, while a stronger GPU can improve graphics performance.",
         deepDive:
-            "Common loop types include for loops, while loops, and language-specific iteration constructs. Loops can contain conditions that control when they continue or stop.",
-
+            "Performance should be evaluated using workload-appropriate measurements rather than relying on a single specification such as clock speed.",
         keyPoints: [
-            "Loops repeat code.",
-            "Loops can iterate through collections.",
-            "For and while loops are common.",
-            "Loop conditions determine when execution continues.",
-            "Infinite loops occur when a loop never reaches its stopping condition."
+            "Performance depends on many components.",
+            "Different workloads stress different hardware.",
+            "Benchmarks measure specific aspects of performance.",
+            "Thermal limits can affect performance.",
+            "Software optimization can also matter."
         ],
-
-        related: [
-            "conditional-statements",
-            "algorithms",
-            "programming"
-        ]
+        related: ["cpu", "gpu", "ram"]
     },
 
 
-    "conditional-statements": {
-        title: "Conditional Statements",
-        category: "Programming & Data",
-        icon: "🔀",
+    "computer-specifications": {
+        title: "Computer Specifications",
+        category: "Computers",
+        icon: "📋",
         keywords: [
-            "conditionals",
-            "if statements",
-            "else",
-            "conditional statements",
-            "programming logic"
+            "computer specs",
+            "specifications",
+            "pc specs",
+            "hardware specifications"
         ],
         quickAnswer:
-            "Conditional statements allow programs to make decisions based on whether a condition is true or false.",
-
+            "Computer specifications describe the hardware and capabilities of a computer system.",
         howItWorks:
-            "The program evaluates an expression and executes different code depending on the result.",
-
+            "Specifications can include processor model, memory capacity, storage, graphics hardware, display characteristics, ports, networking, and other features.",
         whyItMatters:
-            "Conditional logic allows programs to respond differently to different inputs and situations.",
-
+            "Specifications help people understand what a computer is equipped to do.",
         example:
-            "A program could check whether a user's password is correct and display a different result depending on the answer.",
-
+            "A PC specification sheet might list its CPU, RAM, SSD capacity, GPU, and operating system.",
         deepDive:
-            "Common conditional structures include if, else if, and else. Many languages also provide switch or match-style constructs.",
-
+            "Specifications should be interpreted in context because component names and numbers do not always directly translate into real-world performance.",
         keyPoints: [
-            "Conditionals allow programs to make decisions.",
-            "if statements are common.",
-            "Conditions evaluate to true or false.",
-            "else branches handle alternative cases.",
-            "Conditional logic is fundamental to algorithms."
+            "Specifications describe system components.",
+            "CPU model is one specification.",
+            "RAM capacity is another specification.",
+            "Storage capacity describes available persistent storage.",
+            "Performance depends on the combination of components."
         ],
-
-        related: [
-            "loops",
-            "algorithms",
-            "programming"
-        ]
+        related: ["computer-performance", "cpu", "ram"]
     },
 
 
-    "data-types": {
-        title: "Data Types",
-        category: "Programming & Data",
-        icon: "🏷️",
-        keywords: [
-            "data types",
-            "types",
-            "string",
-            "integer",
-            "boolean",
-            "programming data"
-        ],
-        quickAnswer:
-            "Data types describe the kind of value a program is working with and how that value can be used.",
-
-        howItWorks:
-            "A programming language defines types and rules for operations that can be performed on values. Some languages require explicit type declarations while others infer them.",
-
-        whyItMatters:
-            "Data types help programs represent information correctly and can prevent invalid operations.",
-
-        example:
-            "A program might use an integer for a count, a string for a name, and a Boolean for a true-or-false setting.",
-
-        deepDive:
-            "Common types include integers, floating-point numbers, strings, Booleans, arrays, objects, and null-like values. Exact types differ between languages.",
-
-        keyPoints: [
-            "Data types describe kinds of values.",
-            "Strings represent text.",
-            "Integers represent whole numbers.",
-            "Booleans represent true or false.",
-            "Different languages have different type systems."
-        ],
-
-        related: [
-            "variables",
-            "programming-languages",
-            "functions"
-        ]
-    },
-
-
-    "debugging": {
-        title: "Debugging",
-        category: "Programming & Data",
-        icon: "🐛",
-        keywords: [
-            "debugging",
-            "bugs",
-            "debugger",
-            "programming errors",
-            "troubleshooting code"
-        ],
-        quickAnswer:
-            "Debugging is the process of finding, understanding, and fixing problems in software.",
-
-        howItWorks:
-            "Developers reproduce a problem, inspect program behavior, identify the cause, make a change, and test the result.",
-
-        whyItMatters:
-            "Software rarely works perfectly on the first attempt. Debugging is a fundamental programming skill.",
-
-        example:
-            "If a program produces the wrong result, a developer can use logging or a debugger to inspect variables and determine where the problem occurs.",
-
-        deepDive:
-            "Debugging techniques include breakpoints, stack traces, logging, test cases, tracing program state, code review, and reducing a problem to a smaller reproducible example.",
-
-        keyPoints: [
-            "Debugging finds and fixes software problems.",
-            "Reproducing a bug helps identify its cause.",
-            "Debuggers can pause program execution.",
-            "Logs provide information about program behavior.",
-            "Testing after a fix helps confirm the problem was resolved."
-        ],
-
-        related: [
-            "programming",
-            "functions",
-            "version-control"
-        ]
-    },
-
-
-    "compilers-interpreters": {
-        title: "Compilers and Interpreters",
-        category: "Programming & Data",
-        icon: "⚙️",
-        keywords: [
-            "compiler",
-            "interpreter",
-            "compilation",
-            "program execution",
-            "source code"
-        ],
-        quickAnswer:
-            "Compilers and interpreters are tools or systems that help turn programming-language code into executable behavior.",
-
-        howItWorks:
-            "A compiler generally translates source code into another form before execution, while an interpreter or runtime can execute code through interpretation or other runtime mechanisms. Modern systems often combine multiple techniques.",
-
-        whyItMatters:
-            "Understanding compilation and interpretation helps explain how human-readable source code becomes executable by computers.",
-
-        example:
-            "A C program can be compiled into machine-code instructions that a computer processor can execute.",
-
-        deepDive:
-            "Compilation can include parsing, semantic analysis, optimization, code generation, and linking. Interpreted languages may also use bytecode, just-in-time compilation, or virtual machines.",
-
-        keyPoints: [
-            "Compilers translate source code.",
-            "Interpreters execute code through a runtime process.",
-            "Modern languages can use hybrid approaches.",
-            "Compilation can include optimization.",
-            "Machine code is ultimately executed by processors."
-        ],
-
-        related: [
-            "programming-languages",
-            "machine-code",
-            "cpu"
-        ]
-    },
-
-
-    "machine-code": {
-        title: "Machine Code",
-        category: "Programming & Data",
+    "computer-architecture-64-bit": {
+        title: "32-Bit vs 64-Bit",
+        category: "Computers",
         icon: "🔢",
         keywords: [
-            "machine code",
-            "machine language",
-            "cpu instructions",
-            "assembly",
-            "low level code"
+            "32 bit",
+            "64 bit",
+            "x64",
+            "x86",
+            "64-bit computing"
         ],
         quickAnswer:
-            "Machine code is the low-level instruction format that a processor executes directly.",
-
+            "32-bit and 64-bit describe aspects of processor architectures and software environments, including the size of certain data paths and address representations.",
         howItWorks:
-            "A CPU fetches instructions from memory and decodes and executes them according to its instruction set architecture.",
-
+            "A 64-bit architecture can generally address a much larger theoretical memory space than a 32-bit architecture, subject to the actual hardware and operating system.",
         whyItMatters:
-            "Machine code is the final low-level representation executed by a processor when running native programs.",
-
+            "Modern general-purpose computers commonly use 64-bit architectures, which support larger memory spaces and modern software environments.",
         example:
-            "A compiler can translate a high-level programming language into machine instructions appropriate for a particular CPU architecture.",
-
+            "A modern 64-bit operating system can generally use much more memory than a traditional 32-bit operating system.",
         deepDive:
-            "Machine code is architecture-specific. x86-64, ARM64, and other processor architectures use different instruction sets.",
-
+            "The terms x86 and x64 are often used in software contexts, but architecture terminology can vary and should be interpreted carefully.",
         keyPoints: [
-            "Machine code is executed by CPUs.",
-            "It is architecture-specific.",
-            "Compilers can generate machine code.",
-            "Assembly language provides a more readable representation of many machine instructions.",
-            "Different CPU architectures use different instruction sets."
+            "64-bit systems support larger address spaces.",
+            "Modern desktop systems are commonly 64-bit.",
+            "Software must be compatible with the target architecture.",
+            "Architecture affects more than just memory.",
+            "32-bit software can sometimes run on 64-bit systems."
         ],
-
-        related: [
-            "cpu",
-            "binary",
-            "compilers-interpreters",
-            "programming-languages"
-        ]
+        related: ["cpu", "computer-architecture", "operating-system"]
     },
 
 
-    /* =================================================
-       ARTIFICIAL INTELLIGENCE & MODERN TECHNOLOGY
-    ================================================= */
-
-    "artificial-intelligence": {
-        title: "Artificial Intelligence",
-        category: "Artificial Intelligence",
-        icon: "🤖",
+    "computer-cache": {
+        title: "CPU Cache",
+        category: "Computers",
+        icon: "⚡",
         keywords: [
-            "ai",
-            "artificial intelligence",
-            "machine intelligence",
-            "ai systems"
+            "cpu cache",
+            "cache memory",
+            "l1 cache",
+            "l2 cache",
+            "l3 cache"
         ],
         quickAnswer:
-            "Artificial intelligence is a broad field focused on building systems that perform tasks associated with human-like reasoning, perception, learning, or decision-making.",
-
+            "CPU cache is very fast memory located on or close to a processor and used to store frequently needed data and instructions.",
         howItWorks:
-            "AI systems can use rules, search, statistical models, machine learning, neural networks, and other techniques to process information and produce outputs.",
-
+            "The processor checks cache levels for requested information before accessing slower levels of the memory hierarchy.",
         whyItMatters:
-            "AI is used in areas such as language processing, computer vision, recommendation systems, automation, science, and robotics.",
-
+            "Cache can reduce the time a processor spends waiting for frequently accessed information.",
         example:
-            "An AI system can analyze text and generate a response based on patterns learned from data.",
-
+            "A CPU may check its L1 cache before looking in larger but slower cache levels or main memory.",
         deepDive:
-            "AI includes many approaches. Machine learning is a major area where models learn patterns from data rather than relying entirely on manually written rules.",
-
+            "Modern processors can have multiple cache levels, often called L1, L2, and L3, with different sizes and performance characteristics.",
         keyPoints: [
-            "AI is a broad field.",
-            "Machine learning is a major AI technique.",
-            "AI can process many kinds of data.",
-            "AI systems can be used for prediction and generation.",
-            "AI performance depends on the system, data, and task."
+            "Cache is faster than main memory.",
+            "CPUs can have multiple cache levels.",
+            "L1 is typically smaller and very fast.",
+            "Larger cache levels can hold more data.",
+            "Cache improves memory-access performance."
         ],
-
-        related: [
-            "machine-learning",
-            "gpu",
-            "cloud-computing",
-            "programming"
-        ]
+        related: ["cpu", "ram", "computer-memory"]
     },
 
 
-    "machine-learning": {
-        title: "Machine Learning",
-        category: "Artificial Intelligence",
-        icon: "🧠",
+    "computer-bus": {
+        title: "Computer Bus",
+        category: "Computers",
+        icon: "🚌",
         keywords: [
-            "machine learning",
-            "ml",
-            "models",
-            "training",
-            "ai"
+            "computer bus",
+            "bus",
+            "data bus",
+            "system bus",
+            "computer communication"
         ],
         quickAnswer:
-            "Machine learning is a field where algorithms learn patterns from data to make predictions or generate outputs.",
-
+            "A computer bus is a communication system that transfers data, addresses, or control information between components.",
         howItWorks:
-            "A model is trained using data. During training, the system adjusts internal parameters to reduce errors according to a chosen objective.",
-
+            "Hardware components communicate through defined electrical or logical interfaces that specify how information is transferred.",
         whyItMatters:
-            "Machine learning can solve problems that are difficult to program using explicit rules alone.",
-
+            "Buses and interconnects allow processors, memory, storage, and peripherals to communicate.",
         example:
-            "A machine-learning model can be trained to recognize patterns in images.",
-
+            "A system can use high-speed interconnects to connect a CPU with memory and expansion devices.",
         deepDive:
-            "Major machine-learning approaches include supervised learning, unsupervised learning, and reinforcement learning. Neural networks are widely used for many modern applications.",
-
+            "Modern computers use a variety of interconnect technologies rather than relying on one universal bus.",
         keyPoints: [
-            "Machine learning learns patterns from data.",
-            "Training adjusts model parameters.",
-            "Models can make predictions or generate outputs.",
-            "Different learning approaches exist.",
-            "Data quality affects model performance."
+            "Buses transfer information between components.",
+            "Different buses serve different purposes.",
+            "Modern systems use multiple interconnect technologies.",
+            "Bus performance can affect system communication.",
+            "Hardware interfaces define communication rules."
         ],
-
-        related: [
-            "artificial-intelligence",
-            "gpu",
-            "data-structures"
-        ]
+        related: ["motherboard", "cpu", "computer-architecture"]
     },
 
 
-    "cloud-computing": {
-        title: "Cloud Computing",
-        category: "Modern Technology",
-        icon: "☁️",
-        keywords: [
-            "cloud",
-            "cloud computing",
-            "cloud services",
-            "aws",
-            "azure"
-        ],
-        quickAnswer:
-            "Cloud computing provides computing resources and services over networks, commonly the Internet.",
-
-        howItWorks:
-            "Cloud providers operate large collections of servers, storage systems, and networking equipment. Customers access resources through web interfaces, APIs, or other tools.",
-
-        whyItMatters:
-            "Cloud computing allows organizations and individuals to use computing resources without owning all of the underlying hardware.",
-
-        example:
-            "A developer can deploy a web application to a cloud platform instead of maintaining a physical server at home.",
-
-        deepDive:
-            "Cloud services include virtual machines, containers, databases, object storage, serverless computing, networking, monitoring, and managed services.",
-
-        keyPoints: [
-            "Cloud computing provides remote computing resources.",
-            "Cloud providers operate large infrastructure.",
-            "Cloud services can scale resources.",
-            "Virtualization is commonly used in cloud infrastructure.",
-            "Cloud services can be managed through APIs."
-        ],
-
-        related: [
-            "virtualization",
-            "data-centers",
-            "server",
-            "apis"
-        ]
-    },
-
-
-    virtualization: {
-        title: "Virtualization",
-        category: "Modern Technology",
-        icon: "🖥️",
-        keywords: [
-            "virtualization",
-            "virtual machine",
-            "vm",
-            "hypervisor"
-        ],
-        quickAnswer:
-            "Virtualization allows physical computing resources to host simulated or abstracted computing environments.",
-
-        howItWorks:
-            "A hypervisor manages virtual machines and allocates hardware resources such as CPU, memory, storage, and networking to them.",
-
-        whyItMatters:
-            "Virtualization allows multiple isolated environments to run on the same physical hardware.",
-
-        example:
-            "A developer can run a Linux virtual machine inside a Windows computer for testing software.",
-
-        deepDive:
-            "Virtualization can be implemented using different types of hypervisors. Modern processors provide hardware virtualization features that improve performance and isolation.",
-
-        keyPoints: [
-            "Virtualization creates abstracted computing environments.",
-            "Virtual machines can run separate operating systems.",
-            "Hypervisors manage virtual machines.",
-            "Virtualization is common in cloud computing.",
-            "Multiple VMs can share physical hardware."
-        ],
-
-        related: [
-            "cloud-computing",
-            "operating-system",
-            "data-centers"
-        ]
-    },
-
-
-    "data-centers": {
-        title: "Data Centers",
-        category: "Modern Technology",
-        icon: "🏢",
-        keywords: [
-            "data center",
-            "datacenter",
-            "servers",
-            "cloud infrastructure"
-        ],
-        quickAnswer:
-            "A data center is a facility containing computing, storage, networking, power, cooling, and other infrastructure.",
-
-        howItWorks:
-            "Data centers house servers and networking equipment and provide systems for power, cooling, monitoring, physical security, and connectivity.",
-
-        whyItMatters:
-            "Data centers provide the physical infrastructure behind websites, cloud services, applications, databases, and many Internet services.",
-
-        example:
-            "A cloud provider may operate large data centers containing thousands of servers.",
-
-        deepDive:
-            "Data centers are designed for reliability and efficiency and may use redundant power systems, network connections, cooling systems, and backup infrastructure.",
-
-        keyPoints: [
-            "Data centers contain computing infrastructure.",
-            "Servers are a major component.",
-            "Cooling is essential.",
-            "Reliable power is essential.",
-            "Redundancy improves availability."
-        ],
-
-        related: [
-            "server",
-            "cloud-computing",
-            "virtualization",
-            "computer-cooling"
-        ]
-    },
-
-
-    iot: {
-        title: "Internet of Things (IoT)",
-        category: "Modern Technology",
-        icon: "📡",
-        keywords: [
-            "iot",
-            "internet of things",
-            "smart devices",
-            "connected devices"
-        ],
-        quickAnswer:
-            "The Internet of Things refers to physical devices that contain computing and networking capabilities and can exchange data.",
-
-        howItWorks:
-            "IoT devices use sensors, processors, software, and network connections to collect and exchange information.",
-
-        whyItMatters:
-            "IoT enables connected devices used in homes, industry, transportation, healthcare, agriculture, and many other areas.",
-
-        example:
-            "A smart thermostat can measure temperature and communicate with a mobile application.",
-
-        deepDive:
-            "IoT systems often involve edge devices, gateways, cloud services, APIs, databases, and security systems.",
-
-        keyPoints: [
-            "IoT connects physical devices to networks.",
-            "Sensors collect information.",
-            "Devices can communicate with cloud services.",
-            "IoT security is important.",
-            "IoT is used in homes and industry."
-        ],
-
-        related: [
-            "internet",
-            "cloud-computing",
-            "cybersecurity"
-        ]
-    },
-
-
-    blockchain: {
-        title: "Blockchain",
-        category: "Modern Technology",
-        icon: "⛓️",
-        keywords: [
-            "blockchain",
-            "distributed ledger",
-            "cryptocurrency",
-            "blocks"
-        ],
-        quickAnswer:
-            "A blockchain is a type of distributed ledger that records data in linked blocks using cryptographic techniques.",
-
-        howItWorks:
-            "Transactions or other records are grouped into blocks. Network participants use a consensus mechanism to agree on which blocks are added to the ledger.",
-
-        whyItMatters:
-            "Blockchain technology provides a way for multiple participants to maintain a shared record without relying on a single central database in some system designs.",
-
-        example:
-            "Cryptocurrency networks can use blockchains to record transactions.",
-
-        deepDive:
-            "Blockchain systems vary significantly. Important concepts include hashing, digital signatures, consensus mechanisms, distributed networks, and smart contracts.",
-
-        keyPoints: [
-            "Blockchains use linked records.",
-            "Cryptographic hashes help connect blocks.",
-            "Distributed networks maintain copies of the ledger.",
-            "Consensus mechanisms determine accepted updates.",
-            "Blockchain designs vary widely."
-        ],
-
-        related: [
-            "cybersecurity",
-            "binary",
-            "databases"
-        ]
-    },
-
-
-    "quantum-computing": {
-        title: "Quantum Computing",
-        category: "Modern Technology",
-        icon: "⚛️",
-        keywords: [
-            "quantum computing",
-            "quantum computer",
-            "qubits",
-            "quantum"
-        ],
-        quickAnswer:
-            "Quantum computing uses quantum-mechanical phenomena to process information in ways that differ from classical computing.",
-
-        howItWorks:
-            "Quantum computers use quantum bits, or qubits. Quantum algorithms can manipulate quantum states using operations that have no direct classical equivalent.",
-
-        whyItMatters:
-            "Quantum computing could provide advantages for certain specialized problems, although practical quantum systems remain challenging to build and operate.",
-
-        example:
-            "Researchers are studying quantum algorithms for areas such as chemistry, optimization, and cryptography.",
-
-        deepDive:
-            "Quantum systems can experience decoherence and require careful control and error management. Quantum computing does not simply replace classical computers for every task.",
-
-        keyPoints: [
-            "Quantum computers use qubits.",
-            "Qubits differ from classical bits.",
-            "Quantum algorithms are specialized.",
-            "Quantum systems are difficult to control.",
-            "Quantum computing and classical computing have different strengths."
-        ],
-
-        related: [
-            "binary",
-            "artificial-intelligence",
-            "cybersecurity"
-        ]
-    },
-
-
-    "how-computers-work-together": {
-        title: "How Computers Work Together",
-        category: "Modern Technology",
-        icon: "🔗",
-        keywords: [
-            "computers working together",
-            "computer networks",
-            "distributed systems",
-            "network communication"
-        ],
-        quickAnswer:
-            "Computers work together by communicating across networks using standardized protocols and shared services.",
-
-        howItWorks:
-            "Devices exchange data using network protocols. Servers provide services, clients request them, and routers and switches move traffic between systems.",
-
-        whyItMatters:
-            "Modern technology depends on many computers cooperating rather than one computer doing everything.",
-
-        example:
-            "When you use a website, your device may communicate with DNS servers, web servers, databases, content delivery systems, and other services.",
-
-        deepDive:
-            "Distributed systems divide work across multiple computers. Cloud applications may use many services and servers working together behind the scenes.",
-
-        keyPoints: [
-            "Computers communicate through networks.",
-            "Protocols define how systems communicate.",
-            "Servers provide services.",
-            "Distributed systems divide work.",
-            "Modern applications can depend on many computers."
-        ],
-
-        related: [
-            "internet",
-            "server",
-            "apis",
-            "cloud-computing",
-            "data-centers"
-        ]
-    },
-
-
-    /* =================================================
-       CYBERSECURITY
-    ================================================= */
-
-    cybersecurity: {
-        title: "Cybersecurity",
-        category: "Cybersecurity",
-        icon: "🔐",
-        keywords: [
-            "cybersecurity",
-            "security",
-            "information security",
-            "computer security",
-            "cyber"
-        ],
-        quickAnswer:
-            "Cybersecurity is the practice of protecting computers, networks, applications, systems, and data from unauthorized access, disruption, or misuse.",
-
-        howItWorks:
-            "Cybersecurity uses multiple layers of protection including authentication, access controls, encryption, secure software development, monitoring, backups, network security, and user education.",
-
-        whyItMatters:
-            "Cybersecurity helps protect personal information, businesses, critical infrastructure, and digital services.",
-
-        example:
-            "Using strong authentication, keeping software updated, and backing up important files are basic security practices.",
-
-        deepDive:
-            "Cybersecurity includes defensive areas such as endpoint security, network security, application security, identity management, incident response, vulnerability management, and security monitoring.",
-
-        keyPoints: [
-            "Cybersecurity protects digital systems.",
-            "Security is a layered process.",
-            "Authentication verifies identity.",
-            "Access control limits permissions.",
-            "Updates and backups are important defensive measures."
-        ],
-
-        related: [
-            "firewall",
-            "vpn",
-            "proxy-server",
-            "software-updates",
-            "linux"
-        ]
-    },
-
-
-    subnetting: {
-        title: "Subnetting",
-        category: "Internet & Networking",
-        icon: "🧮",
-        keywords: [
-            "subnetting",
-            "subnet",
-            "subnet mask",
-            "cidr",
-            "network address"
-        ],
-        quickAnswer:
-            "Subnetting divides an IP network into smaller logical networks called subnets.",
-
-        howItWorks:
-            "A subnet mask or CIDR prefix determines which part of an IP address identifies the network and which part identifies hosts within that network.",
-
-        whyItMatters:
-            "Subnetting helps organize networks, control address usage, separate traffic, and design scalable network architectures.",
-
-        example:
-            "A company can divide one larger private network into separate subnets for employees, servers, and guest devices.",
-
-        deepDive:
-            "IPv4 subnetting uses a subnet mask or prefix length such as /24. IPv6 also uses prefix lengths to define network boundaries.",
-
-        keyPoints: [
-            "Subnetting divides networks.",
-            "Subnet masks define network boundaries.",
-            "CIDR notation uses prefix lengths.",
-            "Subnetting helps organize IP addresses.",
-            "Subnets can improve network segmentation."
-        ],
-
-        related: [
-            "ip-address",
-            "router",
-            "dhcp",
-            "network-switch"
-        ]
-    },
-
-
-    vpn: {
-        title: "VPN (Virtual Private Network)",
-        category: "Cybersecurity",
-        icon: "🛡️",
-        keywords: [
-            "vpn",
-            "virtual private network",
-            "encrypted tunnel",
-            "vpn security"
-        ],
-        quickAnswer:
-            "A VPN creates a protected network connection between a device and another network or VPN endpoint.",
-
-        howItWorks:
-            "VPN protocols establish an encrypted tunnel or otherwise protected connection through an untrusted network. Traffic is then routed through the VPN connection according to its configuration.",
-
-        whyItMatters:
-            "VPNs can help protect network traffic on untrusted networks and provide secure access to private networks.",
-
-        example:
-            "A company employee can use a VPN to securely access internal company resources while working remotely.",
-
-        deepDive:
-            "VPN technologies include protocols such as WireGuard, IPsec, and OpenVPN. Security depends on correct configuration, strong authentication, and trustworthy endpoints.",
-
-        keyPoints: [
-            "VPN stands for Virtual Private Network.",
-            "VPNs can protect traffic through encrypted connections.",
-            "VPNs can provide remote access to private networks.",
-            "Different VPN protocols have different designs.",
-            "A VPN does not make someone completely anonymous online."
-        ],
-
-        related: [
-            "cybersecurity",
-            "ip-address",
-            "http-https",
-            "firewall"
-        ]
-    },
-
-
-    "proxy-server": {
-        title: "Proxy Server",
-        category: "Cybersecurity",
-        icon: "🔀",
-        keywords: [
-            "proxy",
-            "proxy server",
-            "forward proxy",
-            "web proxy"
-        ],
-        quickAnswer:
-            "A proxy server acts as an intermediary between a client and another network service.",
-
-        howItWorks:
-            "Instead of connecting directly to a destination, a client sends a request to the proxy. The proxy can then make the request and return the response.",
-
-        whyItMatters:
-            "Proxies can provide filtering, caching, access control, traffic inspection, or routing through another network location.",
-
-        example:
-            "An organization may use a proxy to filter web traffic and enforce network access policies.",
-
-        deepDive:
-            "Forward proxies serve clients, while reverse proxies sit in front of servers. Reverse proxies can provide load balancing, caching, TLS termination, and application protection.",
-
-        keyPoints: [
-            "A proxy is an intermediary.",
-            "Forward proxies typically serve clients.",
-            "Reverse proxies typically sit in front of servers.",
-            "Proxies can filter or inspect traffic.",
-            "Proxies and VPNs are different technologies."
-        ],
-
-        related: [
-            "vpn",
-            "server",
-            "http-https",
-            "firewall"
-        ]
-    },
-
-
-    firewall: {
-        title: "Firewall",
-        category: "Cybersecurity",
-        icon: "🔥",
-        keywords: [
-            "firewall",
-            "network firewall",
-            "security firewall",
-            "packet filtering"
-        ],
-        quickAnswer:
-            "A firewall controls network traffic according to defined security rules.",
-
-        howItWorks:
-            "A firewall examines traffic and decides whether to allow, block, or otherwise handle it based on rules such as addresses, ports, protocols, applications, or connection state.",
-
-        whyItMatters:
-            "Firewalls help reduce unauthorized network access and can enforce security boundaries between networks or systems.",
-
-        example:
-            "A home router can block unsolicited inbound connections from the Internet while allowing established connections from devices inside the network.",
-
-        deepDive:
-            "Firewalls can be network-based or host-based. Advanced firewalls may use stateful inspection, application awareness, intrusion prevention, or other security technologies.",
-
-        keyPoints: [
-            "Firewalls control network traffic.",
-            "Rules determine what traffic is allowed.",
-            "Firewalls can exist on hosts or networks.",
-            "Stateful firewalls track connection state.",
-            "Firewalls are one layer of security."
-        ],
-
-        related: [
-            "cybersecurity",
-            "router",
-            "vpn",
-            "proxy-server"
-        ]
-    },
-
-
-    cdn: {
-        title: "CDN (Content Delivery Network)",
-        category: "Internet & Networking",
-        icon: "🌎",
-        keywords: [
-            "cdn",
-            "content delivery network",
-            "website performance",
-            "edge server",
-            "caching"
-        ],
-        quickAnswer:
-            "A CDN is a distributed network of servers that delivers content from locations closer to users.",
-
-        howItWorks:
-            "A CDN stores or retrieves copies of content at edge locations. User requests can be directed to an appropriate edge server, reducing the distance data must travel.",
-
-        whyItMatters:
-            "CDNs can improve website performance, reduce load on origin servers, and help absorb large amounts of traffic.",
-
-        example:
-            "A website can use a CDN to deliver images, JavaScript, CSS, videos, and other static content from locations around the world.",
-
-        deepDive:
-            "CDNs use caching, routing, distributed infrastructure, and sometimes edge computing. Many CDNs also provide security features such as DDoS mitigation.",
-
-        keyPoints: [
-            "CDN stands for Content Delivery Network.",
-            "CDNs use distributed edge servers.",
-            "Caching can reduce latency.",
-            "CDNs reduce load on origin servers.",
-            "Many CDNs also provide security services."
-        ],
-
-        related: [
-            "server",
-            "dns",
-            "http-https",
-            "web-development",
-            "cloud-computing"
-        ]
-    },
-
-
-    "os-kernel": {
-        title: "Operating-System Kernel",
-        category: "Operating Systems",
+    "computer-firmware": {
+        title: "Firmware",
+        category: "Computers",
         icon: "⚙️",
         keywords: [
-            "kernel",
-            "operating system kernel",
-            "os kernel",
-            "kernel mode",
-            "system calls"
+            "firmware",
+            "device firmware",
+            "hardware firmware",
+            "embedded firmware"
         ],
         quickAnswer:
-            "The kernel is the central part of an operating system that manages hardware resources and provides core services to software.",
-
+            "Firmware is software stored in or closely associated with hardware that provides low-level control and functionality.",
         howItWorks:
-            "The kernel manages processes, memory, hardware devices, files, networking, and other low-level resources. Applications interact with many kernel services through system calls.",
-
+            "Firmware can initialize hardware, control devices, and provide low-level functions that higher-level software depends on.",
         whyItMatters:
-            "The kernel provides the controlled layer between applications and the computer's hardware.",
-
+            "Many hardware devices rely on firmware to operate correctly.",
         example:
-            "When an application needs to read a file from storage, it can request the operating system to perform the operation rather than directly controlling the storage hardware.",
-
+            "A motherboard's UEFI firmware initializes hardware before the operating system starts.",
         deepDive:
-            "Kernel designs include monolithic, microkernel, hybrid, and other approaches. Modern operating systems use privilege levels to help isolate sensitive kernel operations from ordinary applications.",
-
+            "Firmware can exist in computers, routers, storage devices, printers, cameras, embedded systems, and many other devices.",
         keyPoints: [
-            "The kernel is central to an operating system.",
-            "It manages hardware resources.",
-            "It manages processes and memory.",
-            "Applications use system calls to request many kernel services.",
-            "Kernel code operates with higher privileges than normal applications."
+            "Firmware is software closely tied to hardware.",
+            "Firmware can initialize hardware.",
+            "UEFI is a type of system firmware.",
+            "Many devices contain firmware.",
+            "Firmware updates can add features or fix problems."
         ],
+        related: ["bios-uefi", "computer-architecture", "device-drivers"]
+    },
 
-        related: [
-            "operating-system",
-            "linux",
-            "computer-processes",
-            "virtual-memory"
-        ]
+
+    "embedded-systems": {
+        title: "Embedded Systems",
+        category: "Technology",
+        icon: "🔧",
+        keywords: [
+            "embedded system",
+            "embedded systems",
+            "microcontroller",
+            "embedded computing"
+        ],
+        quickAnswer:
+            "An embedded system is a computing system designed to perform specific functions as part of a larger device or product.",
+        howItWorks:
+            "Embedded systems often combine processors or microcontrollers, memory, firmware, sensors, communication interfaces, and application-specific software.",
+        whyItMatters:
+            "Embedded computing is present in vehicles, appliances, industrial systems, medical equipment, consumer electronics, and many other products.",
+        example:
+            "A washing machine can contain an embedded computer that controls its cycles and sensors.",
+        deepDive:
+            "Embedded systems are often designed around constraints involving power consumption, size, cost, timing, reliability, and hardware resources.",
+        keyPoints: [
+            "Embedded systems perform specific functions.",
+            "They are often part of larger devices.",
+            "Microcontrollers are common in embedded systems.",
+            "Firmware is often important.",
+            "Embedded systems can have strict resource constraints."
+        ],
+        related: ["computer-firmware", "internet-of-things", "computer-architecture"]
+    },
+
+
+    "microcontroller": {
+        title: "Microcontroller",
+        category: "Technology",
+        icon: "🔬",
+        keywords: [
+            "microcontroller",
+            "mcu",
+            "microcontroller unit",
+            "embedded controller"
+        ],
+        quickAnswer:
+            "A microcontroller is an integrated circuit containing a processor, memory, and input/output capabilities designed for embedded control applications.",
+        howItWorks:
+            "A microcontroller executes firmware and interacts with sensors, switches, motors, displays, and other components through its interfaces.",
+        whyItMatters:
+            "Microcontrollers provide compact and efficient computing for embedded devices.",
+        example:
+            "A microcontroller can read a temperature sensor and control a fan based on the measured temperature.",
+        deepDive:
+            "Microcontrollers often prioritize low power, low cost, predictable operation, and integrated peripherals rather than the raw performance of desktop processors.",
+        keyPoints: [
+            "Microcontrollers combine several computing functions in one chip.",
+            "They commonly run firmware.",
+            "They are widely used in embedded systems.",
+            "They interact with sensors and hardware.",
+            "They are often designed for low-power applications."
+        ],
+        related: ["embedded-systems", "computer-firmware", "internet-of-things"]
+    },
+
+
+    "computer-display": {
+        title: "Computer Display",
+        category: "Computers",
+        icon: "🖥️",
+        keywords: [
+            "monitor",
+            "display",
+            "computer screen",
+            "lcd",
+            "oled"
+        ],
+        quickAnswer:
+            "A computer display is an output device that presents visual information generated by a computer.",
+        howItWorks:
+            "The computer sends image information to the display through an interface such as HDMI or DisplayPort, and the display converts that information into visible images.",
+        whyItMatters:
+            "Displays provide visual feedback and allow users to interact with graphical software.",
+        example:
+            "A monitor can display text, images, video, and graphical interfaces produced by a computer.",
+        deepDive:
+            "Display characteristics include resolution, refresh rate, panel technology, color reproduction, response time, and connection standards.",
+        keyPoints: [
+            "Displays are output devices.",
+            "Resolution describes image dimensions.",
+            "Refresh rate describes how often the display updates.",
+            "Different display technologies have different characteristics.",
+            "Graphics hardware generates the image data."
+        ],
+        related: ["gpu", "computer-ports", "computer-input-output"]
+    },
+
+
+    "computer-keyboard": {
+        title: "Keyboard",
+        category: "Computers",
+        icon: "⌨️",
+        keywords: [
+            "keyboard",
+            "computer keyboard",
+            "input device",
+            "mechanical keyboard"
+        ],
+        quickAnswer:
+            "A keyboard is an input device that allows users to enter characters, commands, and other controls into a computer.",
+        howItWorks:
+            "Pressing keys produces electrical or electronic signals that are interpreted by the keyboard's controller and communicated to the computer.",
+        whyItMatters:
+            "Keyboards provide one of the primary ways people enter text and commands into computers.",
+        example:
+            "A user can type a document or enter a command using a keyboard.",
+        deepDive:
+            "Keyboards can use different switch mechanisms and can connect through USB, Bluetooth, or other interfaces.",
+        keyPoints: [
+            "Keyboards are input devices.",
+            "They send information to computers.",
+            "Different keyboards use different switch technologies.",
+            "Keyboards can be wired or wireless.",
+            "Operating systems interpret keyboard input."
+        ],
+        related: ["computer-peripherals", "computer-input-output", "computer-ports"]
+    },
+
+
+    "computer-mouse": {
+        title: "Computer Mouse",
+        category: "Computers",
+        icon: "🖱️",
+        keywords: [
+            "mouse",
+            "computer mouse",
+            "input device",
+            "pointing device"
+        ],
+        quickAnswer:
+            "A computer mouse is a pointing input device used to control a cursor and interact with graphical interfaces.",
+        howItWorks:
+            "A mouse detects movement and button actions and sends that information to the computer.",
+        whyItMatters:
+            "Mouse input provides a convenient way to interact with graphical user interfaces.",
+        example:
+            "Moving a mouse moves the pointer on the screen, while clicking a button can select an item.",
+        deepDive:
+            "Modern mice commonly use optical sensors and can communicate through USB or wireless technologies.",
+        keyPoints: [
+            "A mouse is an input device.",
+            "It controls a pointer or cursor.",
+            "Mice detect movement.",
+            "Buttons provide additional input.",
+            "Mice can be wired or wireless."
+        ],
+        related: ["computer-peripherals", "computer-input-output", "computer-ports"]
+    },
+
+
+    "computer-storage": {
+        title: "Computer Storage",
+        category: "Computers",
+        icon: "💾",
+        keywords: [
+            "computer storage",
+            "storage",
+            "data storage",
+            "persistent storage"
+        ],
+        quickAnswer:
+            "Computer storage is used to retain data for longer periods, even when a system is powered off.",
+        howItWorks:
+            "Storage technologies encode data in physical or electronic media and provide mechanisms for reading and writing that information.",
+        whyItMatters:
+            "Storage allows operating systems, applications, documents, photos, videos, and other information to persist.",
+        example:
+            "An SSD can store a computer's operating system and personal files even after the computer is turned off.",
+        deepDive:
+            "Storage technologies include SSDs, HDDs, optical media, flash drives, memory cards, and network storage.",
+        keyPoints: [
+            "Storage is generally persistent.",
+            "SSDs use flash memory.",
+            "HDDs use magnetic media.",
+            "Storage capacity is commonly measured in bytes.",
+            "Storage is different from RAM."
+        ],
+        related: ["ssd", "hdd", "file-system"]
+    },
+
+
+    "network-latency": {
+        title: "Network Latency",
+        category: "Internet & Networking",
+        icon: "⏱️",
+        keywords: [
+            "latency",
+            "network latency",
+            "ping",
+            "response time",
+            "network delay"
+        ],
+        quickAnswer:
+            "Network latency is the time required for data to travel between network endpoints or for a request and response to complete, depending on how it is measured.",
+        howItWorks:
+            "Latency is affected by physical distance, routing, congestion, processing, transmission, and other network conditions.",
+        whyItMatters:
+            "High latency can make interactive applications feel slow even when a connection has high bandwidth.",
+        example:
+            "Online games can be affected by high network latency because player actions and updates take longer to travel.",
+        deepDive:
+            "Latency is commonly measured using tools such as ping, though measurements vary depending on what part of the communication path is tested.",
+        keyPoints: [
+            "Latency is a measure of delay.",
+            "Distance can affect latency.",
+            "Network congestion can increase latency.",
+            "Latency and bandwidth are different.",
+            "Interactive applications often care strongly about latency."
+        ],
+        related: ["computer-network", "wifi", "internet"]
+    },
+
+
+    "network-bandwidth": {
+        title: "Network Bandwidth",
+        category: "Internet & Networking",
+        icon: "📊",
+        keywords: [
+            "bandwidth",
+            "network bandwidth",
+            "internet speed",
+            "data rate"
+        ],
+        quickAnswer:
+            "Network bandwidth describes the amount of data that a connection can carry over a given period, commonly measured in bits per second.",
+        howItWorks:
+            "A connection has a maximum data rate determined by its technologies and configuration, while actual throughput can be lower due to network conditions and overhead.",
+        whyItMatters:
+            "Bandwidth affects how much data can be transferred over a network within a given time.",
+        example:
+            "A high-bandwidth connection can transfer a large video file faster than a lower-bandwidth connection under similar conditions.",
+        deepDive:
+            "Bandwidth is not the same as latency or actual throughput. Network protocols, congestion, signal quality, and other factors affect real-world transfer rates.",
+        keyPoints: [
+            "Bandwidth is commonly measured in bits per second.",
+            "Bandwidth and latency are different.",
+            "Actual throughput can be below advertised bandwidth.",
+            "Network conditions affect performance.",
+            "Higher bandwidth can support more data transfer."
+        ],
+        related: ["network-latency", "wifi", "ethernet"]
+    },
+
+
+    "cloud-storage": {
+        title: "Cloud Storage",
+        category: "Technology",
+        icon: "☁️",
+        keywords: [
+            "cloud storage",
+            "online storage",
+            "remote storage",
+            "file storage"
+        ],
+        quickAnswer:
+            "Cloud storage stores data on remote infrastructure that users access through a network.",
+        howItWorks:
+            "A cloud storage provider stores data on its infrastructure and provides access through applications, web interfaces, APIs, or other protocols.",
+        whyItMatters:
+            "Cloud storage can make files accessible across devices and can provide features such as synchronization and sharing.",
+        example:
+            "A person can store documents in a cloud-storage service and access them from multiple devices.",
+        deepDive:
+            "Cloud storage systems use distributed infrastructure, redundancy, authentication, access controls, and storage-management systems.",
+        keyPoints: [
+            "Cloud storage uses remote infrastructure.",
+            "Files can be accessed over networks.",
+            "Synchronization can keep copies across devices.",
+            "Access controls protect stored information.",
+            "Cloud storage does not eliminate the need for backups."
+        ],
+        related: ["cloud-computing", "backup", "data-privacy"]
+    },
+
+
+    "technology": {
+        title: "Technology",
+        category: "Technology",
+        icon: "⚡",
+        keywords: [
+            "technology",
+            "tech",
+            "computer technology",
+            "information technology",
+            "it"
+        ],
+        quickAnswer:
+            "Technology refers broadly to tools, techniques, systems, and processes created and used to solve problems or accomplish goals.",
+        howItWorks:
+            "Technology combines knowledge, engineering, science, design, and practical methods to create useful systems and tools.",
+        whyItMatters:
+            "Technology affects communication, education, business, entertainment, transportation, science, and everyday life.",
+        example:
+            "Computers, networks, smartphones, software, and digital services are all examples of modern technology.",
+        deepDive:
+            "Technology is a broad category that includes computing, electronics, communications, biotechnology, manufacturing, transportation, and many other fields.",
+        keyPoints: [
+            "Technology is broader than computers.",
+            "Technology can solve practical problems.",
+            "Modern technology often combines multiple fields.",
+            "Computing is one major technology field.",
+            "Technology changes as new methods and systems are developed."
+        ],
+        related: ["computer-science", "computers", "artificial-intelligence"]
     }
 
-};
-
-
-/* =====================================================
-   LEARNING PATHS
+};/* =====================================================
+   COMPUTER GUIDE
+   UPDATED SEARCH + KNOWLEDGE ENGINE
+   PART 3
 ===================================================== */
 
-const learningPaths = {
-
-    cpu: [
-        "Learn how CPUs execute instructions.",
-        "Understand CPU cores and threads.",
-        "Learn about CPU cache.",
-        "Study clock speed and CPU architecture.",
-        "Compare different processor designs.",
-        "Learn how the CPU works with RAM and storage."
-    ],
-
-    ram: [
-        "Understand what RAM stores.",
-        "Learn the difference between RAM and storage.",
-        "Understand memory capacity.",
-        "Learn about memory speed.",
-        "Understand virtual memory.",
-        "Study how RAM affects multitasking."
-    ],
-
-    gpu: [
-        "Learn what a GPU does.",
-        "Understand graphics processing.",
-        "Learn about GPU cores.",
-        "Understand VRAM.",
-        "Compare integrated and dedicated graphics.",
-        "Study how GPUs are used for AI."
-    ],
-
-    ssd: [
-        "Understand how SSD storage works.",
-        "Learn about flash memory.",
-        "Compare SATA and NVMe.",
-        "Understand storage performance.",
-        "Learn about SSD endurance.",
-        "Study how file systems use storage."
-    ],
-
-    hdd: [
-        "Understand magnetic storage.",
-        "Learn how HDD platters work.",
-        "Understand read/write heads.",
-        "Learn about drive performance.",
-        "Compare HDDs and SSDs.",
-        "Study common HDD uses."
-    ],
-
-    motherboard: [
-        "Learn the purpose of a motherboard.",
-        "Identify CPU sockets.",
-        "Understand RAM slots.",
-        "Learn about PCIe.",
-        "Study motherboard connectors.",
-        "Understand how components communicate."
-    ],
-
-    psu: [
-        "Learn what a PSU does.",
-        "Understand AC and DC power.",
-        "Learn about PSU wattage.",
-        "Understand power connectors.",
-        "Learn about PSU efficiency.",
-        "Study how to estimate system power requirements."
-    ],
-
-    "computer-cooling": [
-        "Understand why computers produce heat.",
-        "Learn about heatsinks.",
-        "Understand thermal paste.",
-        "Learn how fans move air.",
-        "Compare air and liquid cooling.",
-        "Study computer airflow."
-    ],
-
-    "bios-uefi": [
-        "Understand computer firmware.",
-        "Learn how startup works.",
-        "Understand BIOS and UEFI.",
-        "Learn about boot order.",
-        "Study Secure Boot.",
-        "Explore firmware configuration."
-    ],
-
-    "computer-ports": [
-        "Identify common computer ports.",
-        "Learn about USB.",
-        "Learn about HDMI and DisplayPort.",
-        "Understand Ethernet ports.",
-        "Learn about USB-C.",
-        "Study connector differences."
-    ],
-
-    "operating-system": [
-        "Understand what an operating system does.",
-        "Learn about the kernel.",
-        "Study process management.",
-        "Learn about memory management.",
-        "Understand file systems.",
-        "Study operating-system security."
-    ],
-
-    windows: [
-        "Understand the Windows operating system.",
-        "Learn Windows file management.",
-        "Understand processes.",
-        "Explore Windows settings.",
-        "Learn Windows security features.",
-        "Study Windows troubleshooting."
-    ],
-
-    linux: [
-        "Understand the Linux kernel.",
-        "Learn what Linux distributions are.",
-        "Learn basic Linux commands.",
-        "Understand Linux file systems.",
-        "Study Linux permissions.",
-        "Explore Linux in cybersecurity."
-    ],
-
-    macos: [
-        "Understand macOS.",
-        "Learn macOS file management.",
-        "Explore system settings.",
-        "Understand macOS security.",
-        "Learn about applications.",
-        "Study the macOS architecture."
-    ],
-
-    applications: [
-        "Understand what applications are.",
-        "Learn how apps use operating systems.",
-        "Study application files.",
-        "Learn about application permissions.",
-        "Understand application updates.",
-        "Study application security."
-    ],
-
-    "device-drivers": [
-        "Understand what drivers do.",
-        "Learn how drivers communicate with hardware.",
-        "Study graphics drivers.",
-        "Learn about network drivers.",
-        "Understand driver updates.",
-        "Study driver troubleshooting."
-    ],
-
-    "file-system": [
-        "Understand what a file system does.",
-        "Learn about files and directories.",
-        "Study file metadata.",
-        "Learn about permissions.",
-        "Compare common file systems.",
-        "Understand storage organization."
-    ],
-
-    "computer-processes": [
-        "Understand what a process is.",
-        "Learn how processes use memory.",
-        "Study CPU scheduling.",
-        "Understand process states.",
-        "Learn about threads.",
-        "Study process isolation."
-    ],
-
-    "virtual-memory": [
-        "Understand virtual memory.",
-        "Learn about virtual addresses.",
-        "Study memory pages.",
-        "Understand page tables.",
-        "Learn about swap.",
-        "Study memory isolation."
-    ],
-
-    "software-updates": [
-        "Understand software patches.",
-        "Learn why security updates matter.",
-        "Study update systems.",
-        "Understand version numbers.",
-        "Learn about automatic updates.",
-        "Study update management."
-    ],
-
-    internet: [
-        "Understand what the Internet is.",
-        "Learn about IP addresses.",
-        "Understand routers.",
-        "Study DNS.",
-        "Learn about HTTP and HTTPS.",
-        "Explore how websites communicate."
-    ],
-
-    wifi: [
-        "Understand wireless networking.",
-        "Learn about access points.",
-        "Study Wi-Fi standards.",
-        "Understand Wi-Fi security.",
-        "Learn about wireless interference.",
-        "Study home Wi-Fi networks."
-    ],
-
-    ethernet: [
-        "Understand Ethernet.",
-        "Learn about network cables.",
-        "Study Ethernet speeds.",
-        "Understand switches.",
-        "Learn about LANs.",
-        "Study wired network troubleshooting."
-    ],
-
-    router: [
-        "Understand what routers do.",
-        "Learn about routing.",
-        "Study IP addresses.",
-        "Understand NAT.",
-        "Learn about DHCP.",
-        "Study router security."
-    ],
-
-    "network-switch": [
-        "Understand what a network switch does.",
-        "Learn about MAC addresses.",
-        "Study Ethernet frames.",
-        "Understand managed switches.",
-        "Learn about VLANs.",
-        "Study network segmentation."
-    ],
-
-    "ip-address": [
-        "Understand IP addresses.",
-        "Learn IPv4.",
-        "Learn IPv6.",
-        "Understand private addresses.",
-        "Study subnetting.",
-        "Learn how routers use IP addresses."
-    ],
-
-    dns: [
-        "Understand domain names.",
-        "Learn how DNS resolution works.",
-        "Study DNS records.",
-        "Understand DNS caching.",
-        "Learn about recursive resolvers.",
-        "Study DNS security."
-    ],
-
-    dhcp: [
-        "Understand DHCP.",
-        "Learn how devices receive IP addresses.",
-        "Study DHCP leases.",
-        "Understand gateways.",
-        "Learn about DNS configuration.",
-        "Study DHCP troubleshooting."
-    ],
-
-    "http-https": [
-        "Understand HTTP.",
-        "Learn HTTP requests and responses.",
-        "Understand HTTPS.",
-        "Study TLS.",
-        "Learn about digital certificates.",
-        "Explore secure web communication."
-    ],
-
-    "web-browser": [
-        "Understand how browsers work.",
-        "Learn about HTML.",
-        "Learn about CSS.",
-        "Study JavaScript.",
-        "Explore browser developer tools.",
-        "Study browser security."
-    ],
-
-    server: [
-        "Understand what a server is.",
-        "Learn about web servers.",
-        "Study server operating systems.",
-        "Understand APIs.",
-        "Learn about databases.",
-        "Explore cloud servers."
-    ],
-
-    html: [
-        "Understand HTML structure.",
-        "Learn common HTML elements.",
-        "Study semantic HTML.",
-        "Learn links and images.",
-        "Understand forms.",
-        "Build a simple webpage."
-    ],
-
-    css: [
-        "Understand CSS selectors.",
-        "Learn the box model.",
-        "Study colors and typography.",
-        "Learn Flexbox.",
-        "Learn CSS Grid.",
-        "Build responsive layouts."
-    ],
-
-    javascript: [
-        "Learn JavaScript syntax.",
-        "Understand variables and data types.",
-        "Study functions.",
-        "Learn conditionals and loops.",
-        "Understand DOM manipulation.",
-        "Build an interactive webpage."
-    ],
-
-    "web-development": [
-        "Understand how websites work.",
-        "Learn HTML.",
-        "Learn CSS.",
-        "Learn JavaScript.",
-        "Understand servers and APIs.",
-        "Build and deploy a website."
-    ],
-
-    "front-end-development": [
-        "Learn HTML structure.",
-        "Study CSS layout.",
-        "Learn JavaScript.",
-        "Understand browser APIs.",
-        "Study accessibility.",
-        "Learn front-end performance."
-    ],
-
-    "back-end-development": [
-        "Understand servers.",
-        "Learn server-side programming.",
-        "Study APIs.",
-        "Learn databases.",
-        "Understand authentication.",
-        "Study back-end security."
-    ],
-
-    "full-stack-development": [
-        "Understand front-end development.",
-        "Learn back-end development.",
-        "Study APIs.",
-        "Learn databases.",
-        "Understand deployment.",
-        "Build a complete web application."
-    ],
-
-    programming: [
-        "Understand programming fundamentals.",
-        "Learn variables and data types.",
-        "Study conditionals.",
-        "Learn loops.",
-        "Study functions.",
-        "Build small programs."
-    ],
-
-    "programming-languages": [
-        "Understand what programming languages are.",
-        "Learn high-level vs low-level languages.",
-        "Study compiled languages.",
-        "Study interpreted languages.",
-        "Compare programming languages.",
-        "Choose a language for a project."
-    ],
-
-    algorithms: [
-        "Understand algorithms.",
-        "Learn searching.",
-        "Learn sorting.",
-        "Study algorithm efficiency.",
-        "Understand recursion.",
-        "Practice problem solving."
-    ],
-
-    variables: [
-        "Understand variables.",
-        "Learn common data types.",
-        "Study variable scope.",
-        "Learn assignment.",
-        "Understand constants.",
-        "Practice using variables."
-    ],
-
-    functions: [
-        "Understand functions.",
-        "Learn parameters.",
-        "Learn return values.",
-        "Study scope.",
-        "Understand reusable code.",
-        "Build programs using functions."
-    ],
-
-    apis: [
-        "Understand what an API is.",
-        "Learn HTTP APIs.",
-        "Study requests and responses.",
-        "Understand JSON.",
-        "Learn API authentication.",
-        "Build a simple API client."
-    ],
-
-    databases: [
-        "Understand databases.",
-        "Learn tables and records.",
-        "Study SQL.",
-        "Understand database relationships.",
-        "Learn database queries.",
-        "Study database security."
-    ],
-
-    binary: [
-        "Understand binary numbers.",
-        "Learn bits and bytes.",
-        "Practice binary conversion.",
-        "Understand hexadecimal.",
-        "Learn how computers represent data.",
-        "Study machine instructions."
-    ],
-
-    "data-structures": [
-        "Understand data structures.",
-        "Learn arrays.",
-        "Study linked lists.",
-        "Learn stacks and queues.",
-        "Study hash tables.",
-        "Explore trees and graphs."
-    ],
-
-    "version-control": [
-        "Understand version control.",
-        "Learn Git.",
-        "Create commits.",
-        "Learn branches.",
-        "Understand merging.",
-        "Use GitHub for collaboration."
-    ],
-
-    "object-oriented-programming": [
-        "Understand objects.",
-        "Learn classes.",
-        "Study encapsulation.",
-        "Learn inheritance.",
-        "Understand polymorphism.",
-        "Build an object-oriented program."
-    ],
-
-    loops: [
-        "Understand repetition in programs.",
-        "Learn for loops.",
-        "Learn while loops.",
-        "Understand loop conditions.",
-        "Study nested loops.",
-        "Practice iteration."
-    ],
-
-    "conditional-statements": [
-        "Understand Boolean conditions.",
-        "Learn if statements.",
-        "Study else branches.",
-        "Learn else-if logic.",
-        "Understand nested conditions.",
-        "Build decision-based programs."
-    ],
-
-    "data-types": [
-        "Understand what data types are.",
-        "Learn strings.",
-        "Learn integers and floating-point numbers.",
-        "Study Booleans.",
-        "Understand arrays and objects.",
-        "Compare type systems."
-    ],
-
-    debugging: [
-        "Understand software bugs.",
-        "Learn how to reproduce problems.",
-        "Study logs.",
-        "Learn debugger basics.",
-        "Use breakpoints.",
-        "Test and verify fixes."
-    ],
-
-    "compilers-interpreters": [
-        "Understand source code.",
-        "Learn what compilers do.",
-        "Learn what interpreters do.",
-        "Study compilation stages.",
-        "Understand runtime systems.",
-        "Learn how code reaches the CPU."
-    ],
-
-    "machine-code": [
-        "Understand machine instructions.",
-        "Learn about CPU instruction sets.",
-        "Study binary representation.",
-        "Understand assembly language.",
-        "Learn how compilers generate machine code.",
-        "Explore low-level programming."
-    ],
-
-    "artificial-intelligence": [
-        "Understand artificial intelligence.",
-        "Learn machine learning.",
-        "Study neural networks.",
-        "Explore AI applications.",
-        "Learn about AI training.",
-        "Study AI limitations."
-    ],
-
-    "machine-learning": [
-        "Understand machine learning.",
-        "Learn about training data.",
-        "Study supervised learning.",
-        "Study unsupervised learning.",
-        "Learn about neural networks.",
-        "Explore machine-learning applications."
-    ],
-
-    "cloud-computing": [
-        "Understand cloud computing.",
-        "Learn about cloud servers.",
-        "Study virtual machines.",
-        "Learn about cloud storage.",
-        "Understand cloud networking.",
-        "Explore cloud security."
-    ],
-
-    virtualization: [
-        "Understand virtualization.",
-        "Learn about virtual machines.",
-        "Study hypervisors.",
-        "Understand virtual networking.",
-        "Learn about virtual storage.",
-        "Explore cloud virtualization."
-    ],
-
-    "data-centers": [
-        "Understand what data centers are.",
-        "Learn about servers.",
-        "Study networking.",
-        "Understand power systems.",
-        "Learn about cooling.",
-        "Study data-center redundancy."
-    ],
-
-    iot: [
-        "Understand IoT.",
-        "Learn about sensors.",
-        "Study connected devices.",
-        "Understand IoT networking.",
-        "Learn about IoT cloud services.",
-        "Study IoT security."
-    ],
-
-    blockchain: [
-        "Understand blockchain.",
-        "Learn about blocks.",
-        "Study cryptographic hashes.",
-        "Understand distributed ledgers.",
-        "Learn about consensus.",
-        "Explore blockchain applications."
-    ],
-
-    "quantum-computing": [
-        "Understand quantum computing.",
-        "Learn about qubits.",
-        "Study quantum states.",
-        "Understand quantum gates.",
-        "Explore quantum algorithms.",
-        "Study quantum computing challenges."
-    ],
-
-    "how-computers-work-together": [
-        "Understand computer networks.",
-        "Learn client-server communication.",
-        "Study protocols.",
-        "Understand distributed systems.",
-        "Learn about cloud infrastructure.",
-        "Explore large-scale applications."
-    ],
-
-    cybersecurity: [
-        "Understand cybersecurity.",
-        "Learn authentication.",
-        "Study access control.",
-        "Learn network security.",
-        "Understand encryption.",
-        "Study defensive security."
-    ],
-
-    subnetting: [
-        "Understand IP networks.",
-        "Learn subnet masks.",
-        "Study CIDR notation.",
-        "Calculate network ranges.",
-        "Understand network segmentation.",
-        "Practice subnetting."
-    ],
-
-    vpn: [
-        "Understand VPNs.",
-        "Learn encrypted tunnels.",
-        "Study VPN protocols.",
-        "Understand remote access.",
-        "Learn VPN limitations.",
-        "Study VPN security."
-    ],
-
-    "proxy-server": [
-        "Understand proxy servers.",
-        "Learn forward proxies.",
-        "Study reverse proxies.",
-        "Understand traffic filtering.",
-        "Learn about caching.",
-        "Study proxy security."
-    ],
-
-    firewall: [
-        "Understand firewalls.",
-        "Learn traffic filtering.",
-        "Study firewall rules.",
-        "Understand stateful inspection.",
-        "Learn host-based firewalls.",
-        "Study firewall architecture."
-    ],
-
-    cdn: [
-        "Understand CDNs.",
-        "Learn about edge servers.",
-        "Study caching.",
-        "Understand DNS-based routing.",
-        "Learn about CDN performance.",
-        "Study CDN security."
-    ],
-
-    "os-kernel": [
-        "Understand the operating-system kernel.",
-        "Learn process management.",
-        "Study memory management.",
-        "Learn system calls.",
-        "Understand kernel privileges.",
-        "Explore kernel architecture."
-    ]
-
-};
-
 
 /* =====================================================
-   DEFAULT LEARNING PATHS
-===================================================== */
-
-function getLearningPath(topic) {
-
-    if (learningPaths[topic]) {
-        return learningPaths[topic];
-    }
-
-    const category = topics[topic]?.category;
-
-    const defaultPaths = {
-
-        "Computers": [
-            "Understand the component.",
-            "Learn how it works.",
-            "Study its role in a computer.",
-            "Learn how it connects to other components.",
-            "Explore real-world examples.",
-            "Review important concepts."
-        ],
-
-        "Operating Systems": [
-            "Understand the operating-system concept.",
-            "Learn its major components.",
-            "Study how it manages resources.",
-            "Explore real-world examples.",
-            "Learn common problems.",
-            "Review important concepts."
-        ],
-
-        "Software": [
-            "Understand the software concept.",
-            "Learn how it works.",
-            "Study how software interacts with hardware.",
-            "Explore real-world examples.",
-            "Learn common problems.",
-            "Review important concepts."
-        ],
-
-        "Internet & Networking": [
-            "Understand the networking concept.",
-            "Learn how devices communicate.",
-            "Study important protocols.",
-            "Explore real-world examples.",
-            "Learn common networking problems.",
-            "Review important concepts."
-        ],
-
-        "Programming": [
-            "Understand the programming concept.",
-            "Learn the basic syntax.",
-            "Study how programs execute.",
-            "Practice with examples.",
-            "Build a small project.",
-            "Review important concepts."
-        ],
-
-        "Programming & Data": [
-            "Understand the programming concept.",
-            "Learn the basic building blocks.",
-            "Study practical examples.",
-            "Practice using the concept.",
-            "Build a small project.",
-            "Review important concepts."
-        ],
-
-        "Web Development": [
-            "Understand the web-development concept.",
-            "Learn the technologies involved.",
-            "Study how browsers and servers communicate.",
-            "Practice building a small feature.",
-            "Connect front-end and back-end concepts.",
-            "Build a small web project."
-        ],
-
-        "Artificial Intelligence": [
-            "Understand the AI concept.",
-            "Learn the basic terminology.",
-            "Study how AI systems work.",
-            "Explore real-world applications.",
-            "Learn about limitations.",
-            "Review important concepts."
-        ],
-
-        "Modern Technology": [
-            "Understand the technology.",
-            "Learn its main components.",
-            "Study how it works.",
-            "Explore real-world applications.",
-            "Learn its advantages and limitations.",
-            "Review important concepts."
-        ],
-
-        "Cybersecurity": [
-            "Understand the security concept.",
-            "Learn how the technology works.",
-            "Study common security risks.",
-            "Learn defensive techniques.",
-            "Explore real-world examples.",
-            "Review important security concepts."
-        ]
-    };
-
-    return (
-        defaultPaths[category] ||
-        [
-            "Understand the topic.",
-            "Learn the core concepts.",
-            "Study how it works.",
-            "Explore examples.",
-            "Practice using what you learned.",
-            "Review the important ideas."
-        ]
-    );
-}
-
-
-/* =====================================================
-   DOM ELEMENTS
-===================================================== */
-
-const searchInput = document.getElementById("topicSearch");
-const searchResults = document.getElementById("searchResults");
-const searchStatus = document.getElementById("searchStatus");
-const topicViewer = document.getElementById("topicViewer");
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-/* =====================================================
-   CREATE TOPIC CARD
+   TOPIC CARD CREATOR
 ===================================================== */
 
 function createTopicCard(id, topic) {
 
-    return `
-        <article class="topic-card">
+    if (!topic) {
+        return "";
+    }
 
-            <div class="topic-icon">
-                ${topic.icon}
+    const title =
+        escapeHTML(topic.title || id);
+
+    const category =
+        escapeHTML(topic.category || "Technology");
+
+    const icon =
+        topic.icon || "💻";
+
+    const quickAnswer =
+        escapeHTML(
+            topic.quickAnswer ||
+            "Information about this topic is available in Computer Guide."
+        );
+
+    return `
+        <article
+            class="topic-card"
+            data-topic="${escapeHTML(id)}"
+            onclick="openTopic('${escapeHTML(id)}')"
+        >
+
+            <div class="topic-card-icon">
+                ${icon}
             </div>
 
             <div class="topic-card-content">
 
-                <div class="topic-category">
-                    ${topic.category}
-                </div>
+                <span class="topic-card-category">
+                    ${category}
+                </span>
 
                 <h3>
-                    ${topic.title}
+                    ${title}
                 </h3>
 
                 <p>
-                    ${topic.quickAnswer}
+                    ${quickAnswer}
                 </p>
 
-                <button
-                    class="topic-button"
-                    onclick="openTopic('${id}')"
-                >
+                <span class="topic-card-link">
                     Learn More →
-                </button>
+                </span>
 
             </div>
 
@@ -3860,162 +3400,1090 @@ function createTopicCard(id, topic) {
 
 
 /* =====================================================
-   SEARCH TOPICS
+   LEARNING PATHS
 ===================================================== */
 
-function searchTopics() {
+function getLearningPath(pathName) {
 
-    const query = searchInput.value
-        .trim()
-        .toLowerCase();
-
-    if (!query) {
-
-        searchResults.innerHTML = `
-            <div class="search-welcome">
-
-                <h2>
-                    Explore Computer Guide
-                </h2>
-
-                <p>
-                    Search for a computer, programming,
-                    Internet, AI, cybersecurity, or
-                    technology topic to start learning.
-                </p>
-
-            </div>
-        `;
-
-        searchStatus.textContent =
-            `Explore ${Object.keys(topics).length} computer and technology topics.`;
-
-        topicViewer.style.display = "none";
-        searchResults.style.display = "grid";
-
-        return;
+    if (!pathName) {
+        return null;
     }
 
+    const normalizedPath =
+        normalizeSearchText(pathName);
 
-    const matches = Object.entries(topics)
-        .filter(([id, topic]) => {
-
-            const searchableText = [
-
-                topic.title,
-                topic.category,
-                ...(topic.keywords || []),
-                topic.quickAnswer,
-                topic.howItWorks,
-                topic.whyItMatters,
-                topic.example,
-                topic.deepDive,
-                ...(topic.keyPoints || [])
-
-            ]
-                .join(" ")
-                .toLowerCase();
-
-            return searchableText.includes(query);
-
-        });
-
-
-    topicViewer.style.display = "none";
-    searchResults.style.display = "grid";
-
-
-    if (!matches.length) {
-
-        searchStatus.textContent =
-            `No topics found for "${escapeHTML(query)}".`;
-
-        searchResults.innerHTML = `
-
-            <div class="no-results">
-
-                <h2>
-                    No topics found
-                </h2>
-
-                <p>
-                    Try searching for something like:
-                </p>
-
-                <div class="suggestions">
-
-                    <button onclick="quickSearch('CPU')">
-                        CPU
-                    </button>
-
-                    <button onclick="quickSearch('RAM')">
-                        RAM
-                    </button>
-
-                    <button onclick="quickSearch('Wi-Fi')">
-                        Wi-Fi
-                    </button>
-
-                    <button onclick="quickSearch('DNS')">
-                        DNS
-                    </button>
-
-                    <button onclick="quickSearch('Linux')">
-                        Linux
-                    </button>
-
-                    <button onclick="quickSearch('HTML')">
-                        HTML
-                    </button>
-
-                    <button onclick="quickSearch('JavaScript')">
-                        JavaScript
-                    </button>
-
-                    <button onclick="quickSearch('VPN')">
-                        VPN
-                    </button>
-
-                </div>
-
-            </div>
-        `;
-
-        return;
-    }
-
-
-    searchStatus.textContent =
-        `${matches.length} topic(s) found for "${escapeHTML(query)}".`;
-
-
-    searchResults.innerHTML = matches
-        .map(([id, topic]) => createTopicCard(id, topic))
-        .join("");
-
-
-    searchResults.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    return Object.entries(learningPaths)
+        .find(([key]) =>
+            normalizeSearchText(key) === normalizedPath
+        )?.[1] || null;
 }
 
 
 /* =====================================================
-   QUICK SEARCH
+   SEARCH TEXT NORMALIZATION
 ===================================================== */
 
-function quickSearch(query) {
+function normalizeSearchText(text) {
 
-    searchInput.value = query;
+    return String(text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[_-]+/g, " ")
+        .replace(/[^\w\s]/g, "")
+        .replace(/\s+/g, " ");
+}
 
-    searchTopics();
+
+/* =====================================================
+   SEARCH TOKENIZER
+===================================================== */
+
+function tokenizeSearch(text) {
+
+    return normalizeSearchText(text)
+        .split(" ")
+        .filter(Boolean);
+}
+
+
+/* =====================================================
+   SEARCH RELEVANCE
+===================================================== */
+
+function calculateSearchScore(
+    id,
+    topic,
+    query
+) {
+
+    const normalizedQuery =
+        normalizeSearchText(query);
+
+    const queryWords =
+        tokenizeSearch(normalizedQuery);
+
+    const title =
+        normalizeSearchText(topic.title || "");
+
+    const topicId =
+        normalizeSearchText(id);
+
+    const keywords =
+        (topic.keywords || [])
+            .map(keyword =>
+                normalizeSearchText(keyword)
+            );
+
+    const category =
+        normalizeSearchText(topic.category || "");
+
+    let score = 0;
+
+
+    /*
+       Exact topic ID
+    */
+
+    if (topicId === normalizedQuery) {
+        score += 1000;
+    }
+
+
+    /*
+       Exact title
+    */
+
+    if (title === normalizedQuery) {
+        score += 950;
+    }
+
+
+    /*
+       Exact keyword
+    */
+
+    if (keywords.includes(normalizedQuery)) {
+        score += 900;
+    }
+
+
+    /*
+       Title contains entire search
+    */
+
+    if (
+        normalizedQuery &&
+        title.includes(normalizedQuery)
+    ) {
+        score += 700;
+    }
+
+
+    /*
+       Topic ID contains search
+    */
+
+    if (
+        normalizedQuery &&
+        topicId.includes(normalizedQuery)
+    ) {
+        score += 600;
+    }
+
+
+    /*
+       Keyword contains search
+    */
+
+    keywords.forEach(keyword => {
+
+        if (
+            normalizedQuery &&
+            keyword.includes(normalizedQuery)
+        ) {
+            score += 500;
+        }
+
+    });
+
+
+    /*
+       Individual word matching
+    */
+
+    queryWords.forEach(word => {
+
+        if (title.includes(word)) {
+            score += 120;
+        }
+
+        if (topicId.includes(word)) {
+            score += 100;
+        }
+
+        keywords.forEach(keyword => {
+
+            if (keyword.includes(word)) {
+                score += 80;
+            }
+
+        });
+
+        if (category.includes(word)) {
+            score += 40;
+        }
+
+    });
+
+
+    return score;
+}
+
+
+/* =====================================================
+   SMART SEARCH
+===================================================== */
+
+function searchTopics() {
+
+    const input =
+        document.getElementById("topicSearch");
+
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
+
+
+    if (!input) {
+        return;
+    }
+
+
+    const originalQuery =
+        input.value.trim();
+
+
+    /*
+       HOME PAGE SEARCH
+
+       If search is being used from the Home page,
+       send the visitor to Learn.
+    */
+
+    if (!results) {
+
+        if (!originalQuery) {
+            return;
+        }
+
+        window.location.href =
+            `learn.html?search=${encodeURIComponent(originalQuery)}`;
+
+        return;
+    }
+
+
+    /*
+       LEARN PAGE SEARCH
+    */
+
+    if (!originalQuery) {
+
+        results.innerHTML = "";
+
+        if (status) {
+            status.textContent =
+                "Search for a computer or technology topic.";
+        }
+
+        return;
+    }
+
+
+    const query =
+        normalizeSearchText(originalQuery);
+
+
+    const rankedResults =
+        Object.entries(topics)
+            .map(([id, topic]) => {
+
+                return {
+                    id,
+                    topic,
+                    score:
+                        calculateSearchScore(
+                            id,
+                            topic,
+                            query
+                        )
+                };
+
+            })
+            .filter(result =>
+                result.score > 0
+            )
+            .sort((a, b) =>
+                b.score - a.score
+            );
+
+
+    /*
+       NO RESULTS
+    */
+
+    if (rankedResults.length === 0) {
+
+        results.innerHTML = `
+            <div class="no-results">
+
+                <div class="no-results-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    No topics found
+                </h3>
+
+                <p>
+                    We couldn't find a topic matching
+                    "${escapeHTML(originalQuery)}".
+                </p>
+
+                <p>
+                    Try searching for something like
+                    <strong>CPU</strong>,
+                    <strong>RAM</strong>,
+                    <strong>Linux</strong>,
+                    <strong>Internet</strong>,
+                    or <strong>Cybersecurity</strong>.
+                </p>
+
+            </div>
+        `;
+
+        if (status) {
+
+            status.textContent =
+                "0 topics found";
+
+        }
+
+        return;
+    }
+
+
+    /*
+       DISPLAY RESULT COUNT
+    */
+
+    if (status) {
+
+        status.textContent =
+            `${rankedResults.length} ${
+                rankedResults.length === 1
+                    ? "topic"
+                    : "topics"
+            } found`;
+
+    }
+
+
+    /*
+       DISPLAY SEARCH RESULTS
+    */
+
+    results.innerHTML =
+        rankedResults
+            .map(result =>
+                createTopicCard(
+                    result.id,
+                    result.topic
+                )
+            )
+            .join("");
+
 }
 
 
 /* =====================================================
    OPEN TOPIC
 ===================================================== */
+
+function openTopic(topicId) {
+
+    const topic =
+        topics[topicId];
+
+    if (!topic) {
+        return;
+    }
+
+
+    const viewer =
+        document.getElementById("topicViewer");
+
+    if (!viewer) {
+        return;
+    }
+
+
+    const title =
+        escapeHTML(
+            topic.title || topicId
+        );
+
+    const category =
+        escapeHTML(
+            topic.category || "Technology"
+        );
+
+    const quickAnswer =
+        escapeHTML(
+            topic.quickAnswer || ""
+        );
+
+    const howItWorks =
+        escapeHTML(
+            topic.howItWorks || ""
+        );
+
+    const whyItMatters =
+        escapeHTML(
+            topic.whyItMatters || ""
+        );
+
+    const example =
+        escapeHTML(
+            topic.example || ""
+        );
+
+    const deepDive =
+        escapeHTML(
+            topic.deepDive || ""
+        );
+
+
+    const keyPoints =
+        Array.isArray(topic.keyPoints)
+            ? topic.keyPoints
+            : [];
+
+
+    const related =
+        Array.isArray(topic.related)
+            ? topic.related
+            : [];
+
+
+    viewer.innerHTML = `
+
+        <div class="topic-viewer-inner">
+
+            <button
+                class="topic-close"
+                onclick="closeTopic()"
+                aria-label="Close topic"
+            >
+                ✕
+            </button>
+
+
+            <div class="topic-viewer-header">
+
+                <div class="topic-viewer-icon">
+                    ${topic.icon || "💻"}
+                </div>
+
+                <div>
+
+                    <span class="topic-viewer-category">
+                        ${category}
+                    </span>
+
+                    <h2>
+                        ${title}
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            ${
+                quickAnswer
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Quick Answer
+                        </h3>
+
+                        <p>
+                            ${quickAnswer}
+                        </p>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                howItWorks
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            How It Works
+                        </h3>
+
+                        <p>
+                            ${howItWorks}
+                        </p>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                whyItMatters
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Why It Matters
+                        </h3>
+
+                        <p>
+                            ${whyItMatters}
+                        </p>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                example
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Example
+                        </h3>
+
+                        <p>
+                            ${example}
+                        </p>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                deepDive
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Deep Dive
+                        </h3>
+
+                        <p>
+                            ${deepDive}
+                        </p>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                keyPoints.length
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Key Points
+                        </h3>
+
+                        <ul>
+
+                            ${keyPoints
+                                .map(point => `
+                                    <li>
+                                        ${escapeHTML(point)}
+                                    </li>
+                                `)
+                                .join("")
+                            }
+
+                        </ul>
+
+                    </section>
+                `
+                : ""
+            }
+
+
+            ${
+                related.length
+                ? `
+                    <section class="lesson-section">
+
+                        <h3>
+                            Related Topics
+                        </h3>
+
+                        <div class="related-topics">
+
+                            ${related
+                                .map(relatedId => {
+
+                                    const relatedTopic =
+                                        topics[relatedId];
+
+                                    if (!relatedTopic) {
+                                        return "";
+                                    }
+
+                                    return `
+                                        <button
+                                            class="related-topic"
+                                            onclick="openTopic('${escapeHTML(relatedId)}')"
+                                        >
+                                            ${
+                                                relatedTopic.icon ||
+                                                "💻"
+                                            }
+
+                                            <span>
+                                                ${
+                                                    escapeHTML(
+                                                        relatedTopic.title ||
+                                                        relatedId
+                                                    )
+                                                }
+                                            }
+                                        </button>
+                                    `;
+
+                                })
+                                .join("")
+                            }
+
+                        </div>
+
+                    </section>
+                `
+                : ""
+            }
+
+        </div>
+    `;
+
+
+    viewer.classList.add("active");
+
+    viewer.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+
+    /*
+       Keep the selected topic in the URL.
+    */
+
+    try {
+
+        const url =
+            new URL(window.location.href);
+
+        url.searchParams.set(
+            "topic",
+            topicId
+        );
+
+        window.history.replaceState(
+            {},
+            "",
+            url
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not update topic URL.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE TOPIC
+===================================================== */
+
+function closeTopic() {
+
+    const viewer =
+        document.getElementById("topicViewer");
+
+    if (!viewer) {
+        return;
+    }
+
+
+    viewer.classList.remove("active");
+
+
+    try {
+
+        const url =
+            new URL(window.location.href);
+
+        url.searchParams.delete("topic");
+
+        window.history.replaceState(
+            {},
+            "",
+            url
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Could not clear topic URL.",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CATEGORY VIEW
+===================================================== */
+
+function showCategory(categoryName) {
+
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
+
+    if (!results) {
+        return;
+    }
+
+
+    const normalizedCategory =
+        normalizeSearchText(categoryName);
+
+
+    const categoryResults =
+        Object.entries(topics)
+            .filter(([id, topic]) => {
+
+                return (
+                    normalizeSearchText(
+                        topic.category || ""
+                    ) === normalizedCategory
+                );
+
+            });
+
+
+    if (categoryResults.length === 0) {
+
+        results.innerHTML = `
+            <div class="no-results">
+
+                <div class="no-results-icon">
+                    📚
+                </div>
+
+                <h3>
+                    No topics found
+                </h3>
+
+                <p>
+                    There are currently no topics
+                    in this category.
+                </p>
+
+            </div>
+        `;
+
+        if (status) {
+            status.textContent =
+                "0 topics found";
+        }
+
+        return;
+    }
+
+
+    if (status) {
+
+        status.textContent =
+            `${categoryResults.length} ${
+                categoryResults.length === 1
+                    ? "topic"
+                    : "topics"
+            } found`;
+
+    }
+
+
+    results.innerHTML =
+        categoryResults
+            .map(([id, topic]) =>
+                createTopicCard(id, topic)
+            )
+            .join("");
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
+   LEARN PAGE INITIALIZATION
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const searchInput =
+            document.getElementById("topicSearch");
+
+        const searchButton =
+            document.getElementById("searchButton");
+
+        const searchForm =
+            document.getElementById("searchForm");
+
+
+        /*
+           SEARCH BUTTON
+        */
+
+        if (searchButton) {
+
+            searchButton.addEventListener(
+                "click",
+                function () {
+
+                    searchTopics();
+
+                }
+            );
+
+        }
+
+
+        /*
+           SEARCH FORM
+        */
+
+        if (searchForm) {
+
+            searchForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+                    searchTopics();
+
+                }
+            );
+
+        }
+
+
+        /*
+           ENTER KEY SEARCH
+        */
+
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        event.preventDefault();
+
+                        searchTopics();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+           HOME → LEARN SEARCH
+
+           Example:
+
+           learn.html?search=CPU
+
+           The Learn page fills the search box,
+           performs the search, and automatically
+           opens an exact topic or keyword match.
+        */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const urlSearch =
+            params.get("search");
+
+
+        if (
+            urlSearch &&
+            searchInput
+        ) {
+
+            searchInput.value =
+                urlSearch;
+
+            searchTopics();
+
+
+            const normalizedURLSearch =
+                normalizeSearchText(
+                    urlSearch
+                );
+
+
+            const exactMatch =
+                Object.entries(topics)
+                    .find(
+                        ([id, topic]) => {
+
+                            const title =
+                                normalizeSearchText(
+                                    topic.title
+                                );
+
+                            const topicId =
+                                normalizeSearchText(
+                                    id
+                                );
+
+                            const keywords =
+                                (
+                                    topic.keywords ||
+                                    []
+                                )
+                                    .map(
+                                        keyword =>
+                                            normalizeSearchText(
+                                                keyword
+                                            )
+                                    );
+
+
+                            return (
+
+                                title ===
+                                normalizedURLSearch
+
+                                ||
+
+                                topicId ===
+                                normalizedURLSearch
+
+                                ||
+
+                                keywords.includes(
+                                    normalizedURLSearch
+                                )
+
+                            );
+
+                        }
+                    );
+
+
+            if (exactMatch) {
+
+                openTopic(
+                    exactMatch[0]
+                );
+
+            }
+
+        }
+
+
+        /*
+           OPEN TOPIC FROM URL
+
+           Example:
+
+           learn.html?topic=cpu
+        */
+
+        const urlTopic =
+            params.get("topic");
+
+
+        if (
+            urlTopic &&
+            topics[urlTopic]
+        ) {
+
+            openTopic(
+                urlTopic
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   STARTUP
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const results =
+            document.getElementById(
+                "searchResults"
+            );
+
+        const status =
+            document.getElementById(
+                "searchStatus"
+            );
+
+
+        /*
+           Show all topics initially
+           when the Learn page loads.
+        */
+
+        if (
+            results &&
+            Object.keys(topics).length
+        ) {
+
+            results.innerHTML =
+                Object.entries(topics)
+                    .map(
+                        ([id, topic]) =>
+                            createTopicCard(
+                                id,
+                                topic
+                            )
+                    )
+                    .join("");
+
+
+            if (status) {
+
+                const total =
+                    Object.keys(topics).length;
+
+                status.textContent =
+                    `${total} ${
+                        total === 1
+                            ? "topic"
+                            : "topics"
+                    } available`;
+
+            }
+
+        }
+
+    }
+);/* =========================================================
+   OPEN TOPIC
+========================================================= */
 
 function openTopic(id) {
 
@@ -4026,61 +4494,177 @@ function openTopic(id) {
     }
 
 
-    searchResults.style.display = "none";
-    searchStatus.style.display = "none";
-    topicViewer.style.display = "block";
+    const viewer =
+        document.getElementById("topicViewer");
+
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
 
 
-    const learningPath = getLearningPath(id);
+    if (!viewer) {
+        return;
+    }
 
 
-    const relatedTopics = (topic.related || [])
-        .filter(relatedId => topics[relatedId]);
+    if (results) {
+        results.style.display = "none";
+    }
 
 
-    topicViewer.innerHTML = `
+    if (status) {
+        status.style.display = "none";
+    }
 
-        <button
-            class="back-button"
-            onclick="backToResults()"
-        >
-            ← Back to Topics
-        </button>
 
+    /* =====================================================
+       RELATED TOPICS
+    ====================================================== */
+
+    const relatedTopics =
+        (topic.related || [])
+            .map(relatedId => {
+
+                const related =
+                    topics[relatedId];
+
+                if (!related) {
+                    return "";
+                }
+
+                return `
+
+                    <button
+                        type="button"
+                        onclick="openTopic('${relatedId}')"
+                    >
+                        ${related.icon}
+                        ${related.title}
+                    </button>
+
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       KEY POINTS
+    ====================================================== */
+
+    const keyPoints =
+        (topic.keyPoints || [])
+            .map(point => {
+
+                return `
+                    <li>
+                        ${point}
+                    </li>
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       LEARNING PATH
+    ====================================================== */
+
+    const learningPath =
+        getLearningPath(id, topic);
+
+
+    const learningSteps =
+        learningPath
+            .map((step, index) => {
+
+                return `
+
+                    <li>
+
+                        <span class="learning-step-number">
+                            ${index + 1}
+                        </span>
+
+                        <div>
+                            ${step}
+                        </div>
+
+                    </li>
+
+                `;
+
+            })
+            .join("");
+
+
+    /* =====================================================
+       DISPLAY TOPIC
+    ====================================================== */
+
+    viewer.innerHTML = `
 
         <article class="topic-page">
 
 
-            <header class="topic-header">
+            <!-- =============================================
+                 BACK BUTTON
+            ============================================== -->
 
-                <div class="topic-header-icon">
+            <button
+                type="button"
+                class="back-to-results"
+                onclick="backToResults()"
+            >
+                ← Back to Results
+            </button>
+
+
+            <!-- =============================================
+                 TOPIC HEADER
+            ============================================== -->
+
+            <div class="topic-header">
+
+                <div class="topic-icon">
                     ${topic.icon}
                 </div>
 
                 <div>
 
-                    <div class="topic-category">
-                        ${topic.category}
-                    </div>
-
-                    <h1>
+                    <h2>
                         ${topic.title}
-                    </h1>
+                    </h2>
 
-                    <p>
-                        ${topic.quickAnswer}
+                    <p class="topic-category">
+
+                        <strong>
+                            Category:
+                        </strong>
+
+                        ${topic.category}
+
                     </p>
 
                 </div>
 
-            </header>
+            </div>
 
 
-            <section class="lesson-section">
+            <hr>
 
-                <h2>
-                    What Is It?
-                </h2>
+
+            <!-- =============================================
+                 WHAT IS IT?
+            ============================================== -->
+
+            <section class="topic-section">
+
+                <h3>
+                    📖 What Is It?
+                </h3>
 
                 <p>
                     ${topic.quickAnswer}
@@ -4089,11 +4673,15 @@ function openTopic(id) {
             </section>
 
 
-            <section class="lesson-section">
+            <!-- =============================================
+                 HOW IT WORKS
+            ============================================== -->
 
-                <h2>
-                    How It Works
-                </h2>
+            <section class="topic-section">
+
+                <h3>
+                    ⚙️ How It Works
+                </h3>
 
                 <p>
                     ${topic.howItWorks}
@@ -4102,11 +4690,15 @@ function openTopic(id) {
             </section>
 
 
-            <section class="lesson-section">
+            <!-- =============================================
+                 WHY IT MATTERS
+            ============================================== -->
 
-                <h2>
-                    Why It Matters
-                </h2>
+            <section class="topic-section">
+
+                <h3>
+                    🎯 Why It Matters
+                </h3>
 
                 <p>
                     ${topic.whyItMatters}
@@ -4115,11 +4707,15 @@ function openTopic(id) {
             </section>
 
 
-            <section class="lesson-section">
+            <!-- =============================================
+                 REAL WORLD EXAMPLE
+            ============================================== -->
 
-                <h2>
-                    Real-World Example
-                </h2>
+            <section class="topic-section">
+
+                <h3>
+                    💡 Real-World Example
+                </h3>
 
                 <p>
                     ${topic.example}
@@ -4128,11 +4724,15 @@ function openTopic(id) {
             </section>
 
 
-            <section class="lesson-section">
+            <!-- =============================================
+                 DEEPER EXPLANATION
+            ============================================== -->
 
-                <h2>
-                    Deeper Explanation
-                </h2>
+            <section class="topic-section">
+
+                <h3>
+                    🔬 Deeper Explanation
+                </h3>
 
                 <p>
                     ${topic.deepDive}
@@ -4141,183 +4741,431 @@ function openTopic(id) {
             </section>
 
 
-            <section class="lesson-section learning-path">
+            <!-- =============================================
+                 GETTING STARTED
+            ============================================== -->
 
-                <h2>
-                    How to Get Started
-                </h2>
+            <section class="topic-section learning-path">
 
-                <ol>
+                <h3>
+                    🚀 How to Get Started
+                </h3>
 
-                    ${learningPath
-                        .map(step => `<li>${step}</li>`)
-                        .join("")}
+                <p>
+                    Follow these steps to build your knowledge
+                    of <strong>${topic.title}</strong>.
+                </p>
+
+
+                <ol class="learning-path-list">
+
+                    ${learningSteps}
 
                 </ol>
 
             </section>
 
 
-            <section class="lesson-section">
+            <!-- =============================================
+                 KEY POINTS
+            ============================================== -->
 
-                <h2>
-                    Key Things to Remember
-                </h2>
+            <section class="topic-section">
 
-                <ul>
+                <h3>
+                    🧠 Key Things to Remember
+                </h3>
 
-                    ${(topic.keyPoints || [])
-                        .map(point => `<li>${point}</li>`)
-                        .join("")}
+                <ul class="topic-key-points">
+
+                    ${keyPoints}
 
                 </ul>
 
             </section>
 
 
-            ${
-                relatedTopics.length
-                    ? `
-                    <section class="lesson-section related-topics">
+            <!-- =============================================
+                 RELATED TOPICS
+            ============================================== -->
 
-                        <h2>
-                            Related Topics
-                        </h2>
+            <section class="topic-section">
 
-                        <div class="related-topic-list">
+                <h3>
+                    🔗 Related Topics
+                </h3>
 
-                            ${relatedTopics
-                                .map(relatedId => `
-                                    <button
-                                        onclick="openTopic('${relatedId}')"
-                                    >
-                                        ${topics[relatedId].icon}
-                                        ${topics[relatedId].title}
-                                    </button>
-                                `)
-                                .join("")}
+                <p>
+                    Continue exploring related computer
+                    and technology topics.
+                </p>
 
-                        </div>
+                <div class="topics">
 
-                    </section>
-                    `
-                    : ""
-            }
+                    ${relatedTopics}
+
+                </div>
+
+            </section>
 
 
         </article>
+
     `;
 
 
-    topicViewer.scrollIntoView({
+    viewer.scrollIntoView({
+
         behavior: "smooth",
+
         block: "start"
+
     });
+
 }
 
 
-/* =====================================================
+/* =========================================================
    BACK TO RESULTS
-===================================================== */
+========================================================= */
 
 function backToResults() {
 
-    topicViewer.style.display = "none";
+    const viewer =
+        document.getElementById("topicViewer");
 
-    searchResults.style.display = "grid";
+    const results =
+        document.getElementById("searchResults");
 
-    searchStatus.style.display = "block";
+    const status =
+        document.getElementById("searchStatus");
 
-    if (searchInput.value.trim()) {
 
-        searchTopics();
-
-    } else {
-
-        searchStatus.textContent =
-            `Explore ${Object.keys(topics).length} computer and technology topics.`;
+    if (results) {
+        results.style.display = "";
     }
 
 
-    searchResults.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    if (status) {
+        status.style.display = "";
+    }
+
+
+    if (viewer) {
+
+        viewer.innerHTML = `
+
+            <div class="lesson">
+
+                <h2>
+                    Welcome to the Computer Guide
+                </h2>
+
+                <p>
+                    Search for another topic or choose
+                    a topic from the results.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    if (results) {
+
+        results.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
+
 }
 
 
-/* =====================================================
-   SHOW CATEGORY
-===================================================== */
+/* =========================================================
+   BROWSE TOPICS BY CATEGORY
+========================================================= */
 
 function showCategory(category) {
 
-    const matches = Object.entries(topics)
-        .filter(([id, topic]) =>
-            topic.category === category
+    const results =
+        document.getElementById("searchResults");
+
+    const status =
+        document.getElementById("searchStatus");
+
+    const viewer =
+        document.getElementById("topicViewer");
+
+    const input =
+        document.getElementById("topicSearch");
+
+
+    if (!results) {
+        return;
+    }
+
+
+    results.style.display = "";
+
+    if (status) {
+        status.style.display = "";
+    }
+
+
+    if (input) {
+        input.value = "";
+    }
+
+
+    const matches =
+        Object.entries(topics).filter(
+            ([id, topic]) => {
+
+                return topic.category
+                    .toLowerCase()
+                    === category.toLowerCase();
+
+            }
         );
 
 
-    searchInput.value = "";
-
-    topicViewer.style.display = "none";
-
-    searchResults.style.display = "grid";
-
-    searchStatus.style.display = "block";
+    results.innerHTML = "";
 
 
-    searchStatus.textContent =
-        `${matches.length} topic(s) in ${category}.`;
+    if (viewer) {
+
+        viewer.innerHTML = `
+
+            <div class="lesson">
+
+                <h2>
+                    ${category}
+                </h2>
+
+                <p>
+                    Choose a topic below to begin learning.
+                </p>
+
+            </div>
+
+        `;
+
+    }
 
 
-    searchResults.innerHTML = matches
-        .map(([id, topic]) =>
-            createTopicCard(id, topic)
-        )
-        .join("");
+    if (matches.length === 0) {
+
+        if (status) {
+
+            status.textContent =
+                "No topics found in this category.";
+
+        }
+
+        return;
+    }
 
 
-    searchResults.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-}
+    if (status) {
+
+        status.textContent =
+            `${matches.length} topic${matches.length === 1 ? "" : "s"} in ${category}`;
+
+    }
 
 
-/* =====================================================
-   ENTER KEY SEARCH
-===================================================== */
+    matches.forEach(
+        ([id, topic]) => {
 
-if (searchInput) {
-
-    searchInput.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "Enter") {
-
-                searchTopics();
-
-            }
+            results.innerHTML +=
+                createTopicCard(id, topic);
 
         }
     );
+
+
+    results.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
 }
 
 
-/* =====================================================
-   INITIAL PAGE STATE
-===================================================== */
+/* =========================================================
+   ENTER KEY SEARCH
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
-        if (searchStatus) {
+        const searchInput =
+            document.getElementById("topicSearch");
 
-            searchStatus.textContent =
+
+        if (!searchInput) {
+            return;
+        }
+
+
+        searchInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    searchTopics();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   HTML ESCAPING
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   COMPUTER GUIDE STARTUP
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const status =
+            document.getElementById("searchStatus");
+
+        const searchInput =
+            document.getElementById("topicSearch");
+
+
+        if (status) {
+
+            status.textContent =
                 `Explore ${Object.keys(topics).length} computer and technology topics.`;
+
+        }
+
+
+        /*
+           Allow visitors to search immediately without
+           needing to click a separate search button.
+        */
+
+        if (searchInput) {
+
+            searchInput.setAttribute(
+                "aria-label",
+                "Search Computer Guide topics"
+            );
+
+        }
+
+
+        /*
+           HOME → LEARN SEARCH
+
+           Example:
+
+           learn.html?search=CPU
+
+           The Learn page automatically fills the search box,
+           searches the database, and opens an exact topic or
+           keyword match when one exists.
+        */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const urlSearch =
+            params.get("search");
+
+
+        if (urlSearch && searchInput) {
+
+            searchInput.value = urlSearch;
+
+            searchTopics();
+
+
+            const normalizedURLSearch =
+                normalizeSearchText(urlSearch);
+
+
+            const exactMatch =
+                Object.entries(topics).find(
+                    ([id, topic]) => {
+
+                        const title =
+                            normalizeSearchText(
+                                topic.title
+                            );
+
+                        const topicId =
+                            normalizeSearchText(id);
+
+                        const keywords =
+                            (topic.keywords || [])
+                                .map(keyword =>
+                                    normalizeSearchText(
+                                        keyword
+                                    )
+                                );
+
+                        return (
+                            title === normalizedURLSearch ||
+                            topicId === normalizedURLSearch ||
+                            keywords.includes(
+                                normalizedURLSearch
+                            )
+                        );
+
+                    }
+                );
+
+
+            if (exactMatch) {
+
+                openTopic(
+                    exactMatch[0]
+                );
+
+            }
 
         }
 
