@@ -22,24 +22,45 @@ body {
         Arial,
         sans-serif;
 
+    /*
+       =================================================
+       UPGRADED COMPUTER GUIDE BACKGROUND
+       =================================================
+    */
+
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(37, 99, 235, 0.14),
+            circle at 50% -15%,
+            rgba(37, 99, 235, 0.16),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 100% 20%,
+            rgba(56, 189, 248, 0.09),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 0% 80%,
+            rgba(37, 99, 235, 0.07),
             transparent 32%
         ),
-        radial-gradient(
-            circle at 0% 50%,
-            rgba(14, 165, 233, 0.06),
-            transparent 28%
-        ),
-        #f4f7fb;
+
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #f3f7fc 45%,
+            #eef4fa 100%
+        );
 
     color: #172033;
 
     line-height: 1.6;
 
     min-height: 100vh;
+
+    background-attachment: fixed;
 }
 
 
@@ -681,6 +702,8 @@ main > section > p {
             #38bdf8,
             #2563eb
         );
+
+    border-radius: 999px;
 }
 
 .topic-header {
