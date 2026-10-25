@@ -3361,6 +3361,36 @@ function tokenizeSearch(value) {
     return normalizeSearchText(value).split(" ").filter(Boolean);
 }
 
+
+/* Small edit-distance helper makes common typos searchable without libraries. */
+function searchEditDistance(a, b) {
+    a = String(a || "");
+    b = String(b || "");
+    if (Math.abs(a.length - b.length) > 2) return 99;
+    let previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+        const current = [i];
+        for (let j = 1; j <= b.length; j++) {
+            current[j] = Math.min(
+                current[j - 1] + 1,
+                previous[j] + 1,
+                previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+            );
+        }
+        previous = current;
+    }
+    return previous[b.length];
+}
+
+function getSearchableFields(id, topic) {
+    return {
+        id: normalizeSearchText(id),
+        title: normalizeSearchText(topic.title || id),
+        category: normalizeSearchText(topic.category || ""),
+        keywords: (Array.isArray(topic.keywords) ? topic.keywords : []).map(normalizeSearchText)
+    };
+}
+
 /* Common names used by homepage buttons and searches. */
 const topicAliases = {
     "artificial intelligence": "artificial-intelligence",
@@ -3429,23 +3459,44 @@ function createTopicCard(id, topic) {
 function calculateSearchScore(id, topic, query) {
     const q = normalizeSearchText(query);
     if (!q) return 0;
-    const idText = normalizeSearchText(id);
-    const title = normalizeSearchText(topic.title || "");
-    const category = normalizeSearchText(topic.category || "");
-    const keywords = (topic.keywords || []).map(normalizeSearchText);
+    const fields = getSearchableFields(id, topic);
+    const tokens = tokenizeSearch(q);
     let score = 0;
-    if (idText === q) score += 1000;
-    if (title === q) score += 1200;
-    if (keywords.includes(q)) score += 1100;
-    if (title.includes(q)) score += 500;
-    if (idText.includes(q)) score += 400;
-    keywords.forEach(word => { if (word.includes(q)) score += 350; });
-    tokenizeSearch(q).forEach(word => {
-        if (title.includes(word)) score += 100;
-        if (idText.includes(word)) score += 80;
-        if (keywords.some(keyword => keyword.includes(word))) score += 60;
-        if (category.includes(word)) score += 25;
+
+    // Strongest matches first: exact topic ID/title/keyword.
+    if (fields.id === q) score += 1500;
+    if (fields.title === q) score += 1800;
+    if (fields.keywords.includes(q)) score += 1600;
+    if (fields.title.startsWith(q)) score += 850;
+    if (fields.id.startsWith(q)) score += 700;
+    if (fields.title.includes(q)) score += 600;
+    if (fields.id.includes(q)) score += 450;
+    fields.keywords.forEach(word => {
+        if (word === q) score += 1000;
+        else if (word.startsWith(q)) score += 500;
+        else if (word.includes(q)) score += 350;
     });
+
+    // Reward each useful word match, so multi-word searches work naturally.
+    for (const word of tokens) {
+        if (fields.title.split(" ").includes(word)) score += 180;
+        else if (fields.title.includes(word)) score += 100;
+        if (fields.id.includes(word)) score += 80;
+        if (fields.keywords.some(keyword => keyword.split(" ").includes(word))) score += 90;
+        else if (fields.keywords.some(keyword => keyword.includes(word))) score += 55;
+        if (fields.category.includes(word)) score += 25;
+    }
+
+    // Typo tolerance for short terms such as "cpi" -> CPU and "wfi" -> Wi-Fi.
+    if (q.length >= 3 && score === 0) {
+        const candidates = [fields.title, fields.id, ...fields.keywords];
+        const candidateWords = candidates.flatMap(value => value.split(" "));
+        const bestDistance = Math.min(...candidateWords
+            .filter(word => Math.abs(word.length - q.length) <= 2)
+            .map(word => searchEditDistance(q, word)), 99);
+        if (bestDistance === 1) score += 65;
+        else if (bestDistance === 2 && q.length >= 6) score += 25;
+    }
     return score;
 }
 
@@ -3486,40 +3537,111 @@ function renderResults(entries, emptyMessage) {
     setSearchStatus(`${entries.length} ${entries.length === 1 ? "topic" : "topics"} found`);
 }
 
+function ensureSuggestionBox() {
+    const input = document.getElementById("topicSearch");
+    if (!input) return null;
+    let box = document.getElementById("topicSuggestions");
+    if (box) return box;
+
+    box = document.createElement("div");
+    box.id = "topicSuggestions";
+    box.className = "topic-suggestions";
+    box.setAttribute("role", "listbox");
+    box.setAttribute("aria-label", "Suggested topics");
+    Object.assign(box.style, {
+        display: "none", position: "relative", zIndex: "20", marginTop: "6px",
+        border: "1px solid var(--border-color, #344054)", borderRadius: "12px",
+        overflow: "hidden", background: "var(--card-background, #0b1220)",
+        boxShadow: "0 10px 24px rgba(0,0,0,.22)"
+    });
+    const searchBox = input.closest(".search-box");
+    if (searchBox && searchBox.parentNode) searchBox.insertAdjacentElement("afterend", box);
+    else input.insertAdjacentElement("afterend", box);
+    input.setAttribute("aria-autocomplete", "list");
+    input.setAttribute("aria-controls", "topicSuggestions");
+    input.setAttribute("aria-expanded", "false");
+    return box;
+}
+
+function hideTopicSuggestions() {
+    const box = document.getElementById("topicSuggestions");
+    const input = document.getElementById("topicSearch");
+    if (box) { box.style.display = "none"; box.innerHTML = ""; }
+    if (input) input.setAttribute("aria-expanded", "false");
+}
+
+function showTopicSuggestions(query) {
+    const input = document.getElementById("topicSearch");
+    const box = ensureSuggestionBox();
+    const normalized = normalizeSearchText(query);
+    if (!input || !box || normalized.length < 1) { hideTopicSuggestions(); return []; }
+
+    const matches = Object.entries(topics)
+        .map(([id, topic]) => ({ id, topic, score: calculateSearchScore(id, topic, query) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || (a.topic.title || a.id).localeCompare(b.topic.title || b.id))
+        .slice(0, 6);
+
+    if (!matches.length) { hideTopicSuggestions(); return []; }
+    box.innerHTML = matches.map(({ id, topic }, index) => `
+        <button type="button" role="option" aria-selected="false" data-suggestion-index="${index}" data-topic-id="${escapeHTML(id)}"
+            style="display:flex;width:100%;gap:10px;align-items:center;text-align:left;padding:11px 13px;border:0;border-bottom:1px solid rgba(128,128,128,.18);background:transparent;color:inherit;cursor:pointer;font:inherit;">
+            <span aria-hidden="true">${escapeHTML(topic.icon || "💻")}</span>
+            <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><strong>${escapeHTML(topic.title || id)}</strong><small style="opacity:.72">${escapeHTML(topic.category || "Technology")}</small></span>
+        </button>`).join("");
+    box.style.display = "block";
+    input.setAttribute("aria-expanded", "true");
+    return matches;
+}
+
+function chooseTopicSuggestion(topicId) {
+    const input = document.getElementById("topicSearch");
+    const topic = topics[topicId];
+    if (input && topic) input.value = topic.title || topicId;
+    hideTopicSuggestions();
+    openTopic(topicId);
+    const results = document.getElementById("searchResults");
+    if (results) results.style.display = "";
+    setSearchStatus(`Opened ${topic ? topic.title : topicId}`);
+}
+
 function searchTopics() {
     const input = document.getElementById("topicSearch");
     const results = document.getElementById("searchResults");
     if (!input) return;
     const originalQuery = input.value.trim();
+    hideTopicSuggestions();
 
-    /* Supports calling the function from a page without Learn search fields. */
+    // Homepage search routes to Learn, where results are rendered.
     if (!results) {
-        if (originalQuery) {
-            window.location.href = `learn.html?search=${encodeURIComponent(originalQuery)}`;
-        }
+        if (originalQuery) window.location.href = `learn.html?search=${encodeURIComponent(originalQuery)}`;
+        else window.location.href = "learn.html";
         return;
     }
 
     if (!originalQuery) {
         renderResults(Object.entries(topics), "Search for a topic or choose a category.");
         resetViewer();
+        setSearchStatus(`${Object.keys(topics).length} topics available`);
         return;
     }
 
     const ranked = Object.entries(topics)
         .map(([id, topic]) => ({ id, topic, score: calculateSearchScore(id, topic, originalQuery) }))
         .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score || a.topic.title.localeCompare(b.topic.title));
+        .sort((a, b) => b.score - a.score || (a.topic.title || a.id).localeCompare(b.topic.title || b.id));
 
-    renderResults(ranked.map(item => [item.id, item.topic]), `We couldn't find “${originalQuery}”. Try CPU, RAM, Linux, Wi-Fi, or cybersecurity.`);
-
-    const exactId = findTopicId(originalQuery);
-    if (exactId && ranked.length && ranked[0].id === exactId) {
-        /* Keep results visible; opening a result updates the lesson panel. */
-        openTopic(exactId, false);
+    renderResults(ranked.map(item => [item.id, item.topic]), `We couldn't find “${originalQuery}”. Try a shorter term, a synonym, or one of the suggested topics.`);
+    if (ranked.length) {
+        setSearchStatus(`${ranked.length} ${ranked.length === 1 ? "topic" : "topics"} found for “${originalQuery}”`);
     } else {
         resetViewer();
+        setSearchStatus(`No exact matches for “${originalQuery}”. Check the spelling or try another term.`);
     }
+
+    const exactId = findTopicId(originalQuery);
+    if (exactId && ranked.length && ranked[0].id === exactId) openTopic(exactId, false);
+    else resetViewer();
 }
 
 function openTopic(topicId, updateUrl = true) {
@@ -3630,6 +3752,7 @@ function getCategoryMatches(categoryName) {
 }
 
 function showCategory(categoryName) {
+    hideTopicSuggestions();
     const input = document.getElementById("topicSearch");
     if (input) input.value = "";
     const matches = getCategoryMatches(categoryName);
@@ -3658,11 +3781,42 @@ function initializeComputerGuide() {
 
     if (searchInput) {
         searchInput.setAttribute("aria-label", "Search Computer Guide topics");
+        ensureSuggestionBox();
+        searchInput.addEventListener("input", () => showTopicSuggestions(searchInput.value));
+        searchInput.addEventListener("focus", () => {
+            if (searchInput.value.trim()) showTopicSuggestions(searchInput.value);
+        });
         searchInput.addEventListener("keydown", event => {
-            if (event.key === "Enter") {
+            const box = document.getElementById("topicSuggestions");
+            const options = box ? Array.from(box.querySelectorAll("button[data-topic-id]")) : [];
+            const active = box ? box.querySelector('button[aria-selected="true"]') : null;
+            let index = active ? options.indexOf(active) : -1;
+            if (event.key === "ArrowDown" && options.length) {
                 event.preventDefault();
-                searchTopics();
+                index = (index + 1) % options.length;
+                options.forEach((button, i) => button.setAttribute("aria-selected", String(i === index)));
+                options[index].style.background = "rgba(128,128,128,.18)";
+                options.forEach((button, i) => { if (i !== index) button.style.background = "transparent"; });
+            } else if (event.key === "ArrowUp" && options.length) {
+                event.preventDefault();
+                index = index <= 0 ? options.length - 1 : index - 1;
+                options.forEach((button, i) => { button.setAttribute("aria-selected", String(i === index)); button.style.background = i === index ? "rgba(128,128,128,.18)" : "transparent"; });
+            } else if (event.key === "Enter") {
+                event.preventDefault();
+                if (active) chooseTopicSuggestion(active.dataset.topicId);
+                else searchTopics();
+            } else if (event.key === "Escape") {
+                hideTopicSuggestions();
             }
+        });
+        document.addEventListener("click", event => {
+            const box = document.getElementById("topicSuggestions");
+            if (!box || (event.target !== searchInput && !box.contains(event.target))) hideTopicSuggestions();
+        });
+        const suggestionBox = ensureSuggestionBox();
+        if (suggestionBox) suggestionBox.addEventListener("click", event => {
+            const button = event.target.closest("button[data-topic-id]");
+            if (button) chooseTopicSuggestion(button.dataset.topicId);
         });
     }
 
