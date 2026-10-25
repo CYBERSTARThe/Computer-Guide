@@ -3331,881 +3331,14 @@ const topics = {
         related: ["computer-science", "computers", "artificial-intelligence"]
     }
 
-};/* =====================================================
+};
+/* =========================================================
    COMPUTER GUIDE
-   UPDATED SEARCH + KNOWLEDGE ENGINE
-   PART 3
-===================================================== */
-
-
-/* =====================================================
-   TOPIC CARD CREATOR
-===================================================== */
-
-function createTopicCard(id, topic) {
-
-    if (!topic) {
-        return "";
-    }
-
-    const title =
-        escapeHTML(topic.title || id);
-
-    const category =
-        escapeHTML(topic.category || "Technology");
-
-    const icon =
-        topic.icon || "💻";
-
-    const quickAnswer =
-        escapeHTML(
-            topic.quickAnswer ||
-            "Information about this topic is available in Computer Guide."
-        );
-
-    return `
-        <article
-            class="topic-card"
-            data-topic="${escapeHTML(id)}"
-            onclick="openTopic('${escapeHTML(id)}')"
-        >
-
-            <div class="topic-card-icon">
-                ${icon}
-            </div>
-
-            <div class="topic-card-content">
-
-                <span class="topic-card-category">
-                    ${category}
-                </span>
-
-                <h3>
-                    ${title}
-                </h3>
-
-                <p>
-                    ${quickAnswer}
-                </p>
-
-                <span class="topic-card-link">
-                    Learn More →
-                </span>
-
-            </div>
-
-        </article>
-    `;
-}
-
-
-/* =====================================================
-   LEARNING PATHS
-===================================================== */
-
-function getLearningPath(pathName) {
-
-    if (!pathName) {
-        return null;
-    }
-
-    const normalizedPath =
-        normalizeSearchText(pathName);
-
-    return Object.entries(learningPaths)
-        .find(([key]) =>
-            normalizeSearchText(key) === normalizedPath
-        )?.[1] || null;
-}
-
-
-/* =====================================================
-   SEARCH TEXT NORMALIZATION
-===================================================== */
-
-function normalizeSearchText(text) {
-
-    return String(text || "")
-        .toLowerCase()
-        .trim()
-        .replace(/[_-]+/g, " ")
-        .replace(/[^\w\s]/g, "")
-        .replace(/\s+/g, " ");
-}
-
-
-/* =====================================================
-   SEARCH TOKENIZER
-===================================================== */
-
-function tokenizeSearch(text) {
-
-    return normalizeSearchText(text)
-        .split(" ")
-        .filter(Boolean);
-}
-
-
-/* =====================================================
-   SEARCH RELEVANCE
-===================================================== */
-
-function calculateSearchScore(
-    id,
-    topic,
-    query
-) {
-
-    const normalizedQuery =
-        normalizeSearchText(query);
-
-    const queryWords =
-        tokenizeSearch(normalizedQuery);
-
-    const title =
-        normalizeSearchText(topic.title || "");
-
-    const topicId =
-        normalizeSearchText(id);
-
-    const keywords =
-        (topic.keywords || [])
-            .map(keyword =>
-                normalizeSearchText(keyword)
-            );
-
-    const category =
-        normalizeSearchText(topic.category || "");
-
-    let score = 0;
-
-
-    /*
-       Exact topic ID
-    */
-
-    if (topicId === normalizedQuery) {
-        score += 1000;
-    }
-
-
-    /*
-       Exact title
-    */
-
-    if (title === normalizedQuery) {
-        score += 950;
-    }
-
-
-    /*
-       Exact keyword
-    */
-
-    if (keywords.includes(normalizedQuery)) {
-        score += 900;
-    }
-
-
-    /*
-       Title contains entire search
-    */
-
-    if (
-        normalizedQuery &&
-        title.includes(normalizedQuery)
-    ) {
-        score += 700;
-    }
-
-
-    /*
-       Topic ID contains search
-    */
-
-    if (
-        normalizedQuery &&
-        topicId.includes(normalizedQuery)
-    ) {
-        score += 600;
-    }
-
-
-    /*
-       Keyword contains search
-    */
-
-    keywords.forEach(keyword => {
-
-        if (
-            normalizedQuery &&
-            keyword.includes(normalizedQuery)
-        ) {
-            score += 500;
-        }
-
-    });
-
-
-    /*
-       Individual word matching
-    */
-
-    queryWords.forEach(word => {
-
-        if (title.includes(word)) {
-            score += 120;
-        }
-
-        if (topicId.includes(word)) {
-            score += 100;
-        }
-
-        keywords.forEach(keyword => {
-
-            if (keyword.includes(word)) {
-                score += 80;
-            }
-
-        });
-
-        if (category.includes(word)) {
-            score += 40;
-        }
-
-    });
-
-
-    return score;
-}
-
-
-/* =====================================================
-   SMART SEARCH
-===================================================== */
-
-function searchTopics() {
-
-    const input =
-        document.getElementById("topicSearch");
-
-    const results =
-        document.getElementById("searchResults");
-
-    const status =
-        document.getElementById("searchStatus");
-
-
-    if (!input) {
-        return;
-    }
-
-
-    const originalQuery =
-        input.value.trim();
-
-
-    /*
-       HOME PAGE SEARCH
-
-       If search is being used from the Home page,
-       send the visitor to Learn.
-    */
-
-    if (!results) {
-
-        if (!originalQuery) {
-            return;
-        }
-
-        window.location.href =
-            `learn.html?search=${encodeURIComponent(originalQuery)}`;
-
-        return;
-    }
-
-
-    /*
-       LEARN PAGE SEARCH
-    */
-
-    if (!originalQuery) {
-
-        results.innerHTML = "";
-
-        if (status) {
-            status.textContent =
-                "Search for a computer or technology topic.";
-        }
-
-        return;
-    }
-
-
-    const query =
-        normalizeSearchText(originalQuery);
-
-
-    const rankedResults =
-        Object.entries(topics)
-            .map(([id, topic]) => {
-
-                return {
-                    id,
-                    topic,
-                    score:
-                        calculateSearchScore(
-                            id,
-                            topic,
-                            query
-                        )
-                };
-
-            })
-            .filter(result =>
-                result.score > 0
-            )
-            .sort((a, b) =>
-                b.score - a.score
-            );
-
-
-    /*
-       NO RESULTS
-    */
-
-    if (rankedResults.length === 0) {
-
-        results.innerHTML = `
-            <div class="no-results">
-
-                <div class="no-results-icon">
-                    🔎
-                </div>
-
-                <h3>
-                    No topics found
-                </h3>
-
-                <p>
-                    We couldn't find a topic matching
-                    "${escapeHTML(originalQuery)}".
-                </p>
-
-                <p>
-                    Try searching for something like
-                    <strong>CPU</strong>,
-                    <strong>RAM</strong>,
-                    <strong>Linux</strong>,
-                    <strong>Internet</strong>,
-                    or <strong>Cybersecurity</strong>.
-                </p>
-
-            </div>
-        `;
-
-        if (status) {
-
-            status.textContent =
-                "0 topics found";
-
-        }
-
-        return;
-    }
-
-
-    /*
-       DISPLAY RESULT COUNT
-    */
-
-    if (status) {
-
-        status.textContent =
-            `${rankedResults.length} ${
-                rankedResults.length === 1
-                    ? "topic"
-                    : "topics"
-            } found`;
-
-    }
-
-
-    /*
-       DISPLAY SEARCH RESULTS
-    */
-
-    results.innerHTML =
-        rankedResults
-            .map(result =>
-                createTopicCard(
-                    result.id,
-                    result.topic
-                )
-            )
-            .join("");
-
-}
-
-
-/* =====================================================
-   OPEN TOPIC
-===================================================== */
-
-function openTopic(topicId) {
-
-    const topic =
-        topics[topicId];
-
-    if (!topic) {
-        return;
-    }
-
-
-    const viewer =
-        document.getElementById("topicViewer");
-
-    if (!viewer) {
-        return;
-    }
-
-
-    const title =
-        escapeHTML(
-            topic.title || topicId
-        );
-
-    const category =
-        escapeHTML(
-            topic.category || "Technology"
-        );
-
-    const quickAnswer =
-        escapeHTML(
-            topic.quickAnswer || ""
-        );
-
-    const howItWorks =
-        escapeHTML(
-            topic.howItWorks || ""
-        );
-
-    const whyItMatters =
-        escapeHTML(
-            topic.whyItMatters || ""
-        );
-
-    const example =
-        escapeHTML(
-            topic.example || ""
-        );
-
-    const deepDive =
-        escapeHTML(
-            topic.deepDive || ""
-        );
-
-
-    const keyPoints =
-        Array.isArray(topic.keyPoints)
-            ? topic.keyPoints
-            : [];
-
-
-    const related =
-        Array.isArray(topic.related)
-            ? topic.related
-            : [];
-
-
-    viewer.innerHTML = `
-
-        <div class="topic-viewer-inner">
-
-            <button
-                class="topic-close"
-                onclick="closeTopic()"
-                aria-label="Close topic"
-            >
-                ✕
-            </button>
-
-
-            <div class="topic-viewer-header">
-
-                <div class="topic-viewer-icon">
-                    ${topic.icon || "💻"}
-                </div>
-
-                <div>
-
-                    <span class="topic-viewer-category">
-                        ${category}
-                    </span>
-
-                    <h2>
-                        ${title}
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            ${
-                quickAnswer
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Quick Answer
-                        </h3>
-
-                        <p>
-                            ${quickAnswer}
-                        </p>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                howItWorks
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            How It Works
-                        </h3>
-
-                        <p>
-                            ${howItWorks}
-                        </p>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                whyItMatters
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Why It Matters
-                        </h3>
-
-                        <p>
-                            ${whyItMatters}
-                        </p>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                example
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Example
-                        </h3>
-
-                        <p>
-                            ${example}
-                        </p>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                deepDive
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Deep Dive
-                        </h3>
-
-                        <p>
-                            ${deepDive}
-                        </p>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                keyPoints.length
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Key Points
-                        </h3>
-
-                        <ul>
-
-                            ${keyPoints
-                                .map(point => `
-                                    <li>
-                                        ${escapeHTML(point)}
-                                    </li>
-                                `)
-                                .join("")
-                            }
-
-                        </ul>
-
-                    </section>
-                `
-                : ""
-            }
-
-
-            ${
-                related.length
-                ? `
-                    <section class="lesson-section">
-
-                        <h3>
-                            Related Topics
-                        </h3>
-
-                        <div class="related-topics">
-
-                            ${related
-                                .map(relatedId => {
-
-                                    const relatedTopic =
-                                        topics[relatedId];
-
-                                    if (!relatedTopic) {
-                                        return "";
-                                    }
-
-                                    return `
-                                        <button
-                                            class="related-topic"
-                                            onclick="openTopic('${escapeHTML(relatedId)}')"
-                                        >
-                                            ${
-                                                relatedTopic.icon ||
-                                                "💻"
-                                            }
-
-                                            <span>
-                                                ${
-                                                    escapeHTML(
-                                                        relatedTopic.title ||
-                                                        relatedId
-                                                    )
-                                                }
-                                            }
-                                        </button>
-                                    `;
-
-                                })
-                                .join("")
-                            }
-
-                        </div>
-
-                    </section>
-                `
-                : ""
-            }
-
-        </div>
-    `;
-
-
-    viewer.classList.add("active");
-
-    viewer.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-
-    /*
-       Keep the selected topic in the URL.
-    */
-
-    try {
-
-        const url =
-            new URL(window.location.href);
-
-        url.searchParams.set(
-            "topic",
-            topicId
-        );
-
-        window.history.replaceState(
-            {},
-            "",
-            url
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Could not update topic URL.",
-            error
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CLOSE TOPIC
-===================================================== */
-
-function closeTopic() {
-
-    const viewer =
-        document.getElementById("topicViewer");
-
-    if (!viewer) {
-        return;
-    }
-
-
-    viewer.classList.remove("active");
-
-
-    try {
-
-        const url =
-            new URL(window.location.href);
-
-        url.searchParams.delete("topic");
-
-        window.history.replaceState(
-            {},
-            "",
-            url
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Could not clear topic URL.",
-            error
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CATEGORY VIEW
-===================================================== */
-
-function showCategory(categoryName) {
-
-    const results =
-        document.getElementById("searchResults");
-
-    const status =
-        document.getElementById("searchStatus");
-
-    if (!results) {
-        return;
-    }
-
-
-    const normalizedCategory =
-        normalizeSearchText(categoryName);
-
-
-    const categoryResults =
-        Object.entries(topics)
-            .filter(([id, topic]) => {
-
-                return (
-                    normalizeSearchText(
-                        topic.category || ""
-                    ) === normalizedCategory
-                );
-
-            });
-
-
-    if (categoryResults.length === 0) {
-
-        results.innerHTML = `
-            <div class="no-results">
-
-                <div class="no-results-icon">
-                    📚
-                </div>
-
-                <h3>
-                    No topics found
-                </h3>
-
-                <p>
-                    There are currently no topics
-                    in this category.
-                </p>
-
-            </div>
-        `;
-
-        if (status) {
-            status.textContent =
-                "0 topics found";
-        }
-
-        return;
-    }
-
-
-    if (status) {
-
-        status.textContent =
-            `${categoryResults.length} ${
-                categoryResults.length === 1
-                    ? "topic"
-                    : "topics"
-            } found`;
-
-    }
-
-
-    results.innerHTML =
-        categoryResults
-            .map(([id, topic]) =>
-                createTopicCard(id, topic)
-            )
-            .join("");
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+   CLEAN SEARCH + TOPIC + CATEGORY ENGINE
+   The original 113-topic database above is preserved.
+========================================================= */
 
 function escapeHTML(value) {
-
     return String(value ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -4214,960 +3347,358 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 }
 
-
-/* =====================================================
-   LEARN PAGE INITIALIZATION
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const searchInput =
-            document.getElementById("topicSearch");
-
-        const searchButton =
-            document.getElementById("searchButton");
-
-        const searchForm =
-            document.getElementById("searchForm");
-
-
-        /*
-           SEARCH BUTTON
-        */
-
-        if (searchButton) {
-
-            searchButton.addEventListener(
-                "click",
-                function () {
-
-                    searchTopics();
-
-                }
-            );
-
-        }
-
-
-        /*
-           SEARCH FORM
-        */
-
-        if (searchForm) {
-
-            searchForm.addEventListener(
-                "submit",
-                function (event) {
-
-                    event.preventDefault();
-
-                    searchTopics();
-
-                }
-            );
-
-        }
-
-
-        /*
-           ENTER KEY SEARCH
-        */
-
-        if (searchInput) {
-
-            searchInput.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (
-                        event.key === "Enter"
-                    ) {
-
-                        event.preventDefault();
-
-                        searchTopics();
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /*
-           HOME → LEARN SEARCH
-
-           Example:
-
-           learn.html?search=CPU
-
-           The Learn page fills the search box,
-           performs the search, and automatically
-           opens an exact topic or keyword match.
-        */
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        const urlSearch =
-            params.get("search");
-
-
-        if (
-            urlSearch &&
-            searchInput
-        ) {
-
-            searchInput.value =
-                urlSearch;
-
-            searchTopics();
-
-
-            const normalizedURLSearch =
-                normalizeSearchText(
-                    urlSearch
-                );
-
-
-            const exactMatch =
-                Object.entries(topics)
-                    .find(
-                        ([id, topic]) => {
-
-                            const title =
-                                normalizeSearchText(
-                                    topic.title
-                                );
-
-                            const topicId =
-                                normalizeSearchText(
-                                    id
-                                );
-
-                            const keywords =
-                                (
-                                    topic.keywords ||
-                                    []
-                                )
-                                    .map(
-                                        keyword =>
-                                            normalizeSearchText(
-                                                keyword
-                                            )
-                                    );
-
-
-                            return (
-
-                                title ===
-                                normalizedURLSearch
-
-                                ||
-
-                                topicId ===
-                                normalizedURLSearch
-
-                                ||
-
-                                keywords.includes(
-                                    normalizedURLSearch
-                                )
-
-                            );
-
-                        }
-                    );
-
-
-            if (exactMatch) {
-
-                openTopic(
-                    exactMatch[0]
-                );
-
-            }
-
-        }
-
-
-        /*
-           OPEN TOPIC FROM URL
-
-           Example:
-
-           learn.html?topic=cpu
-        */
-
-        const urlTopic =
-            params.get("topic");
-
-
-        if (
-            urlTopic &&
-            topics[urlTopic]
-        ) {
-
-            openTopic(
-                urlTopic
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   STARTUP
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const results =
-            document.getElementById(
-                "searchResults"
-            );
-
-        const status =
-            document.getElementById(
-                "searchStatus"
-            );
-
-
-        /*
-           Show all topics initially
-           when the Learn page loads.
-        */
-
-        if (
-            results &&
-            Object.keys(topics).length
-        ) {
-
-            results.innerHTML =
-                Object.entries(topics)
-                    .map(
-                        ([id, topic]) =>
-                            createTopicCard(
-                                id,
-                                topic
-                            )
-                    )
-                    .join("");
-
-
-            if (status) {
-
-                const total =
-                    Object.keys(topics).length;
-
-                status.textContent =
-                    `${total} ${
-                        total === 1
-                            ? "topic"
-                            : "topics"
-                    } available`;
-
-            }
-
-        }
-
-    }
-);/* =========================================================
-   OPEN TOPIC
-========================================================= */
-
-function openTopic(id) {
-
-    const topic = topics[id];
-
-    if (!topic) {
-        return;
-    }
-
-
-    const viewer =
-        document.getElementById("topicViewer");
-
-    const results =
-        document.getElementById("searchResults");
-
-    const status =
-        document.getElementById("searchStatus");
-
-
-    if (!viewer) {
-        return;
-    }
-
-
-    if (results) {
-        results.style.display = "none";
-    }
-
-
-    if (status) {
-        status.style.display = "none";
-    }
-
-
-    /* =====================================================
-       RELATED TOPICS
-    ====================================================== */
-
-    const relatedTopics =
-        (topic.related || [])
-            .map(relatedId => {
-
-                const related =
-                    topics[relatedId];
-
-                if (!related) {
-                    return "";
-                }
-
-                return `
-
-                    <button
-                        type="button"
-                        onclick="openTopic('${relatedId}')"
-                    >
-                        ${related.icon}
-                        ${related.title}
-                    </button>
-
-                `;
-
-            })
-            .join("");
-
-
-    /* =====================================================
-       KEY POINTS
-    ====================================================== */
-
-    const keyPoints =
-        (topic.keyPoints || [])
-            .map(point => {
-
-                return `
-                    <li>
-                        ${point}
-                    </li>
-                `;
-
-            })
-            .join("");
-
-
-    /* =====================================================
-       LEARNING PATH
-    ====================================================== */
-
-    const learningPath =
-        getLearningPath(id, topic);
-
-
-    const learningSteps =
-        learningPath
-            .map((step, index) => {
-
-                return `
-
-                    <li>
-
-                        <span class="learning-step-number">
-                            ${index + 1}
-                        </span>
-
-                        <div>
-                            ${step}
-                        </div>
-
-                    </li>
-
-                `;
-
-            })
-            .join("");
-
-
-    /* =====================================================
-       DISPLAY TOPIC
-    ====================================================== */
-
-    viewer.innerHTML = `
-
-        <article class="topic-page">
-
-
-            <!-- =============================================
-                 BACK BUTTON
-            ============================================== -->
-
-            <button
-                type="button"
-                class="back-to-results"
-                onclick="backToResults()"
-            >
-                ← Back to Results
-            </button>
-
-
-            <!-- =============================================
-                 TOPIC HEADER
-            ============================================== -->
-
-            <div class="topic-header">
-
-                <div class="topic-icon">
-                    ${topic.icon}
-                </div>
-
-                <div>
-
-                    <h2>
-                        ${topic.title}
-                    </h2>
-
-                    <p class="topic-category">
-
-                        <strong>
-                            Category:
-                        </strong>
-
-                        ${topic.category}
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <hr>
-
-
-            <!-- =============================================
-                 WHAT IS IT?
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    📖 What Is It?
-                </h3>
-
-                <p>
-                    ${topic.quickAnswer}
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
-                 HOW IT WORKS
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    ⚙️ How It Works
-                </h3>
-
-                <p>
-                    ${topic.howItWorks}
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
-                 WHY IT MATTERS
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    🎯 Why It Matters
-                </h3>
-
-                <p>
-                    ${topic.whyItMatters}
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
-                 REAL WORLD EXAMPLE
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    💡 Real-World Example
-                </h3>
-
-                <p>
-                    ${topic.example}
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
-                 DEEPER EXPLANATION
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    🔬 Deeper Explanation
-                </h3>
-
-                <p>
-                    ${topic.deepDive}
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
-                 GETTING STARTED
-            ============================================== -->
-
-            <section class="topic-section learning-path">
-
-                <h3>
-                    🚀 How to Get Started
-                </h3>
-
-                <p>
-                    Follow these steps to build your knowledge
-                    of <strong>${topic.title}</strong>.
-                </p>
-
-
-                <ol class="learning-path-list">
-
-                    ${learningSteps}
-
-                </ol>
-
-            </section>
-
-
-            <!-- =============================================
-                 KEY POINTS
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    🧠 Key Things to Remember
-                </h3>
-
-                <ul class="topic-key-points">
-
-                    ${keyPoints}
-
-                </ul>
-
-            </section>
-
-
-            <!-- =============================================
-                 RELATED TOPICS
-            ============================================== -->
-
-            <section class="topic-section">
-
-                <h3>
-                    🔗 Related Topics
-                </h3>
-
-                <p>
-                    Continue exploring related computer
-                    and technology topics.
-                </p>
-
-                <div class="topics">
-
-                    ${relatedTopics}
-
-                </div>
-
-            </section>
-
-
-        </article>
-
-    `;
-
-
-    viewer.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "start"
-
-    });
-
+function normalizeSearchText(value) {
+    return String(value ?? "")
+        .toLowerCase()
+        .trim()
+        .replace(/[_-]+/g, " ")
+        .replace(/&/g, " and ")
+        .replace(/[^\w\s]/g, "")
+        .replace(/\s+/g, " ");
 }
 
+function tokenizeSearch(value) {
+    return normalizeSearchText(value).split(" ").filter(Boolean);
+}
 
-/* =========================================================
-   BACK TO RESULTS
-========================================================= */
+/* Common names used by homepage buttons and searches. */
+const topicAliases = {
+    "artificial intelligence": "artificial-intelligence",
+    "ai": "artificial-intelligence",
+    "internet": "internet",
+    "programming": "programming",
+    "database": "database",
+    "databases": "database",
+    "data base": "database",
+    "wi fi": "wifi",
+    "wireless internet": "wifi",
+    "cloud": "cloud-computing",
+    "operating system": "operating-system",
+    "computer": "computers"
+};
+
+function findTopicId(value) {
+    const raw = String(value ?? "").trim();
+    if (!raw) return null;
+
+    if (Object.prototype.hasOwnProperty.call(topics, raw)) return raw;
+
+    const normalized = normalizeSearchText(raw);
+    const alias = topicAliases[normalized];
+    if (alias && Object.prototype.hasOwnProperty.call(topics, alias)) return alias;
+
+    const entries = Object.entries(topics);
+    const exact = entries.find(([id, topic]) =>
+        normalizeSearchText(id) === normalized ||
+        normalizeSearchText(topic.title) === normalized ||
+        (topic.keywords || []).some(word => normalizeSearchText(word) === normalized)
+    );
+    if (exact) return exact[0];
+
+    const partial = entries.find(([id, topic]) =>
+        normalizeSearchText(id).includes(normalized) ||
+        normalizeSearchText(topic.title).includes(normalized) ||
+        (topic.keywords || []).some(word => normalizeSearchText(word).includes(normalized))
+    );
+    return partial ? partial[0] : null;
+}
+
+function createTopicCard(id, topic) {
+    if (!topic) return "";
+    const title = escapeHTML(topic.title || id);
+    const category = escapeHTML(topic.category || "Technology");
+    const icon = escapeHTML(topic.icon || "💻");
+    const answer = escapeHTML(topic.quickAnswer || "Open this topic to learn more.");
+    const safeId = escapeHTML(id);
+
+    return `
+        <article class="topic-card" data-topic="${safeId}" role="button" tabindex="0"
+            aria-label="Learn about ${title}"
+            onclick="openTopic('${safeId}')"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTopic('${safeId}');}">
+            <div class="topic-card-icon">${icon}</div>
+            <div class="topic-card-content">
+                <span class="topic-card-category">${category}</span>
+                <h3>${title}</h3>
+                <p>${answer}</p>
+                <span class="topic-card-link">Learn More →</span>
+            </div>
+        </article>`;
+}
+
+function calculateSearchScore(id, topic, query) {
+    const q = normalizeSearchText(query);
+    if (!q) return 0;
+    const idText = normalizeSearchText(id);
+    const title = normalizeSearchText(topic.title || "");
+    const category = normalizeSearchText(topic.category || "");
+    const keywords = (topic.keywords || []).map(normalizeSearchText);
+    let score = 0;
+    if (idText === q) score += 1000;
+    if (title === q) score += 1200;
+    if (keywords.includes(q)) score += 1100;
+    if (title.includes(q)) score += 500;
+    if (idText.includes(q)) score += 400;
+    keywords.forEach(word => { if (word.includes(q)) score += 350; });
+    tokenizeSearch(q).forEach(word => {
+        if (title.includes(word)) score += 100;
+        if (idText.includes(word)) score += 80;
+        if (keywords.some(keyword => keyword.includes(word))) score += 60;
+        if (category.includes(word)) score += 25;
+    });
+    return score;
+}
+
+function setSearchStatus(message) {
+    const status = document.getElementById("searchStatus");
+    if (status) {
+        status.style.display = "";
+        status.textContent = message;
+    }
+}
+
+function resetViewer() {
+    const viewer = document.getElementById("topicViewer");
+    if (!viewer) return;
+    viewer.innerHTML = `
+        <div class="lesson">
+            <h2>Welcome to the Computer Guide</h2>
+            <p>Search above to find something you want to understand, or choose a topic below.</p>
+            <p>Every topic explains what it is, how it works, why it matters, and where you encounter it in the real world.</p>
+        </div>`;
+}
+
+function renderResults(entries, emptyMessage) {
+    const results = document.getElementById("searchResults");
+    if (!results) return;
+    results.style.display = "";
+    if (!entries.length) {
+        results.innerHTML = `
+            <div class="no-results">
+                <div class="no-results-icon">🔎</div>
+                <h3>No topics found</h3>
+                <p>${escapeHTML(emptyMessage || "Try another search or category.")}</p>
+            </div>`;
+        setSearchStatus("0 topics found");
+        return;
+    }
+    results.innerHTML = entries.map(([id, topic]) => createTopicCard(id, topic)).join("");
+    setSearchStatus(`${entries.length} ${entries.length === 1 ? "topic" : "topics"} found`);
+}
+
+function searchTopics() {
+    const input = document.getElementById("topicSearch");
+    const results = document.getElementById("searchResults");
+    if (!input) return;
+    const originalQuery = input.value.trim();
+
+    /* Supports calling the function from a page without Learn search fields. */
+    if (!results) {
+        if (originalQuery) {
+            window.location.href = `learn.html?search=${encodeURIComponent(originalQuery)}`;
+        }
+        return;
+    }
+
+    if (!originalQuery) {
+        renderResults(Object.entries(topics), "Search for a topic or choose a category.");
+        resetViewer();
+        return;
+    }
+
+    const ranked = Object.entries(topics)
+        .map(([id, topic]) => ({ id, topic, score: calculateSearchScore(id, topic, originalQuery) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || a.topic.title.localeCompare(b.topic.title));
+
+    renderResults(ranked.map(item => [item.id, item.topic]), `We couldn't find “${originalQuery}”. Try CPU, RAM, Linux, Wi-Fi, or cybersecurity.`);
+
+    const exactId = findTopicId(originalQuery);
+    if (exactId && ranked.length && ranked[0].id === exactId) {
+        /* Keep results visible; opening a result updates the lesson panel. */
+        openTopic(exactId, false);
+    } else {
+        resetViewer();
+    }
+}
+
+function openTopic(topicId, updateUrl = true) {
+    const id = findTopicId(topicId);
+    const topic = id ? topics[id] : null;
+    const viewer = document.getElementById("topicViewer");
+
+    if (!topic || !viewer) {
+        if (viewer) {
+            viewer.innerHTML = `<div class="lesson"><h2>Topic not found</h2><p>Try searching for a related term or choose a topic from the list.</p><button type="button" onclick="backToResults()">← Back to topics</button></div>`;
+        }
+        return;
+    }
+
+    const related = (Array.isArray(topic.related) ? topic.related : [])
+        .filter(relatedId => topics[relatedId])
+        .map(relatedId => `
+            <button type="button" class="related-topic-button" onclick="openTopic('${escapeHTML(relatedId)}')">
+                ${escapeHTML(topics[relatedId].icon || "💻")} ${escapeHTML(topics[relatedId].title || relatedId)}
+            </button>`).join("");
+
+    const keyPoints = (Array.isArray(topic.keyPoints) ? topic.keyPoints : [])
+        .map(point => `<li>${escapeHTML(point)}</li>`).join("");
+
+    const learningSteps = [
+        `Understand the definition of ${topic.title || id}.`,
+        "Review how it works and what other systems it depends on.",
+        "Explore the real-world example and key points.",
+        "Open a related topic to build on what you learned."
+    ].map((step, index) => `<li><span class="learning-step-number">${index + 1}</span><div>${escapeHTML(step)}</div></li>`).join("");
+
+    viewer.style.display = "";
+    viewer.innerHTML = `
+        <article class="topic-page">
+            <button type="button" class="back-to-results" onclick="backToResults()">← Back to Results</button>
+            <div class="topic-header">
+                <div class="topic-icon">${escapeHTML(topic.icon || "💻")}</div>
+                <div><h2>${escapeHTML(topic.title || id)}</h2><p class="topic-category"><strong>Category:</strong> ${escapeHTML(topic.category || "Technology")}</p></div>
+            </div>
+            <hr>
+            ${topic.quickAnswer ? `<section class="topic-section"><h3>📖 What Is It?</h3><p>${escapeHTML(topic.quickAnswer)}</p></section>` : ""}
+            ${topic.howItWorks ? `<section class="topic-section"><h3>⚙️ How It Works</h3><p>${escapeHTML(topic.howItWorks)}</p></section>` : ""}
+            ${topic.whyItMatters ? `<section class="topic-section"><h3>🎯 Why It Matters</h3><p>${escapeHTML(topic.whyItMatters)}</p></section>` : ""}
+            ${topic.example ? `<section class="topic-section"><h3>💡 Real-World Example</h3><p>${escapeHTML(topic.example)}</p></section>` : ""}
+            ${topic.deepDive ? `<section class="topic-section"><h3>🔬 Deeper Explanation</h3><p>${escapeHTML(topic.deepDive)}</p></section>` : ""}
+            <section class="topic-section learning-path"><h3>🚀 How to Get Started</h3><p>Follow these steps to build your knowledge of <strong>${escapeHTML(topic.title || id)}</strong>.</p><ol class="learning-path-list">${learningSteps}</ol></section>
+            ${keyPoints ? `<section class="topic-section"><h3>🧠 Key Things to Remember</h3><ul class="topic-key-points">${keyPoints}</ul></section>` : ""}
+            ${related ? `<section class="topic-section"><h3>🔗 Related Topics</h3><p>Continue exploring related computer and technology topics.</p><div class="topics">${related}</div></section>` : ""}
+        </article>`;
+
+    if (updateUrl) {
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set("topic", id);
+            url.searchParams.delete("search");
+            url.searchParams.delete("category");
+            window.history.replaceState({}, "", url);
+        } catch (error) { /* URL updates are optional; lesson still opens. */ }
+    }
+    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeTopic() {
+    backToResults();
+}
 
 function backToResults() {
+    resetViewer();
+    const results = document.getElementById("searchResults");
+    const status = document.getElementById("searchStatus");
+    if (results) results.style.display = "";
+    if (status) status.style.display = "";
+    try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("topic");
+        window.history.replaceState({}, "", url);
+    } catch (error) { /* Ignore URL support errors. */ }
+    if (results) results.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
-    const viewer =
-        document.getElementById("topicViewer");
+function getCategoryMatches(categoryName) {
+    const category = normalizeSearchText(categoryName);
+    const all = Object.entries(topics);
 
-    const results =
-        document.getElementById("searchResults");
-
-    const status =
-        document.getElementById("searchStatus");
-
-
-    if (results) {
-        results.style.display = "";
+    /* These are grouped browse views, not necessarily literal database categories. */
+    if (category === "computers" || category === "computers and hardware") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === "computers" || /hardware|computer/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)}`));
     }
-
-
-    if (status) {
-        status.style.display = "";
+    if (category === "operating systems") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === category || /operating system|windows|linux|macos|kernel|driver/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)}`));
     }
+    if (category === "internet and networking" || category === "internet networking") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === category || /internet|network|wifi|wi fi|dns|router|ip address|ethernet|server|http|https|tcp|udp|cloud/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)} ${(topic.keywords || []).map(normalizeSearchText).join(" ")}`));
+    }
+    if (category === "programming" || category === "programming and data") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === "programming" || /program|coding|code|algorithm|database|data|python|javascript|api|software development/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)} ${(topic.keywords || []).map(normalizeSearchText).join(" ")}`));
+    }
+    if (category === "artificial intelligence" || category === "ai and modern technology") {
+        return all.filter(([id, topic]) => /artificial intelligence|machine learning|deep learning|neural network|generative ai|language model|robotics|internet of things|cloud computing|virtual reality|augmented reality/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)} ${(topic.keywords || []).map(normalizeSearchText).join(" ")}`) || normalizeSearchText(topic.category) === "technology");
+    }
+    if (category === "modern technology" || category === "technology") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === "technology" || /artificial intelligence|machine learning|cloud computing|internet of things|virtual reality|augmented reality|quantum computing/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)}`));
+    }
+    if (category === "cybersecurity") {
+        return all.filter(([id, topic]) => normalizeSearchText(topic.category) === category || /cybersecurity|security|malware|phishing|encryption|firewall|authentication|password|vulnerability|ransomware|privacy/.test(`${normalizeSearchText(id)} ${normalizeSearchText(topic.title)} ${(topic.keywords || []).map(normalizeSearchText).join(" ")}`));
+    }
+    return all.filter(([id, topic]) => normalizeSearchText(topic.category) === category);
+}
 
-
+function showCategory(categoryName) {
+    const input = document.getElementById("topicSearch");
+    if (input) input.value = "";
+    const matches = getCategoryMatches(categoryName);
+    renderResults(matches, `There are no topics listed for ${categoryName} yet.`);
+    const viewer = document.getElementById("topicViewer");
     if (viewer) {
-
-        viewer.innerHTML = `
-
-            <div class="lesson">
-
-                <h2>
-                    Welcome to the Computer Guide
-                </h2>
-
-                <p>
-                    Search for another topic or choose
-                    a topic from the results.
-                </p>
-
-            </div>
-
-        `;
-
+        viewer.innerHTML = `<div class="lesson"><h2>${escapeHTML(categoryName)}</h2><p>Choose a topic below to begin learning.</p></div>`;
     }
+    try {
+        const url = new URL(window.location.href);
+        url.searchParams.set("category", categoryName);
+        url.searchParams.delete("topic");
+        url.searchParams.delete("search");
+        window.history.replaceState({}, "", url);
+    } catch (error) { /* Category view still works without URL updates. */ }
+    const results = document.getElementById("searchResults");
+    if (results) results.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
+function initializeComputerGuide() {
+    const searchInput = document.getElementById("topicSearch");
+    const results = document.getElementById("searchResults");
+    const params = new URLSearchParams(window.location.search);
 
-    if (results) {
+    if (!results) return; // This is the homepage; its inline search functions handle navigation.
 
-        results.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
+    if (searchInput) {
+        searchInput.setAttribute("aria-label", "Search Computer Guide topics");
+        searchInput.addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                searchTopics();
+            }
         });
-
     }
 
-}
+    const urlTopic = params.get("topic");
+    const urlSearch = params.get("search");
+    const urlCategory = params.get("category");
 
-
-/* =========================================================
-   BROWSE TOPICS BY CATEGORY
-========================================================= */
-
-function showCategory(category) {
-
-    const results =
-        document.getElementById("searchResults");
-
-    const status =
-        document.getElementById("searchStatus");
-
-    const viewer =
-        document.getElementById("topicViewer");
-
-    const input =
-        document.getElementById("topicSearch");
-
-
-    if (!results) {
+    if (urlTopic) {
+        const topicId = findTopicId(urlTopic);
+        if (topicId) {
+            renderResults(Object.entries(topics), "Choose another topic below.");
+            openTopic(topicId, false);
+        } else {
+            renderResults([], `We couldn't find the topic “${urlTopic}”. Try searching for it below.`);
+            if (searchInput) searchInput.value = urlTopic;
+        }
         return;
     }
 
-
-    results.style.display = "";
-
-    if (status) {
-        status.style.display = "";
-    }
-
-
-    if (input) {
-        input.value = "";
-    }
-
-
-    const matches =
-        Object.entries(topics).filter(
-            ([id, topic]) => {
-
-                return topic.category
-                    .toLowerCase()
-                    === category.toLowerCase();
-
-            }
-        );
-
-
-    results.innerHTML = "";
-
-
-    if (viewer) {
-
-        viewer.innerHTML = `
-
-            <div class="lesson">
-
-                <h2>
-                    ${category}
-                </h2>
-
-                <p>
-                    Choose a topic below to begin learning.
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    if (matches.length === 0) {
-
-        if (status) {
-
-            status.textContent =
-                "No topics found in this category.";
-
-        }
-
+    if (urlSearch) {
+        if (searchInput) searchInput.value = urlSearch;
+        searchTopics();
         return;
     }
 
-
-    if (status) {
-
-        status.textContent =
-            `${matches.length} topic${matches.length === 1 ? "" : "s"} in ${category}`;
-
+    if (urlCategory) {
+        showCategory(urlCategory);
+        return;
     }
 
-
-    matches.forEach(
-        ([id, topic]) => {
-
-            results.innerHTML +=
-                createTopicCard(id, topic);
-
-        }
-    );
-
-
-    results.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "start"
-
-    });
-
+    renderResults(Object.entries(topics), "Search for a topic or choose a category.");
+    setSearchStatus(`${Object.keys(topics).length} topics available`);
 }
 
-
-/* =========================================================
-   ENTER KEY SEARCH
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const searchInput =
-            document.getElementById("topicSearch");
-
-
-        if (!searchInput) {
-            return;
-        }
-
-
-        searchInput.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Enter") {
-
-                    searchTopics();
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   HTML ESCAPING
-========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeComputerGuide, { once: true });
+} else {
+    initializeComputerGuide();
 }
-
-
-/* =========================================================
-   COMPUTER GUIDE STARTUP
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const status =
-            document.getElementById("searchStatus");
-
-        const searchInput =
-            document.getElementById("topicSearch");
-
-
-        if (status) {
-
-            status.textContent =
-                `Explore ${Object.keys(topics).length} computer and technology topics.`;
-
-        }
-
-
-        /*
-           Allow visitors to search immediately without
-           needing to click a separate search button.
-        */
-
-        if (searchInput) {
-
-            searchInput.setAttribute(
-                "aria-label",
-                "Search Computer Guide topics"
-            );
-
-        }
-
-
-        /*
-           HOME → LEARN SEARCH
-
-           Example:
-
-           learn.html?search=CPU
-
-           The Learn page automatically fills the search box,
-           searches the database, and opens an exact topic or
-           keyword match when one exists.
-        */
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        const urlSearch =
-            params.get("search");
-
-
-        if (urlSearch && searchInput) {
-
-            searchInput.value = urlSearch;
-
-            searchTopics();
-
-
-            const normalizedURLSearch =
-                normalizeSearchText(urlSearch);
-
-
-            const exactMatch =
-                Object.entries(topics).find(
-                    ([id, topic]) => {
-
-                        const title =
-                            normalizeSearchText(
-                                topic.title
-                            );
-
-                        const topicId =
-                            normalizeSearchText(id);
-
-                        const keywords =
-                            (topic.keywords || [])
-                                .map(keyword =>
-                                    normalizeSearchText(
-                                        keyword
-                                    )
-                                );
-
-                        return (
-                            title === normalizedURLSearch ||
-                            topicId === normalizedURLSearch ||
-                            keywords.includes(
-                                normalizedURLSearch
-                            )
-                        );
-
-                    }
-                );
-
-
-            if (exactMatch) {
-
-                openTopic(
-                    exactMatch[0]
-                );
-
-            }
-
-        }
-
-    }
-);
